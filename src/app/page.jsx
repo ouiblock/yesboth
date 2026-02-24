@@ -173,16 +173,19 @@ function LandingInner() {
             <p className="text-white/40 text-[11px] leading-relaxed">{t('footer.legal')}</p>
           </div>
 
-          <div className="border-t border-white/10 pt-4 flex gap-4">
+          <div className="border-t border-white/10 pt-4 flex flex-wrap gap-4">
             <Link href="/about" className="text-white/60 text-xs hover:text-white transition-colors">
               About
             </Link>
             <Link href="/cgu" className="text-white/60 text-xs hover:text-white transition-colors">
               {t('footer.cgu')}
             </Link>
-            <a href="/LICENSE" target="_blank" className="text-white/60 text-xs hover:text-white transition-colors">
+            <Link href="/privacy" className="text-white/60 text-xs hover:text-white transition-colors">
+              Privacy
+            </Link>
+            <Link href="/license" className="text-white/60 text-xs hover:text-white transition-colors">
               {t('footer.license')}
-            </a>
+            </Link>
           </div>
         </div>
       </footer>
