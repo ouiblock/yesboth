@@ -49,9 +49,9 @@ export default function LicensePage() {
             <div>
               <h3 className="font-semibold text-[#5B9BD5] mb-3">Propriétaire & Éditeur / Owner & Publisher</h3>
               <div className="bg-[#F8FAFB] rounded-xl p-4 space-y-1 text-sm">
-                <p><strong>Artean Digital SAS</strong></p>
+                <p><strong>SAS BASK'IN BIARRITZ</strong></p>
                 <p>SIREN: 439 299 152 00013</p>
-                <p>Siège social: BASK'IN, Biarritz, France</p>
+                <p>Siège social: 257 Avenue d'Atherbea, 64210 Bidart, France</p>
                 <p>🌐 <a href="https://arteandigital.fr" target="_blank" rel="noopener noreferrer" className="text-[#5B9BD5] hover:underline">www.arteandigital.fr</a></p>
                 <p>📧 <a href="mailto:contact@arteandigital.fr" className="text-[#5B9BD5] hover:underline">contact@arteandigital.fr</a></p>
               </div>
@@ -62,6 +62,7 @@ export default function LicensePage() {
               <div className="bg-[#F8FAFB] rounded-xl p-4 space-y-1 text-sm">
                 <p><strong>Association Herrichain</strong> (loi 1901)</p>
                 <p>RNA: W641015204</p>
+                <p>Siège social: 257 Avenue d'Atherbea, 64210 Bidart, France</p>
                 <p className="text-xs text-[#8B95A1] italic mt-2">Exploitation à titre de test bêta uniquement / Beta testing and operation only</p>
               </div>
             </div>
@@ -122,14 +123,14 @@ export default function LicensePage() {
           </h2>
           
           <p className="text-sm text-[#5A6C7D] leading-relaxed mb-4">
-            <strong>FR:</strong> Artean Digital SAS est le propriétaire exclusif et unique de l'intégralité 
+            <strong>FR:</strong> SAS BASK'IN BIARRITZ est le propriétaire exclusif et unique de l'intégralité 
             des droits de propriété intellectuelle sur le Logiciel, conformément aux dispositions du Code 
             de la Propriété Intellectuelle français (loi n° 92-597 du 1er juillet 1992) et des conventions 
             internationales applicables (Convention de Berne, Accord ADPIC).
           </p>
           
           <p className="text-sm text-[#5A6C7D] leading-relaxed mb-4">
-            <strong>EN:</strong> Artean Digital SAS is the sole and exclusive owner of all intellectual 
+            <strong>EN:</strong> SAS BASK'IN BIARRITZ is the sole and exclusive owner of all intellectual 
             property rights in the Software, in accordance with the provisions of the French Intellectual 
             Property Code (Law No. 92-597 of July 1, 1992) and applicable international conventions 
             (Berne Convention, TRIPS Agreement).
@@ -155,13 +156,13 @@ export default function LicensePage() {
           </h2>
           
           <p className="text-sm text-[#5A6C7D] leading-relaxed mb-4">
-            <strong>FR:</strong> Artean Digital SAS concède aux utilisateurs finaux une licence personnelle, 
+            <strong>FR:</strong> SAS BASK'IN BIARRITZ concède aux utilisateurs finaux une licence personnelle, 
             non exclusive, non transférable, révocable et gratuite pour l'utilisation du Logiciel à des fins 
             strictement personnelles et non commerciales.
           </p>
           
           <p className="text-sm text-[#5A6C7D] leading-relaxed mb-4">
-            <strong>EN:</strong> Artean Digital SAS grants end users a personal, non-exclusive, 
+            <strong>EN:</strong> SAS BASK'IN BIARRITZ grants end users a personal, non-exclusive, 
             non-transferable, revocable and free license to use the Software for strictly personal and 
             non-commercial purposes.
           </p>
@@ -199,7 +200,7 @@ export default function LicensePage() {
           <p className="text-sm text-[#5A6C7D] leading-relaxed mb-6">
             <strong>FR:</strong> Toute utilisation commerciale du Logiciel, sous quelque forme que ce soit, 
             requiert impérativement la conclusion préalable d'un contrat de licence commerciale écrit avec 
-            Artean Digital SAS.
+            SAS BASK'IN BIARRITZ.
           </p>
 
           <h3 className="font-semibold text-[#2C3E50] mb-4">Offres de Licences Commerciales:</h3>
@@ -229,6 +230,8 @@ export default function LicensePage() {
           <div className="bg-white rounded-xl p-6 text-center">
             <h4 className="font-semibold text-[#2C3E50] mb-3">Contact Licensing</h4>
             <p className="text-sm text-[#5A6C7D] mb-2">📧 <a href="mailto:contact@arteandigital.fr" className="text-[#5B9BD5] hover:underline">contact@arteandigital.fr</a></p>
+            <p className="text-sm text-[#5A6C7D] mb-2">📍 SAS BASK'IN BIARRITZ</p>
+            <p className="text-sm text-[#5A6C7D] mb-2">257 Avenue d'Atherbea, 64210 Bidart</p>
             <p className="text-sm text-[#5A6C7D]">🌐 <a href="https://arteandigital.fr" target="_blank" rel="noopener noreferrer" className="text-[#5B9BD5] hover:underline">www.arteandigital.fr</a></p>
           </div>
         </section>
@@ -279,7 +282,7 @@ export default function LicensePage() {
             <div>
               <h3 className="font-semibold text-[#5B9BD5] mb-2">Article 6 — Garanties et Responsabilité</h3>
               <p className="text-sm text-[#5A6C7D] leading-relaxed">
-                Le logiciel est fourni "EN L'ÉTAT", sans garantie d'aucune sorte. Artean Digital SAS ne 
+                Le logiciel est fourni "EN L'ÉTAT", sans garantie d'aucune sorte. SAS BASK'IN BIARRITZ ne 
                 saurait être tenu responsable de tout dommage résultant de l'utilisation du logiciel.
               </p>
             </div>
@@ -287,9 +290,9 @@ export default function LicensePage() {
             <div>
               <h3 className="font-semibold text-[#5B9BD5] mb-2">Article 7 — Exploitation Beta par Herrichain</h3>
               <p className="text-sm text-[#5A6C7D] leading-relaxed">
-                L'association Herrichain (RNA: W641015204) est autorisée à exploiter le Logiciel à titre 
-                de test bêta uniquement. Cette autorisation est révocable à tout moment et ne confère 
-                aucun droit de propriété intellectuelle.
+                L'association Herrichain (RNA: W641015204), située au 257 Avenue d'Atherbea, 64210 Bidart, 
+                est autorisée à exploiter le Logiciel à titre de test bêta uniquement. Cette autorisation 
+                est révocable à tout moment et ne confère aucun droit de propriété intellectuelle.
               </p>
             </div>
 
@@ -322,9 +325,9 @@ export default function LicensePage() {
 
         {/* Footer */}
         <div className="bg-gradient-to-r from-[#F5A962] via-[#8B7BA8] to-[#5B9BD5] rounded-2xl p-8 text-white text-center mb-6">
-          <p className="font-bold text-lg mb-2">Artean Digital SAS</p>
+          <p className="font-bold text-lg mb-2">SAS BASK'IN BIARRITZ</p>
           <p className="text-sm mb-1">SIREN: 439 299 152 00013</p>
-          <p className="text-sm mb-4">BASK'IN, Biarritz, France 🇫🇷</p>
+          <p className="text-sm mb-4">257 Avenue d'Atherbea, 64210 Bidart, France 🇫🇷</p>
           <p className="text-xs opacity-90">© 2026 — Tous droits réservés / All rights reserved</p>
         </div>
 
