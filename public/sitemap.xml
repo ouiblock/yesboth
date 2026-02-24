@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://yesboth.netlify.app/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yesboth.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yesboth.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://yesboth.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://yesboth.netlify.app/" />
+  </url>
+  
+  <!-- Wizard -->
+  <url>
+    <loc>https://yesboth.netlify.app/wizard/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yesboth.netlify.app/wizard/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yesboth.netlify.app/wizard/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://yesboth.netlify.app/wizard/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://yesboth.netlify.app/wizard/" />
+  </url>
+  
+  <!-- CGU -->
+  <url>
+    <loc>https://yesboth.netlify.app/cgu/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yesboth.netlify.app/cgu/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yesboth.netlify.app/cgu/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://yesboth.netlify.app/cgu/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://yesboth.netlify.app/cgu/" />
+  </url>
+  
+</urlset>
