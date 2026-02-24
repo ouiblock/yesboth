@@ -12,6 +12,7 @@ const initialForm = {
   initiateur: { prenom: '', nom: '' },
   partenaire: { prenom: '', nom: '' },
   date: new Date().toLocaleDateString('fr-FR'),
+  lieu: '',
   categorie: null,
   clauses: [],
   clauseLibre: '',

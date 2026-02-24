@@ -25,6 +25,7 @@ export default function Step4_Result({ form, onBack }) {
         <h2 className="text-2xl font-bold text-[#1C1C1E]">{t('step4.title')}</h2>
         <p className="text-[#6B7280] text-sm mt-1">
           {form.initiateur.prenom} & {form.partenaire.prenom} — {form.date}
+          {form.lieu && <span className="block text-xs mt-1">📍 {form.lieu}</span>}
         </p>
       </div>
 

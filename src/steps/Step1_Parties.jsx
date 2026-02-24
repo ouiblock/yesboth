@@ -3,13 +3,17 @@
 import ProgressBar from '@/components/ProgressBar'
 
 export default function Step1_Parties({ form, setForm, onNext }) {
-  const { initiateur, partenaire, date } = form
+  const { initiateur, partenaire, date, lieu } = form
 
   const handleChange = (who, field, value) => {
     setForm(prev => ({
       ...prev,
       [who]: { ...prev[who], [field]: value }
     }))
+  }
+
+  const handleLieuChange = (value) => {
+    setForm(prev => ({ ...prev, lieu: value }))
   }
 
   const canProceed =
@@ -87,8 +91,26 @@ export default function Step1_Parties({ form, setForm, onNext }) {
           </div>
         </div>
 
-        {/* Date */}
-        <p className="text-center text-xs text-[#6B7280]">Date de l'accord : <span className="font-medium text-[#1C1C1E]">{date}</span></p>
+        {/* Date et Lieu */}
+        <div className="bg-white rounded-2xl p-4 shadow-sm border border-[#E5E7EB]">
+          <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Date et Lieu</label>
+          <div className="space-y-3">
+            <div>
+              <label className="text-xs text-[#6B7280] font-medium mb-1 block">Date de l'accord</label>
+              <p className="text-sm font-medium text-[#1C1C1E] px-4 py-3 rounded-xl bg-[#F8F7F4] border border-[#E5E7EB]">{date}</p>
+            </div>
+            <div>
+              <label className="text-xs text-[#6B7280] font-medium mb-1 block">Lieu (optionnel)</label>
+              <input
+                type="text"
+                value={lieu}
+                onChange={e => handleLieuChange(e.target.value)}
+                placeholder="Ex: Paris, Biarritz, À domicile..."
+                className="w-full px-4 py-3 rounded-xl border border-[#E5E7EB] bg-[#F8F7F4] text-[#1C1C1E] text-sm focus:border-[#5B9BD5] focus:ring-2 focus:ring-[#5B9BD5]/20 transition-all duration-200 ease-in-out"
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Footer disclaimer */}

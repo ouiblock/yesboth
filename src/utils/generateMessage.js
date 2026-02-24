@@ -1,7 +1,8 @@
 export const generateMessage = (form, t) => {
-  const { initiateur, partenaire, date, clauses, clauseLibre, safeword, validite } = form
+  const { initiateur, partenaire, date, lieu, clauses, clauseLibre, safeword, validite } = form
   const prenomA = `${initiateur.prenom} ${initiateur.nom}`
   const prenomB = `${partenaire.prenom} ${partenaire.nom}`
+  const lieuText = lieu ? ` — ${lieu}` : ''
 
   const dureeMap = {
     'ce_soir': t('message.validityMap.ce_soir'),
@@ -29,7 +30,7 @@ export const generateMessage = (form, t) => {
     : ''
 
   return `─────────────────────────────────
-${t('message.header')} — ${date}
+${t('message.header')} — ${date}${lieuText}
 
 ${t('message.between')} ${prenomA} ${t('message.and')} ${prenomB}.
 
