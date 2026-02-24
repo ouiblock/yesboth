@@ -170,6 +170,12 @@ function LandingInner() {
                 Artean Digital
               </a>
             </p>
+            <p className="text-white/60 text-xs">
+              💻 Open Source:{' '}
+              <a href="https://github.com/ouiblock/yesboth" target="_blank" rel="noopener noreferrer" className="text-[#5B9BD5] hover:underline">
+                GitHub
+              </a>
+            </p>
             <p className="text-white/40 text-[11px] leading-relaxed">{t('footer.legal')}</p>
           </div>
 
