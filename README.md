@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤝 YesBoth
 
-## Getting Started
+**Multilingual Consent Message Generator**
 
-First, run the development server:
+> *Both say yes.*
+
+A free, 100% local web application for generating clear consent agreements between consenting adults.
+
+## ✨ Features
+
+- 🌍 **Multilingual**: French, English, Spanish, Italian
+- 📱 **Mobile-First**: Responsive design optimized for all devices
+- 🔒 **100% Local**: No data leaves your device - complete privacy
+- 📋 **4-Step Wizard**: Guided process to create personalized agreements
+- 🎯 **Modular Clauses**: 4 categories with customizable options
+- 🎨 **Modern Design**: Beautiful gradient theme (Orange → Violet → Blue)
+- ⚖️ **Legal Protection**: Complete terms and mandatory CGU acceptance
+- 🍪 **GDPR Compliant**: Minimal cookies, no tracking
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/your-username/yesboth.git
+cd yesboth
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The app is ready for static deployment on:
+- **Netlify** (recommended)
+- **Vercel**
+- **GitHub Pages**
+- Any static hosting service
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📱 How It Works
 
-## Learn More
+1. **Disclaimer**: Read and accept the initial terms
+2. **Parties**: Enter names of both consenting adults
+3. **Category**: Choose agreement type (General, Relationship, Intimate, NSFW)
+4. **Clauses**: Select relevant consent items and add custom clauses
+5. **Generate**: Get your personalized consent message
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠 Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: TailwindCSS with custom design system
+- **Icons**: Lucide React
+- **Internationalization**: React Context + JSON
+- **Language**: TypeScript/JavaScript
+- **Build Tool**: Next.js compiler
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+src/
+├── app/                 # Next.js pages
+│   ├── page.jsx        # Landing page
+│   ├── wizard/page.jsx # Main wizard
+│   └── cgu/page.jsx    # Terms & Conditions
+├── components/         # Reusable components
+│   ├── CookieBanner.jsx
+│   ├── LanguageSelector.jsx
+│   ├── ProgressBar.jsx
+│   └── ShareBlock.jsx
+├── steps/             # Wizard steps
+│   ├── Step0_Disclaimer.jsx
+│   ├── Step1_Parties.jsx
+│   ├── Step2_Category.jsx
+│   ├── Step3_Clauses.jsx
+│   └── Step4_Result.jsx
+├── i18n/              # Internationalization
+│   ├── LandingContext.jsx
+│   ├── LanguageContext.jsx
+│   └── locales/       # Translation files
+├── data/              # Clause definitions
+├── utils/             # Helper functions
+└── styles/            # Global styles
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Design System
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Color Palette
+- **Primary Orange**: `#F5A962`
+- **Primary Purple**: `#8B7BA8` 
+- **Primary Blue**: `#5B9BD5`
+- **Text Dark**: `#2C3E50`
+- **Background**: `#F8FAFB`
+
+### Typography
+- **Font Family**: Inter, Segoe UI, system-ui
+- **Weights**: 400 (regular), 600 (semibold), 700 (bold)
+
+## 🌍 Languages
+
+The application supports 4 languages:
+- 🇫🇷 **French** (default)
+- 🇬🇧 **English**
+- 🇪🇸 **Spanish**
+- 🇮🇹 **Italian**
+
+Translation files are located in `src/i18n/locales/`
+
+## ⚖️ Legal & License
+
+### Important Notice
+YesBoth is a **communication tool**, not a legal contract. Generated messages have no legally binding value. Each party remains fully responsible for their actions.
+
+### License
+**Herrichain/Artean Digital Proprietary License** - All rights reserved
+
+- ❌ **Commercial use strictly prohibited**
+- ✅ **Personal use permitted**
+- 🔒 **Source code auditable but non-modifiable**
+- ⚖️ **French law applies**
+
+See [LICENSE](LICENSE) for complete terms.
+
+## 🔒 Privacy & Security
+
+- **No server**: Everything runs in your browser
+- **No data collection**: No personal data is stored or transmitted
+- **No tracking**: No analytics, no advertising cookies
+- **Local storage**: Only language preference and CGU acceptance
+
+## 🤝 Contributing
+
+This is a proprietary project. For any inquiries or collaboration requests:
+- **Developer**: Artean Digital - www.arteandigital.fr
+- **Publisher**: Herrichain (French non-profit association)
+- **Contact**: contact@arteandigital.fr
+
+## 📄 Documentation
+
+- **Terms & Conditions**: `/cgu`
+- **Privacy Policy**: Included in CGU
+- **API Reference**: No external APIs used
+
+## 🌟 Acknowledgments
+
+Developed by Artean Digital for Herrichain association, promoting safe and consensual communication practices.
+
+---
+
+**© 2026 Herrichain - Association loi 1901**  
+**Developed by Artean Digital**  
+**All rights reserved**

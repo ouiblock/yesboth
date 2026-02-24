@@ -1,105 +1,345 @@
-LICENCE PROPRIÉTAIRE — HERRICHAIN / ARTEAN DIGITAL
-Version 1.0 — Février 2026
+═══════════════════════════════════════════════════════════════════════
+LICENCE PROPRIÉTAIRE YESBOTH — VERSION 1.0
+PROPRIETARY LICENSE YESBOTH — VERSION 1.0
+═══════════════════════════════════════════════════════════════════════
 
-=======================================================================
-                     TOUS DROITS RÉSERVÉS
-=======================================================================
+Copyright © 2026 Artean Digital SAS
+Tous droits réservés / All rights reserved
 
-Copyright (c) 2026 Herrichain — Association loi 1901
-Développé par Artean Digital (www.arteandigital.fr)
+═══════════════════════════════════════════════════════════════════════
+IDENTIFICATION DES PARTIES / PARTIES IDENTIFICATION
+═══════════════════════════════════════════════════════════════════════
 
-=======================================================================
-1. PROPRIÉTÉ INTELLECTUELLE
-=======================================================================
+PROPRIÉTAIRE, DÉVELOPPEUR ET ÉDITEUR / OWNER, DEVELOPER AND PUBLISHER:
+  Artean Digital SAS
+  SIREN: 439 299 152 00013
+  Siège social: BASK'IN, Biarritz, France
+  Site web: www.arteandigital.fr
+  Email: contact@arteandigital.fr
 
-Le logiciel "YesBoth", incluant l'intégralité de son code source,
-ses composants, sa documentation, ses interfaces graphiques, ses
-algorithmes, ses structures de données, ses traductions et tout autre
-élément constitutif, est la propriété intellectuelle exclusive de
-l'association loi 1901 Herrichain, ci-après dénommée "le Propriétaire".
+EXPLOITANT BETA / BETA OPERATOR:
+  Association Herrichain (loi 1901)
+  Exploitation à titre de test bêta uniquement
+  Beta testing and operation only
 
-Ce logiciel a été développé par Artean Digital (www.arteandigital.fr),
-prestataire mandaté par le Propriétaire, qui conserve tous les droits
-sur l'œuvre finale conformément aux dispositions contractuelles liant
-les parties.
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 1 — DÉFINITIONS / ARTICLE 1 — DEFINITIONS
+═══════════════════════════════════════════════════════════════════════
 
-=======================================================================
-2. INTERDICTION D'USAGE COMMERCIAL
-=======================================================================
+FR: Le « Logiciel » désigne l'application YesBoth dans son intégralité,
+incluant sans limitation : le code source, le code compilé, les bases
+de données, les interfaces utilisateur, les algorithmes, l'architecture
+logicielle, la documentation, les traductions, les graphismes, le logo,
+les fichiers de configuration, et tout élément constitutif ou dérivé,
+sous quelque forme que ce soit (application web, chatbot Telegram, API,
+ou toute autre forme de déploiement).
 
-Toute utilisation commerciale de ce logiciel est STRICTEMENT ET
-ABSOLUMENT INTERDITE, sans exception aucune.
+EN: "Software" means the YesBoth application in its entirety, including
+without limitation: source code, compiled code, databases, user
+interfaces, algorithms, software architecture, documentation,
+translations, graphics, logo, configuration files, and all constituent
+or derivative elements, in any form whatsoever (web application,
+Telegram chatbot, API, or any other form of deployment).
 
-Est considéré comme usage commercial, de manière non exhaustive :
-- La vente, la location ou la mise à disposition payante du logiciel
-- L'intégration dans un produit ou service commercial
-- L'utilisation dans un contexte professionnel générateur de revenus
-- La monétisation directe ou indirecte du logiciel ou de ses dérivés
-- L'utilisation à des fins publicitaires ou promotionnelles
-- La revente des données générées dans un contexte commercial
+FR: « Usage Commercial » désigne toute utilisation du Logiciel à des
+fins lucratives ou dans un contexte professionnel, incluant notamment :
+- L'intégration dans des produits ou services commerciaux
+- L'exploitation en mode SaaS ou hébergement payant
+- La revente, location ou concession de licence
+- L'utilisation en entreprise ou organisation à but lucratif
+- Le déploiement sur des plateformes commerciales (Telegram, etc.)
+- La monétisation directe ou indirecte
 
-Toute violation de cette interdiction constitue une contrefaçon au
-sens des articles L.335-2 et suivants du Code de la Propriété
-Intellectuelle et expose son auteur à des poursuites judiciaires.
+EN: "Commercial Use" means any use of the Software for profit or in a
+professional context, including but not limited to:
+- Integration into commercial products or services
+- SaaS operation or paid hosting
+- Resale, rental or sublicensing
+- Use in for-profit businesses or organizations
+- Deployment on commercial platforms (Telegram, etc.)
+- Direct or indirect monetization
 
-=======================================================================
-3. LOGICIEL NON OPEN SOURCE
-=======================================================================
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 2 — PROPRIÉTÉ INTELLECTUELLE / ARTICLE 2 — INTELLECTUAL PROPERTY
+═══════════════════════════════════════════════════════════════════════
 
-Ce logiciel N'EST PAS un logiciel libre (open source) au sens des
-définitions établies par la Free Software Foundation (FSF) ou
-l'Open Source Initiative (OSI).
+FR: Artean Digital SAS est le propriétaire exclusif et unique de
+l'intégralité des droits de propriété intellectuelle sur le Logiciel,
+conformément aux dispositions du Code de la Propriété Intellectuelle
+français (loi n° 92-597 du 1er juillet 1992) et des conventions
+internationales applicables (Convention de Berne, Accord ADPIC).
 
-Le code source peut être rendu accessible à des fins de transparence
-et d'audit de sécurité, mais cette accessibilité ne confère en aucun
-cas les droits associés aux licences open source.
+EN: Artean Digital SAS is the sole and exclusive owner of all
+intellectual property rights in the Software, in accordance with the
+provisions of the French Intellectual Property Code (Law No. 92-597 of
+July 1, 1992) and applicable international conventions (Berne
+Convention, TRIPS Agreement).
 
-Sont INTERDITS sans autorisation écrite préalable du Propriétaire :
-- La reproduction totale ou partielle du code source
-- La modification, adaptation, transformation ou traduction du logiciel
-- La distribution, publication ou mise à disposition publique
-- La création d'œuvres dérivées
-- La décompilation, le désassemblage ou l'ingénierie inverse
-- L'extraction systématique de tout ou partie du contenu
+FR: Ces droits incluent notamment et sans limitation :
+- Les droits d'auteur (articles L.111-1 et suivants du CPI)
+- Les droits patrimoniaux (reproduction, représentation, adaptation)
+- Les droits moraux (paternité, respect de l'intégrité de l'œuvre)
+- Les droits sur les bases de données (articles L.341-1 et suivants)
+- Les droits sur les marques et signes distinctifs
+- Les droits sur le savoir-faire et les secrets d'affaires
 
-=======================================================================
-4. UTILISATIONS AUTORISÉES
-=======================================================================
+EN: These rights include but are not limited to:
+- Copyright (Articles L.111-1 et seq. of the French IP Code)
+- Economic rights (reproduction, representation, adaptation)
+- Moral rights (attribution, integrity)
+- Database rights (Articles L.341-1 et seq.)
+- Trademark and distinctive sign rights
+- Know-how and trade secret rights
 
-Sont autorisées, dans le cadre strictement non commercial :
-- L'utilisation personnelle et privée de l'application déployée
-- La consultation du code source à des fins d'audit de sécurité
-- La référence académique ou éducative avec citation appropriée
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 3 — CONCESSION DE LICENCE NON COMMERCIALE / 
+ARTICLE 3 — NON-COMMERCIAL LICENSE GRANT
+═══════════════════════════════════════════════════════════════════════
 
-=======================================================================
-5. ABSENCE DE GARANTIE
-=======================================================================
+FR: Artean Digital SAS concède aux utilisateurs finaux une licence
+personnelle, non exclusive, non transférable, révocable et gratuite
+pour l'utilisation du Logiciel à des fins strictement personnelles et
+non commerciales, sous réserve du respect intégral des présentes
+conditions.
 
-CE LOGICIEL EST FOURNI "EN L'ÉTAT", SANS GARANTIE D'AUCUNE SORTE,
-EXPRESSE OU IMPLICITE, Y COMPRIS, MAIS SANS S'Y LIMITER, LES
-GARANTIES DE QUALITÉ MARCHANDE, D'ADÉQUATION À UN USAGE PARTICULIER
-ET D'ABSENCE DE CONTREFAÇON.
+EN: Artean Digital SAS grants end users a personal, non-exclusive,
+non-transferable, revocable and free license to use the Software for
+strictly personal and non-commercial purposes, subject to full
+compliance with these terms.
 
-EN AUCUN CAS LE PROPRIÉTAIRE, SES REPRÉSENTANTS, DÉVELOPPEURS OU
-CONTRIBUTEURS NE SAURAIENT ÊTRE TENUS RESPONSABLES DE TOUT DOMMAGE
-DIRECT, INDIRECT, INCIDENT, SPÉCIAL, EXEMPLAIRE OU CONSÉCUTIF
-RÉSULTANT DE L'UTILISATION OU DE L'IMPOSSIBILITÉ D'UTILISER CE
-LOGICIEL.
+DROITS CONCÉDÉS / GRANTED RIGHTS:
+FR: - Utilisation personnelle du Logiciel déployé
+    - Consultation du code source à des fins d'audit de sécurité
+    - Modification pour usage personnel uniquement (non redistribuable)
+    - Contribution au développement open-source sous conditions
 
-=======================================================================
-6. DROIT APPLICABLE
-=======================================================================
+EN: - Personal use of the deployed Software
+    - Source code review for security audit purposes
+    - Modification for personal use only (non-redistributable)
+    - Contribution to open-source development under conditions
 
-La présente licence est régie par le droit français.
-Tout litige relatif à son interprétation ou à son exécution relève
-de la compétence exclusive des tribunaux français.
+RESTRICTIONS ABSOLUES / ABSOLUTE RESTRICTIONS:
+FR: - INTERDICTION FORMELLE d'usage commercial sans licence commerciale
+    - INTERDICTION de redistribution, revente ou sous-licence
+    - INTERDICTION de suppression des mentions de copyright
+    - INTERDICTION de décompilation ou ingénierie inverse à fins commerciales
+    - INTERDICTION de création d'œuvres dérivées commerciales
 
-=======================================================================
-CONTACT
-=======================================================================
+EN: - FORMAL PROHIBITION of commercial use without commercial license
+    - PROHIBITION of redistribution, resale or sublicensing
+    - PROHIBITION of removal of copyright notices
+    - PROHIBITION of decompilation or reverse engineering for commercial purposes
+    - PROHIBITION of creation of commercial derivative works
 
-Association Herrichain (loi 1901)
-Développement : Artean Digital — www.arteandigital.fr
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 4 — LICENCE COMMERCIALE OBLIGATOIRE /
+ARTICLE 4 — MANDATORY COMMERCIAL LICENSE
+═══════════════════════════════════════════════════════════════════════
 
-Pour toute demande d'autorisation : contact@arteandigital.fr
-=======================================================================
+FR: Toute utilisation commerciale du Logiciel, sous quelque forme que
+ce soit, requiert impérativement la conclusion préalable d'un contrat
+de licence commerciale écrit avec Artean Digital SAS.
+
+EN: Any commercial use of the Software, in any form whatsoever,
+imperatively requires the prior conclusion of a written commercial
+license agreement with Artean Digital SAS.
+
+OFFRES DE LICENCES COMMERCIALES / COMMERCIAL LICENSE OFFERINGS:
+
+1. LICENCE STARTUP
+   FR: Pour startups et petites entreprises (< 50 employés, < 10M€ CA)
+   EN: For startups and small businesses (< 50 employees, < €10M revenue)
+
+2. LICENCE ENTERPRISE
+   FR: Pour grandes organisations et groupes internationaux
+   EN: For large organizations and international groups
+
+3. LICENCE RESELLER / WHITE-LABEL
+   FR: Pour revendeurs, intégrateurs et solutions SaaS
+   EN: For resellers, integrators and SaaS solutions
+
+4. LICENCE OEM / CHATBOT TELEGRAM
+   FR: Pour intégration dans produits tiers et déploiements Telegram
+   EN: For integration into third-party products and Telegram deployments
+
+CONTACT LICENSING:
+📧 Email: contact@arteandigital.fr
+🌐 Web: www.arteandigital.fr
+📞 Tél: +33 (0)X XX XX XX XX
+
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 5 — SANCTIONS EN CAS DE VIOLATION /
+ARTICLE 5 — PENALTIES FOR VIOLATION
+═══════════════════════════════════════════════════════════════════════
+
+FR: Toute violation des présentes dispositions, notamment l'usage
+commercial sans licence, constitue une contrefaçon au sens des articles
+L.335-2 et suivants du Code de la Propriété Intellectuelle et expose
+son auteur aux sanctions suivantes :
+
+EN: Any violation of these provisions, including commercial use without
+a license, constitutes infringement under Articles L.335-2 et seq. of
+the French Intellectual Property Code and exposes the perpetrator to
+the following penalties:
+
+SANCTIONS CIVILES / CIVIL PENALTIES:
+FR: - Dommages et intérêts (article L.331-1-3 CPI)
+    - Saisie-contrefaçon (article L.332-1 CPI)
+    - Interdiction judiciaire d'exploitation
+    - Publication de la décision de justice
+
+EN: - Damages (Article L.331-1-3 French IP Code)
+    - Seizure of infringing materials (Article L.332-1)
+    - Judicial prohibition of exploitation
+    - Publication of court decision
+
+SANCTIONS PÉNALES / CRIMINAL PENALTIES:
+FR: - Jusqu'à 3 ans d'emprisonnement (personnes physiques)
+    - Jusqu'à 300 000 € d'amende (personnes physiques)
+    - Jusqu'à 1 500 000 € d'amende (personnes morales)
+    - Confiscation des matériels et produits contrefaisants
+
+EN: - Up to 3 years imprisonment (natural persons)
+    - Up to €300,000 fine (natural persons)
+    - Up to €1,500,000 fine (legal entities)
+    - Confiscation of infringing equipment and products
+
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 6 — GARANTIES ET RESPONSABILITÉ /
+ARTICLE 6 — WARRANTIES AND LIABILITY
+═══════════════════════════════════════════════════════════════════════
+
+FR: LE LOGICIEL EST FOURNI "EN L'ÉTAT", SANS GARANTIE D'AUCUNE SORTE,
+EXPRESSE OU IMPLICITE, Y COMPRIS MAIS SANS S'Y LIMITER, LES GARANTIES
+DE QUALITÉ MARCHANDE, D'ADÉQUATION À UN USAGE PARTICULIER, D'ABSENCE
+DE CONTREFAÇON, DE SÉCURITÉ OU DE PERFORMANCE.
+
+EN: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT,
+SECURITY OR PERFORMANCE.
+
+FR: EN AUCUN CAS ARTEAN DIGITAL SAS, SES DIRIGEANTS, EMPLOYÉS OU
+PARTENAIRES NE SAURAIENT ÊTRE TENUS RESPONSABLES DE TOUT DOMMAGE
+DIRECT, INDIRECT, ACCESSOIRE, SPÉCIAL, EXEMPLAIRE OU CONSÉCUTIF
+RÉSULTANT DE L'UTILISATION OU DE L'IMPOSSIBILITÉ D'UTILISER LE
+LOGICIEL, MÊME EN CAS D'AVERTISSEMENT DE LA POSSIBILITÉ DE TELS
+DOMMAGES.
+
+EN: IN NO EVENT SHALL ARTEAN DIGITAL SAS, ITS OFFICERS, EMPLOYEES OR
+PARTNERS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY OR CONSEQUENTIAL DAMAGES ARISING FROM THE USE OR INABILITY
+TO USE THE SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 7 — EXPLOITATION BETA PAR HERRICHAIN /
+ARTICLE 7 — BETA OPERATION BY HERRICHAIN
+═══════════════════════════════════════════════════════════════════════
+
+FR: L'association loi 1901 Herrichain est autorisée à exploiter le
+Logiciel à titre de test bêta uniquement, dans le cadre d'une
+convention d'exploitation séparée avec Artean Digital SAS. Cette
+autorisation est révocable à tout moment et ne confère aucun droit de
+propriété intellectuelle à l'association.
+
+EN: The non-profit association Herrichain (French law 1901) is
+authorized to operate the Software for beta testing purposes only,
+under a separate operating agreement with Artean Digital SAS. This
+authorization is revocable at any time and does not confer any
+intellectual property rights to the association.
+
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 8 — DÉPLOIEMENT MULTIPLATEFORME /
+ARTICLE 8 — MULTI-PLATFORM DEPLOYMENT
+═══════════════════════════════════════════════════════════════════════
+
+FR: Le Logiciel est destiné à être déployé sur plusieurs plateformes,
+incluant notamment :
+- Application web (Next.js)
+- Chatbot Telegram
+- API REST
+- Toute autre forme de déploiement futur
+
+Tous les déploiements, quelle que soit la plateforme, restent soumis
+aux présentes conditions de licence.
+
+EN: The Software is intended to be deployed on multiple platforms,
+including but not limited to:
+- Web application (Next.js)
+- Telegram chatbot
+- REST API
+- Any other future form of deployment
+
+All deployments, regardless of platform, remain subject to these
+license terms.
+
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 9 — DURÉE ET RÉSILIATION / ARTICLE 9 — TERM AND TERMINATION
+═══════════════════════════════════════════════════════════════════════
+
+FR: La présente licence est consentie pour une durée indéterminée. Elle
+prend fin automatiquement et de plein droit en cas de violation de
+l'une quelconque de ses dispositions, sans préjudice des dommages et
+intérêts pouvant être réclamés par Artean Digital SAS.
+
+EN: This license is granted for an indefinite period. It terminates
+automatically and by operation of law in the event of violation of any
+of its provisions, without prejudice to damages that may be claimed by
+Artean Digital SAS.
+
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 10 — DROIT APPLICABLE ET JURIDICTION /
+ARTICLE 10 — GOVERNING LAW AND JURISDICTION
+═══════════════════════════════════════════════════════════════════════
+
+FR: La présente licence est régie par le droit français. Tout litige
+relatif à son interprétation, son exécution ou sa violation relève de
+la compétence EXCLUSIVE des tribunaux de BAYONNE, France, nonobstant
+pluralité de défendeurs ou appel en garantie.
+
+EN: This license is governed by French law. Any dispute relating to its
+interpretation, performance or violation falls under the EXCLUSIVE
+jurisdiction of the courts of BAYONNE, France, notwithstanding
+plurality of defendants or third-party claims.
+
+═══════════════════════════════════════════════════════════════════════
+ARTICLE 11 — DISPOSITIONS DIVERSES / ARTICLE 11 — MISCELLANEOUS
+═══════════════════════════════════════════════════════════════════════
+
+FR: Si une disposition de la présente licence est déclarée nulle ou
+inapplicable, les autres dispositions conserveront leur plein effet.
+L'absence d'exercice par Artean Digital SAS d'un droit prévu par la
+présente licence ne saurait être interprétée comme une renonciation à
+ce droit.
+
+EN: If any provision of this license is held to be invalid or
+unenforceable, the other provisions shall remain in full force and
+effect. Failure by Artean Digital SAS to exercise any right under this
+license shall not be construed as a waiver of such right.
+
+═══════════════════════════════════════════════════════════════════════
+RÉSUMÉ / SUMMARY
+═══════════════════════════════════════════════════════════════════════
+
+✅ AUTORISÉ / PERMITTED:
+   - Usage personnel gratuit / Free personal use
+   - Consultation du code / Code review
+   - Audit de sécurité / Security audit
+   - Contribution open-source / Open-source contribution
+
+❌ INTERDIT SANS LICENCE COMMERCIALE / PROHIBITED WITHOUT COMMERCIAL LICENSE:
+   - Usage commercial / Commercial use
+   - Revente / Resale
+   - Intégration produit / Product integration
+   - Déploiement Telegram commercial / Commercial Telegram deployment
+   - SaaS / Hébergement payant / SaaS / Paid hosting
+
+📧 CONTACT COMMERCIAL / COMMERCIAL CONTACT:
+   contact@arteandigital.fr
+   www.arteandigital.fr
+
+═══════════════════════════════════════════════════════════════════════
+Artean Digital SAS — SIREN 439 299 152 00013
+BASK'IN, Biarritz, France
+© 2026 — Tous droits réservés / All rights reserved
+═══════════════════════════════════════════════════════════════════════
