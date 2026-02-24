@@ -21,8 +21,8 @@ export default function Step1_Parties({ form, setForm, onNext }) {
   return (
     <div className="min-h-screen flex flex-col max-w-[480px] mx-auto w-full px-5 pt-6 pb-8 bg-[#F8FAFB]">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <img src="/logo.png" alt="YesBoth" className="w-full max-w-[200px] h-auto" />
+      <div className="flex items-center justify-between gap-3 mb-8">
+        <img src="/logo.png" alt="YesBoth" className="h-8 sm:h-10 w-auto flex-shrink-0" />
         <ProgressBar current={1} />
       </div>
 

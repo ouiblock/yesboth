@@ -56,11 +56,8 @@ export default function Step2_Category({ form, setForm, onNext }) {
   return (
     <div className="min-h-screen flex flex-col max-w-[480px] mx-auto w-full px-5 pt-6 pb-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-xl font-bold text-[#1A6B6B]">YesBoth</h1>
-          <p className="text-[#6B7280] text-xs">Both say yes.</p>
-        </div>
+      <div className="flex items-center justify-between gap-3 mb-6">
+        <img src="/logo.png" alt="YesBoth" className="h-8 sm:h-10 w-auto flex-shrink-0" />
         <ProgressBar current={2} />
       </div>
 
