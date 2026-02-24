@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "GDPR compliant",
     "multilingual",
     "free tool",
-    "Artean Digital",
+    "SAS BASK'IN BIARRITZ",
     "BASK'IN BIARRITZ",
     "Xavier CHAUMET-NICOLAS",
     "innovation Biarritz",
@@ -29,10 +29,10 @@ export const metadata: Metadata = {
   ],
   authors: [
     { name: "Xavier CHAUMET-NICOLAS", url: "https://arteandigital.fr" },
-    { name: "Artean Digital", url: "https://arteandigital.fr" }
+    { name: "SAS BASK'IN BIARRITZ", url: "https://arteandigital.fr" }
   ],
-  creator: "Xavier CHAUMET-NICOLAS - Artean Digital",
-  publisher: "Artean Digital SAS - BASK'IN BIARRITZ",
+  creator: "Xavier CHAUMET-NICOLAS - SAS BASK'IN BIARRITZ",
+  publisher: "SAS BASK'IN BIARRITZ",
   manifest: "/manifest.json",
   
   // Open Graph
@@ -138,7 +138,7 @@ export default function RootLayout({
         "affiliation": {
           "@type": "Organization",
           "name": "BASK'IN BIARRITZ",
-          "legalName": "Artean Digital SAS",
+          "legalName": "SAS BASK'IN BIARRITZ",
           "url": "https://arteandigital.fr",
           "address": {
             "@type": "PostalAddress",
@@ -150,8 +150,8 @@ export default function RootLayout({
       },
       {
         "@type": "Organization",
-        "name": "Artean Digital",
-        "legalName": "Artean Digital SAS",
+        "name": "SAS BASK'IN BIARRITZ",
+        "legalName": "SAS BASK'IN BIARRITZ",
         "alternateName": "BASK'IN BIARRITZ",
         "url": "https://arteandigital.fr",
         "sameAs": [
@@ -171,7 +171,7 @@ export default function RootLayout({
     ],
     "publisher": {
       "@type": "Organization",
-      "name": "Artean Digital SAS",
+      "name": "SAS BASK'IN BIARRITZ",
       "alternateName": "BASK'IN BIARRITZ",
       "url": "https://arteandigital.fr",
       "logo": {
@@ -187,7 +187,7 @@ export default function RootLayout({
       "GDPR compliant",
       "Free to use"
     ],
-    "keywords": "consent, communication, privacy, GDPR, Artean Digital, BASK'IN BIARRITZ, Xavier CHAUMET-NICOLAS, Biarritz, Pays Basque"
+    "keywords": "consent, communication, privacy, GDPR, SAS BASK'IN BIARRITZ, Xavier CHAUMET-NICOLAS, Bidart, Pays Basque"
   };
 
   return (

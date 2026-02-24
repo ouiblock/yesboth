@@ -63,15 +63,15 @@ Built with Next.js 16, TailwindCSS, and React. Uses the App Router for optimal p
 Proprietary license - see [LICENSE](LICENSE) for details.
 
 - Personal use is free and encouraged
-- Commercial use requires a license from Artean Digital
+- Commercial use requires a license from SAS BASK'IN BIARRITZ
 - Source code is available for review and security audits
 
 ## About
 
-Developed by [Artean Digital](https://arteandigital.fr) for the Herrichain association (RNA: W641015204).
+Developed by [SAS BASK'IN BIARRITZ](https://arteandigital.fr) for the Herrichain association (RNA: W641015204).
 
 For commercial licensing or inquiries: contact@arteandigital.fr
 
 ---
 
-© 2026 Artean Digital SAS - All rights reserved
+© 2026 SAS BASK'IN BIARRITZ - All rights reserved

@@ -40,10 +40,9 @@ export default function PrivacyPage() {
             <div>
               <h4 className="font-semibold text-[#5B9BD5] mb-3">Publisher & Owner / Éditeur et Propriétaire</h4>
               <div className="bg-[#F8FAFB] rounded-xl p-4 space-y-2 text-sm">
-                <p><strong>Legal Entity:</strong> Artean Digital SAS</p>
-                <p><strong>Brand:</strong> BASK'IN BIARRITZ</p>
+                <p><strong>Legal Entity:</strong> SAS BASK'IN BIARRITZ</p>
                 <p><strong>SIREN:</strong> 439 299 152 00013</p>
-                <p><strong>Address:</strong> BASK'IN, Biarritz, France</p>
+                <p><strong>Address:</strong> 257 Avenue d'Atherbea, 64210 Bidart, France</p>
                 <p><strong>Email:</strong> <a href="mailto:contact@arteandigital.fr" className="text-[#5B9BD5] hover:underline">contact@arteandigital.fr</a></p>
                 <p><strong>Website:</strong> <a href="https://arteandigital.fr" target="_blank" rel="noopener noreferrer" className="text-[#5B9BD5] hover:underline">www.arteandigital.fr</a></p>
               </div>
@@ -54,6 +53,7 @@ export default function PrivacyPage() {
               <div className="bg-[#F8FAFB] rounded-xl p-4 space-y-2 text-sm">
                 <p><strong>Organization:</strong> Association Herrichain (loi 1901)</p>
                 <p><strong>RNA:</strong> W641015204</p>
+                <p><strong>Address:</strong> 257 Avenue d'Atherbea, 64210 Bidart, France</p>
                 <p><strong>Role:</strong> Beta testing and operation</p>
                 <p className="text-xs text-[#8B95A1] italic">The association operates the application for testing purposes only and does not own any intellectual property rights.</p>
               </div>
@@ -227,10 +227,10 @@ export default function PrivacyPage() {
             For any questions about this privacy policy or to exercise your GDPR rights:
           </p>
           <div className="space-y-2">
-            <p><strong>Artean Digital SAS - BASK'IN BIARRITZ</strong></p>
+            <p><strong>SAS BASK'IN BIARRITZ</strong></p>
             <p>📧 Email: <a href="mailto:contact@arteandigital.fr" className="underline hover:opacity-80">contact@arteandigital.fr</a></p>
             <p>🌐 Website: <a href="https://arteandigital.fr" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80">www.arteandigital.fr</a></p>
-            <p className="text-sm opacity-75 mt-4">BASK'IN, Biarritz, France 🇫🇷</p>
+            <p className="text-sm opacity-75 mt-4">257 Avenue d'Atherbea, 64210 Bidart, France 🇫🇷</p>
           </div>
         </section>
 

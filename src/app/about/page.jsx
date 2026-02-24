@@ -42,7 +42,7 @@ export default function AboutPage() {
             
             <p className="text-[#5A6C7D] leading-relaxed">
               With a vision to create ethical and privacy-focused digital solutions, Xavier leads 
-              <strong className="text-[#5B9BD5]"> Artean Digital SAS</strong>, the software development 
+              <strong className="text-[#5B9BD5]"> SAS BASK'IN BIARRITZ</strong>, the software development 
               company behind YesBoth and other innovative applications.
             </p>
 
@@ -68,23 +68,20 @@ export default function AboutPage() {
 
         {/* Company */}
         <section className="bg-white rounded-2xl p-8 mb-6 shadow-sm border border-[#E1E8ED]">
-          <h2 className="text-2xl font-bold text-[#2C3E50] mb-4">Artean Digital SAS</h2>
-          <h3 className="text-lg font-semibold text-[#5B9BD5] mb-4">BASK'IN BIARRITZ</h3>
+          <h2 className="text-2xl font-bold text-[#2C3E50] mb-4">SAS BASK'IN BIARRITZ</h2>
           
           <div className="space-y-4 text-[#5A6C7D]">
             <p className="leading-relaxed">
-              <strong className="text-[#2C3E50]">Artean Digital SAS</strong> operates under the brand 
-              <strong className="text-[#5B9BD5]"> BASK'IN BIARRITZ</strong>, a technology incubator and 
-              software development company based in Biarritz, France.
+              <strong className="text-[#2C3E50]">SAS BASK'IN BIARRITZ</strong> is a technology incubator and 
+              software development company based in Bidart, France.
             </p>
             
             <div className="bg-[#F8FAFB] rounded-xl p-4">
               <h4 className="font-semibold text-[#2C3E50] mb-3">Company Information:</h4>
               <ul className="space-y-2 text-sm">
-                <li><strong>Legal Name:</strong> Artean Digital SAS</li>
-                <li><strong>Brand:</strong> BASK'IN BIARRITZ</li>
+                <li><strong>Legal Name:</strong> SAS BASK'IN BIARRITZ</li>
                 <li><strong>SIREN:</strong> 439 299 152 00013</li>
-                <li><strong>Location:</strong> Biarritz, Nouvelle-Aquitaine, France</li>
+                <li><strong>Address:</strong> 257 Avenue d'Atherbea, 64210 Bidart, France</li>
                 <li><strong>Region:</strong> Pays Basque (Basque Country)</li>
                 <li><strong>Website:</strong> <a href="https://arteandigital.fr" target="_blank" rel="noopener noreferrer" className="text-[#5B9BD5] hover:underline">www.arteandigital.fr</a></li>
               </ul>
@@ -134,10 +131,10 @@ export default function AboutPage() {
             For commercial licensing, partnerships, or inquiries about our technology
           </p>
           <div className="space-y-2">
-            <p className="font-semibold">Artean Digital SAS - BASK'IN BIARRITZ</p>
+            <p className="font-semibold">SAS BASK'IN BIARRITZ</p>
             <p>📧 <a href="mailto:contact@arteandigital.fr" className="underline hover:opacity-80">contact@arteandigital.fr</a></p>
             <p>🌐 <a href="https://arteandigital.fr" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80">www.arteandigital.fr</a></p>
-            <p className="text-sm opacity-75 mt-4">Biarritz, France 🇫🇷</p>
+            <p className="text-sm opacity-75 mt-4">257 Avenue d'Atherbea, 64210 Bidart, France 🇫🇷</p>
           </div>
         </section>
 
