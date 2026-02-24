@@ -174,6 +174,9 @@ function LandingInner() {
           </div>
 
           <div className="border-t border-white/10 pt-4 flex gap-4">
+            <Link href="/about" className="text-white/60 text-xs hover:text-white transition-colors">
+              About
+            </Link>
             <Link href="/cgu" className="text-white/60 text-xs hover:text-white transition-colors">
               {t('footer.cgu')}
             </Link>

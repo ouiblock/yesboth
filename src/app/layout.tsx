@@ -20,11 +20,19 @@ export const metadata: Metadata = {
     "RGPD",
     "GDPR compliant",
     "multilingual",
-    "free tool"
+    "free tool",
+    "Artean Digital",
+    "BASK'IN BIARRITZ",
+    "Xavier CHAUMET-NICOLAS",
+    "innovation Biarritz",
+    "tech Pays Basque"
   ],
-  authors: [{ name: "Artean Digital", url: "https://arteandigital.fr" }],
-  creator: "Artean Digital",
-  publisher: "Artean Digital SAS",
+  authors: [
+    { name: "Xavier CHAUMET-NICOLAS", url: "https://arteandigital.fr" },
+    { name: "Artean Digital", url: "https://arteandigital.fr" }
+  ],
+  creator: "Xavier CHAUMET-NICOLAS - Artean Digital",
+  publisher: "Artean Digital SAS - BASK'IN BIARRITZ",
   manifest: "/manifest.json",
   
   // Open Graph
@@ -122,10 +130,54 @@ export default function RootLayout({
       "price": "0",
       "priceCurrency": "EUR"
     },
-    "creator": {
+    "creator": [
+      {
+        "@type": "Person",
+        "name": "Xavier CHAUMET-NICOLAS",
+        "jobTitle": "Founder & CEO",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "BASK'IN BIARRITZ",
+          "legalName": "Artean Digital SAS",
+          "url": "https://arteandigital.fr",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Biarritz",
+            "addressRegion": "Nouvelle-Aquitaine",
+            "addressCountry": "FR"
+          }
+        }
+      },
+      {
+        "@type": "Organization",
+        "name": "Artean Digital",
+        "legalName": "Artean Digital SAS",
+        "alternateName": "BASK'IN BIARRITZ",
+        "url": "https://arteandigital.fr",
+        "sameAs": [
+          "https://arteandigital.fr"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Biarritz",
+          "addressRegion": "Nouvelle-Aquitaine",
+          "addressCountry": "FR"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Xavier CHAUMET-NICOLAS"
+        }
+      }
+    ],
+    "publisher": {
       "@type": "Organization",
       "name": "Artean Digital SAS",
-      "url": "https://arteandigital.fr"
+      "alternateName": "BASK'IN BIARRITZ",
+      "url": "https://arteandigital.fr",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://yesboth.netlify.app/logo.png"
+      }
     },
     "inLanguage": ["en", "fr", "es", "it"],
     "featureList": [
@@ -134,7 +186,8 @@ export default function RootLayout({
       "No data collection",
       "GDPR compliant",
       "Free to use"
-    ]
+    ],
+    "keywords": "consent, communication, privacy, GDPR, Artean Digital, BASK'IN BIARRITZ, Xavier CHAUMET-NICOLAS, Biarritz, Pays Basque"
   };
 
   return (
