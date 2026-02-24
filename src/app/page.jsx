@@ -51,7 +51,7 @@ function LandingInner() {
           </div>
 
           <div className="flex justify-center mb-8">
-            <img src="/logo.png" alt="YesBoth" className="h-72" />
+            <img src="/logo.png" alt="YesBoth" className="h-80 w-auto" />
           </div>
 
           <h1 className="text-4xl font-bold text-[#2C3E50] leading-tight mb-4 whitespace-pre-line">
@@ -168,12 +168,6 @@ function LandingInner() {
               {t('footer.dev')}{' '}
               <a href="https://www.arteandigital.fr" target="_blank" rel="noopener noreferrer" className="text-[#F5A962] hover:underline">
                 Artean Digital
-              </a>
-            </p>
-            <p className="text-white/60 text-xs">
-              💻 Open Source:{' '}
-              <a href="https://github.com/ouiblock/yesboth" target="_blank" rel="noopener noreferrer" className="text-[#5B9BD5] hover:underline">
-                GitHub
               </a>
             </p>
             <p className="text-white/40 text-[11px] leading-relaxed">{t('footer.legal')}</p>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import ProgressBar from '@/components/ProgressBar'
 import CategoryCard from '@/components/CategoryCard'
 
@@ -57,7 +58,9 @@ export default function Step2_Category({ form, setForm, onNext }) {
     <div className="min-h-screen flex flex-col max-w-[480px] mx-auto w-full px-5 pt-6 pb-8">
       {/* Header */}
       <div className="flex items-center justify-between gap-3 mb-6">
-        <img src="/logo.png" alt="YesBoth" className="h-8 sm:h-10 w-auto flex-shrink-0" />
+        <Link href="/">
+          <img src="/logo.png" alt="YesBoth" className="h-8 sm:h-10 w-auto flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity" />
+        </Link>
         <ProgressBar current={2} />
       </div>
 

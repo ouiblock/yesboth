@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import ProgressBar from '@/components/ProgressBar'
 import ClauseItem from '@/components/ClauseItem'
 import clausesGeneral from '@/data/clauses_general.json'
@@ -54,7 +55,9 @@ export default function Step3_Clauses({ form, setForm, onNext, onBack }) {
     <div className="min-h-screen flex flex-col max-w-[480px] mx-auto w-full pt-6 pb-32">
       {/* Header */}
       <div className="flex items-center justify-between gap-3 mb-6 px-5">
-        <img src="/logo.png" alt="YesBoth" className="h-8 sm:h-10 w-auto flex-shrink-0" />
+        <Link href="/">
+          <img src="/logo.png" alt="YesBoth" className="h-8 sm:h-10 w-auto flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity" />
+        </Link>
         <ProgressBar current={3} />
       </div>
 
