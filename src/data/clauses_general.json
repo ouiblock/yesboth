@@ -1,0 +1,10 @@
+[
+  { "id": "libre_eclaire", "label": "Consentement libre et éclairé", "description": "Cet accord est donné sans pression, contrainte ni manipulation", "default": true, "locked": true },
+  { "id": "revocable", "label": "Révocable à tout moment", "description": "Chacun peut retirer son accord immédiatement et sans justification", "default": true, "locked": true },
+  { "id": "activite_risque", "label": "Activité à risque physique", "description": "Participation consciente à une activité comportant des risques physiques" },
+  { "id": "partage_vehicule", "label": "Partage d'un véhicule ou bien", "description": "Utilisation d'un bien appartenant à l'autre partie" },
+  { "id": "droit_image", "label": "Droit à l'image — photos/vidéos", "description": "Autorisation de prise et conservation de photos ou vidéos" },
+  { "id": "confidentialite", "label": "Accord de confidentialité", "description": "Les informations échangées restent strictement privées" },
+  { "id": "partage_infos", "label": "Partage d'informations personnelles", "description": "Échange consenti d'informations personnelles entre les parties" },
+  { "id": "clause_libre", "label": "Clause personnalisée", "description": "Voir clause ajoutée manuellement" }
+]

@@ -1,0 +1,147 @@
+{
+  "app": {
+    "name": "YesBoth",
+    "tagline": "Both say yes."
+  },
+  "disclaimer": {
+    "title": "À lire avant d'utiliser YesBoth",
+    "scrollHint": "↓ Faites défiler jusqu'en bas pour continuer",
+    "checkbox": "Je suis majeur(e) et j'ai lu et accepté ces conditions. Je comprends que YesBoth n'est pas un contrat juridique et que je reste entièrement responsable de mes actes.",
+    "button": "Commencer",
+    "blocks": {
+      "tool": {
+        "title": "⚖️ Outil de communication",
+        "content": "YesBoth est <strong>uniquement un outil d'aide à la communication</strong>.<br />Il ne constitue <strong>pas un contrat juridiquement contraignant</strong>, un acte notarié, ni un service juridique certifié.<br /><br /><strong>La responsabilité juridique, morale et éthique repose exclusivement sur les parties</strong> qui utilisent cet outil. YesBoth décline toute responsabilité quant à l'usage des messages générés."
+      },
+      "primacy": {
+        "title": "⚠️ Primauté du consentement oral",
+        "content": "Le <strong>refus verbal, gestuel ou physique prévaut TOUJOURS</strong> sur tout document écrit, sans exception et sans délai.<br /><br />Le <strong>silence ne vaut pas consentement</strong>.<br />Un accord passé ne couvre <strong>aucun acte futur non spécifié</strong>."
+      },
+      "revocable": {
+        "title": "🔄 Révocabilité absolue",
+        "content": "Le consentement est <strong>révocable à tout moment, immédiatement, sans justification, sans préavis</strong>.<br /><br /><strong>Aucune clause de ce document ne peut limiter ce droit.</strong><br />Chaque personne reste <strong>entièrement responsable</strong> de ses actes et décisions, indépendamment de tout document généré."
+      },
+      "responsibility": {
+        "title": "🛡️ Responsabilité",
+        "content": "YesBoth <strong>décline toute responsabilité</strong> quant à l'usage des messages générés.<br /><br />La responsabilité juridique, morale et éthique repose <strong>exclusivement sur les parties</strong>. Ce document est une aide à la communication entre adultes consentants, rien de plus."
+      },
+      "age": {
+        "title": "🔞 Majorité obligatoire",
+        "content": "Cette application est <strong>strictement réservée aux personnes majeures (18 ans et plus)</strong>.<br />En continuant, vous certifiez avoir l'âge légal requis dans votre pays de résidence."
+      }
+    }
+  },
+  "step1": {
+    "title": "Qui signe cet accord ?",
+    "you": "Vous",
+    "other": "L'autre personne",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "firstNamePlaceholder": "Votre prénom",
+    "lastNamePlaceholder": "Votre nom",
+    "otherFirstNamePlaceholder": "Son prénom",
+    "otherLastNamePlaceholder": "Son nom",
+    "dateLabel": "Date de l'accord :",
+    "next": "Suivant →",
+    "disclaimer": "⚠️ <strong>YesBoth n'est pas un contrat juridique.</strong> Les parties restent entièrement responsables de leurs actes."
+  },
+  "step2": {
+    "title": "Quel type d'accord ?",
+    "subtitle": "Choisis le niveau qui correspond à votre situation",
+    "categories": {
+      "general": {
+        "label": "Général & Quotidien",
+        "description": "Activités, partage, responsabilités communes"
+      },
+      "relation": {
+        "label": "Relation & Cadre",
+        "description": "Flirt, intentions, type de relation, exclusivité"
+      },
+      "intimite": {
+        "label": "Intimité",
+        "description": "Consentement intime, contraception, contenu"
+      },
+      "nsfw": {
+        "label": "Pratiques spécifiques",
+        "description": "Pratiques, limites, safeword"
+      }
+    },
+    "nsfwModal": {
+      "title": "Pratiques élaborées",
+      "content": "Vous allez accéder à des pratiques intimes plus élaborées nécessitant une communication claire et des limites définies.",
+      "safeword": "Le safeword que vous définirez prévaut sur tout document, sans exception.",
+      "warning": "Ce document n'est <strong>pas un contrat juridique</strong>. Les parties restent entièrement responsables de leurs actes.",
+      "confirm": "Continuer",
+      "cancel": "Retour"
+    },
+    "disclaimer": "⚠️ <strong>Outil de communication uniquement.</strong> Pas un acte juridique. Chaque partie reste responsable de son consentement et de ses actes.",
+    "next": "Suivant →"
+  },
+  "step3": {
+    "title": "Construis ton accord",
+    "safewordLabel": "🔑 Safeword",
+    "safewordRequired": "(obligatoire)",
+    "safewordPlaceholder": "ex : ananas",
+    "safewordWarning": "⚠️ Le safeword stoppe <strong>immédiatement</strong> tout acte, sans exception. Il prévaut sur tout accord écrit.",
+    "customClauseLabel": "📝 Clause personnalisée",
+    "customClauseOptional": "(optionnel)",
+    "customClausePlaceholder": "Ajoutez une clause spécifique à votre situation...",
+    "validityLabel": "⏱ Durée de validité",
+    "validityOptions": {
+      "ce_soir": "Ce soir",
+      "24h": "24h",
+      "7j": "7 jours",
+      "30j": "30 jours",
+      "indefini": "Indéfini"
+    },
+    "disclaimer": "⚠️ <strong>Rappel :</strong> Ce document est un outil de communication, non un contrat juridique. Le consentement verbal prévaut toujours. Chaque partie reste <strong>entièrement responsable</strong> de ses actes.",
+    "generate": "Générer le message →",
+    "locked": "Obligatoire"
+  },
+  "step4": {
+    "title": "Ton accord est prêt",
+    "disclaimer": "⚠️ <strong>Ce document n'est pas un contrat juridique.</strong> Il est un outil de communication uniquement. Le consentement verbal et physique prévaut toujours. <strong>Chaque partie reste entièrement responsable de ses actes.</strong>",
+    "share": "📤 Envoyer via...",
+    "copy": "📋 Copier le message",
+    "copied": "✅ Copié !",
+    "revokeTitle": "🔴 Générer le message de révocation",
+    "revokeCopy": "📋 Copier la révocation",
+    "legalWarning": "<strong>Avertissement juridique important :</strong> YesBoth est un outil d'aide à la communication entre adultes consentants. Ce document <strong>ne constitue en aucun cas</strong> un contrat juridiquement contraignant, un acte notarié ou une preuve légale. Le refus verbal, gestuel ou physique prévaut <strong>toujours et immédiatement</strong> sur tout document écrit. YesBoth décline toute responsabilité quant à l'usage des messages générés. La responsabilité juridique, morale et éthique repose <strong>exclusivement sur les parties</strong>.",
+    "back": "← Modifier l'accord"
+  },
+  "message": {
+    "header": "ACCORD YESBOTH",
+    "between": "Entre",
+    "and": "et",
+    "validity": "Valable :",
+    "validityMap": {
+      "ce_soir": "ce soir uniquement",
+      "24h": "les prochaines 24 heures",
+      "7j": "les 7 prochains jours",
+      "30j": "les 30 prochains jours",
+      "indefini": "une durée indéterminée, révocable à tout moment"
+    },
+    "safeword": "SAFEWORD :",
+    "safewordNote": "— stoppe immédiatement tout acte",
+    "customClause": "Clause spécifique :",
+    "revocable": "RÉVOCABLE à tout moment, immédiatement,\nsans justification ni explication.\nLe refus oral ou physique prévaut toujours.",
+    "validation": "Pour valider,",
+    "validationText": "répond :\n\"Je confirme librement,",
+    "warning": "AVERTISSEMENT : Ce document est un outil de communication,\nnon un contrat juridiquement contraignant.\nLe consentement verbal et physique reste\npremier et révocable à tout instant.\nLes parties sont entièrement responsables\nde leurs actes, indépendamment de ce document.",
+    "reference": "(Réf. art. 1316-1 & 1367 Code civil FR)",
+    "yes": "[OUI]",
+    "no": "[NON]",
+    "maybe": "[À DISCUTER]",
+    "refused": "— REFUSÉ"
+  },
+  "revoke": {
+    "header": "RÉVOCATION — YESBOTH",
+    "intro": "Je,",
+    "text": ", révoque mon consentement\ndonné le",
+    "with": "avec",
+    "cancelled": "Cet accord est annulé immédiatement,\nle",
+    "at": "à",
+    "noFuture": "Aucun acte ultérieur ne peut se prévaloir\nde l'accord initial.",
+    "warning": "AVERTISSEMENT : Ce message de révocation est un outil\nde communication. La responsabilité juridique,\nmorale et éthique repose exclusivement\nsur les parties concernées."
+  }
+}

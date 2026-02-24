@@ -1,0 +1,147 @@
+{
+  "app": {
+    "name": "YesBoth",
+    "tagline": "Both say yes."
+  },
+  "disclaimer": {
+    "title": "Leer antes de usar YesBoth",
+    "scrollHint": "↓ Desplázate hasta el final para continuar",
+    "checkbox": "Soy mayor de edad y he leído y aceptado estas condiciones. Entiendo que YesBoth no es un contrato legal y que sigo siendo totalmente responsable de mis actos.",
+    "button": "Comenzar",
+    "blocks": {
+      "tool": {
+        "title": "⚖️ Herramienta de comunicación",
+        "content": "YesBoth es <strong>únicamente una herramienta de ayuda a la comunicación</strong>.<br />No constituye <strong>un contrato legalmente vinculante</strong>, un documento notarial, ni un servicio jurídico certificado.<br /><br /><strong>La responsabilidad jurídica, moral y ética recae exclusivamente en las partes</strong> que utilizan esta herramienta. YesBoth declina toda responsabilidad sobre el uso de los mensajes generados."
+      },
+      "primacy": {
+        "title": "⚠️ Primacía del consentimiento verbal",
+        "content": "El <strong>rechazo verbal, gestual o físico prevalece SIEMPRE</strong> sobre cualquier documento escrito, sin excepción y sin demora.<br /><br />El <strong>silencio no constituye consentimiento</strong>.<br />Un acuerdo pasado <strong>no cubre ningún acto futuro no especificado</strong>."
+      },
+      "revocable": {
+        "title": "🔄 Revocabilidad absoluta",
+        "content": "El consentimiento es <strong>revocable en cualquier momento, inmediatamente, sin justificación, sin previo aviso</strong>.<br /><br /><strong>Ninguna cláusula de este documento puede limitar este derecho.</strong><br />Cada persona sigue siendo <strong>totalmente responsable</strong> de sus actos y decisiones, independientemente de cualquier documento generado."
+      },
+      "responsibility": {
+        "title": "🛡️ Responsabilidad",
+        "content": "YesBoth <strong>declina toda responsabilidad</strong> sobre el uso de los mensajes generados.<br /><br />La responsabilidad jurídica, moral y ética recae <strong>exclusivamente en las partes</strong>. Este documento es una ayuda a la comunicación entre adultos que consienten, nada más."
+      },
+      "age": {
+        "title": "🔞 Mayoría de edad obligatoria",
+        "content": "Esta aplicación está <strong>estrictamente reservada a personas mayores de edad (18 años o más)</strong>.<br />Al continuar, certificas que cumples con la edad legal requerida en tu país de residencia."
+      }
+    }
+  },
+  "step1": {
+    "title": "¿Quién firma este acuerdo?",
+    "you": "Tú",
+    "other": "La otra persona",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "firstNamePlaceholder": "Tu nombre",
+    "lastNamePlaceholder": "Tu apellido",
+    "otherFirstNamePlaceholder": "Su nombre",
+    "otherLastNamePlaceholder": "Su apellido",
+    "dateLabel": "Fecha del acuerdo:",
+    "next": "Siguiente →",
+    "disclaimer": "⚠️ <strong>YesBoth no es un contrato legal.</strong> Las partes siguen siendo totalmente responsables de sus actos."
+  },
+  "step2": {
+    "title": "¿Qué tipo de acuerdo?",
+    "subtitle": "Elige el nivel que corresponda a tu situación",
+    "categories": {
+      "general": {
+        "label": "General y cotidiano",
+        "description": "Actividades, compartir, responsabilidades comunes"
+      },
+      "relation": {
+        "label": "Relación y marco",
+        "description": "Coqueteo, intenciones, tipo de relación, exclusividad"
+      },
+      "intimite": {
+        "label": "Intimidad",
+        "description": "Consentimiento íntimo, anticoncepción, contenido"
+      },
+      "nsfw": {
+        "label": "Prácticas específicas",
+        "description": "Prácticas, límites, palabra de seguridad"
+      }
+    },
+    "nsfwModal": {
+      "title": "Prácticas elaboradas",
+      "content": "Vas a acceder a prácticas íntimas más elaboradas que requieren una comunicación clara y límites definidos.",
+      "safeword": "La palabra de seguridad que definas prevalece sobre cualquier documento, sin excepción.",
+      "warning": "Este documento <strong>no es un contrato legal</strong>. Las partes siguen siendo totalmente responsables de sus actos.",
+      "confirm": "Continuar",
+      "cancel": "Volver"
+    },
+    "disclaimer": "⚠️ <strong>Herramienta de comunicación únicamente.</strong> No es un acto jurídico. Cada parte sigue siendo responsable de su consentimiento y sus actos.",
+    "next": "Siguiente →"
+  },
+  "step3": {
+    "title": "Construye tu acuerdo",
+    "safewordLabel": "🔑 Palabra de seguridad",
+    "safewordRequired": "(obligatorio)",
+    "safewordPlaceholder": "ej: piña",
+    "safewordWarning": "⚠️ La palabra de seguridad detiene <strong>inmediatamente</strong> cualquier acto, sin excepción. Prevalece sobre cualquier acuerdo escrito.",
+    "customClauseLabel": "📝 Cláusula personalizada",
+    "customClauseOptional": "(opcional)",
+    "customClausePlaceholder": "Añade una cláusula específica a tu situación...",
+    "validityLabel": "⏱ Período de validez",
+    "validityOptions": {
+      "ce_soir": "Esta noche",
+      "24h": "24h",
+      "7j": "7 días",
+      "30j": "30 días",
+      "indefini": "Indefinido"
+    },
+    "disclaimer": "⚠️ <strong>Recordatorio:</strong> Este documento es una herramienta de comunicación, no un contrato legal. El consentimiento verbal siempre prevalece. Cada parte sigue siendo <strong>totalmente responsable</strong> de sus actos.",
+    "generate": "Generar mensaje →",
+    "locked": "Obligatorio"
+  },
+  "step4": {
+    "title": "Tu acuerdo está listo",
+    "disclaimer": "⚠️ <strong>Este documento no es un contrato legal.</strong> Es una herramienta de comunicación únicamente. El consentimiento verbal y físico siempre prevalece. <strong>Cada parte sigue siendo totalmente responsable de sus actos.</strong>",
+    "share": "📤 Enviar por...",
+    "copy": "📋 Copiar mensaje",
+    "copied": "✅ ¡Copiado!",
+    "revokeTitle": "🔴 Generar mensaje de revocación",
+    "revokeCopy": "📋 Copiar revocación",
+    "legalWarning": "<strong>Advertencia legal importante:</strong> YesBoth es una herramienta de ayuda a la comunicación entre adultos que consienten. Este documento <strong>no constituye en ningún caso</strong> un contrato legalmente vinculante, un documento notarial o una prueba legal. El rechazo verbal, gestual o físico prevalece <strong>siempre e inmediatamente</strong> sobre cualquier documento escrito. YesBoth declina toda responsabilidad sobre el uso de los mensajes generados. La responsabilidad jurídica, moral y ética recae <strong>exclusivamente en las partes</strong>.",
+    "back": "← Modificar acuerdo"
+  },
+  "message": {
+    "header": "ACUERDO YESBOTH",
+    "between": "Entre",
+    "and": "y",
+    "validity": "Válido por:",
+    "validityMap": {
+      "ce_soir": "esta noche únicamente",
+      "24h": "las próximas 24 horas",
+      "7j": "los próximos 7 días",
+      "30j": "los próximos 30 días",
+      "indefini": "un período indefinido, revocable en cualquier momento"
+    },
+    "safeword": "PALABRA DE SEGURIDAD:",
+    "safewordNote": "— detiene inmediatamente cualquier acto",
+    "customClause": "Cláusula específica:",
+    "revocable": "REVOCABLE en cualquier momento, inmediatamente,\nsin justificación ni explicación.\nEl rechazo verbal o físico siempre prevalece.",
+    "validation": "Para validar,",
+    "validationText": "responde:\n\"Confirmo libremente,",
+    "warning": "ADVERTENCIA: Este documento es una herramienta de comunicación,\nno un contrato legalmente vinculante.\nEl consentimiento verbal y físico sigue siendo\nprimordial y revocable en cualquier momento.\nLas partes son totalmente responsables\nde sus actos, independientemente de este documento.",
+    "reference": "(Ref. art. 1316-1 y 1367 Código Civil FR)",
+    "yes": "[SÍ]",
+    "no": "[NO]",
+    "maybe": "[A DISCUTIR]",
+    "refused": "— RECHAZADO"
+  },
+  "revoke": {
+    "header": "REVOCACIÓN — YESBOTH",
+    "intro": "Yo,",
+    "text": ", revoco mi consentimiento\ndado el",
+    "with": "con",
+    "cancelled": "Este acuerdo queda anulado inmediatamente,\nel",
+    "at": "a las",
+    "noFuture": "Ningún acto posterior puede basarse\nen el acuerdo inicial.",
+    "warning": "ADVERTENCIA: Este mensaje de revocación es una herramienta\nde comunicación. La responsabilidad jurídica,\nmoral y ética recae exclusivamente\nen las partes concernidas."
+  }
+}

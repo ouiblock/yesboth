@@ -1,0 +1,12 @@
+[
+  { "id": "libre_eclaire", "label": "Consentement libre et éclairé", "description": "Cet accord est donné sans pression, contrainte ni manipulation", "default": true, "locked": true },
+  { "id": "revocable", "label": "Révocable à tout moment", "description": "Chacun peut retirer son accord immédiatement et sans justification", "default": true, "locked": true },
+  { "id": "flirt_intentions", "label": "Flirt & intentions clarifiées", "description": "Les deux parties souhaitent flirter sans engagement implicite" },
+  { "id": "relation_exclusive", "label": "Relation exclusive (monogamie)", "description": "Accord de fidélité mutuelle pour la durée définie" },
+  { "id": "relation_ouverte", "label": "Relation ouverte", "description": "Accord mutuel pour une relation non exclusive" },
+  { "id": "nsa", "label": "Sans engagement romantique (NSA)", "description": "Relation physique ou affective sans attente sentimentale" },
+  { "id": "fwb", "label": "Friends with benefits", "description": "Amitié incluant une dimension physique, sans engagement" },
+  { "id": "discretion", "label": "Accord de discrétion totale", "description": "La relation reste confidentielle envers les tiers" },
+  { "id": "ist", "label": "Test IST — résultats partagés", "description": "Les deux parties ont partagé leurs résultats de dépistage récents" },
+  { "id": "contraception", "label": "Accord sur la contraception", "description": "Méthode de contraception choisie d'un commun accord" }
+]

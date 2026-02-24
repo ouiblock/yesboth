@@ -1,0 +1,47 @@
+{
+  "title": "Condizioni Generali d'Uso",
+  "lastUpdate": "Ultimo aggiornamento: Febbraio 2026",
+  "warningBox": "YesBoth è uno strumento di comunicazione, non un contratto legale. I messaggi generati non hanno alcun valore giuridico vincolante. Ogni parte rimane completamente responsabile delle proprie azioni. Riservato esclusivamente agli adulti (18 anni e oltre).",
+  "sections": [
+    {
+      "title": "Articolo 1 — Identificazione dell'editore e dello sviluppatore",
+      "content": "L'applicazione YesBoth è pubblicata dall'associazione francese senza scopo di lucro Herrichain (loi 1901) (di seguito «l'Editore») e sviluppata da Artean Digital (www.arteandigital.fr, di seguito «lo Sviluppatore»).\n\nL'Applicazione è ospitata su infrastrutture Netlify Inc. (512 2nd Street, San Francisco, CA 94107, USA) come distribuzione statica senza raccolta di dati utente lato server."
+    },
+    {
+      "title": "Articolo 2 — Accettazione delle condizioni",
+      "content": "L'accesso e l'utilizzo dell'Applicazione sono subordinati all'accettazione senza riserve delle presenti CGU.\n\nQualsiasi utilizzo dell'Applicazione equivale all'accettazione espressa, piena e senza riserve delle presenti CGU nella versione in vigore.\n\nL'utente che non accetta queste CGU deve astenersi dall'utilizzare l'Applicazione.\n\nL'Editore si riserva il diritto di modificare le presenti CGU in qualsiasi momento senza preavviso."
+    },
+    {
+      "title": "Articolo 3 — Natura e oggetto dell'Applicazione",
+      "content": "YesBoth è uno strumento digitale di assistenza alla comunicazione interpersonale che consente ad adulti consenzienti di generare messaggi che strutturano i loro accordi di consenso.\n\nL'Applicazione funziona esclusivamente lato client (browser). Nessun dato inserito viene trasmesso a un server, raccolto, archiviato, analizzato o commercializzato.\n\nL'Applicazione NON costituisce:\n— un servizio giuridico o di assistenza legale;\n— un contratto, atto autentico o documento privato con valore probatorio;\n— una prova ai sensi del diritto civile;\n— un sostituto del consenso verbale, gestuale o fisico delle parti."
+    },
+    {
+      "title": "Articolo 4 — Condizioni di accesso e maggiore età obbligatoria",
+      "content": "L'Applicazione è riservata esclusivamente a persone fisiche maggiorenni ai sensi della legislazione applicabile nel loro paese di residenza.\n\nAccedendo all'Applicazione, l'utente certifica sotto giuramento di essere maggiorenne. Qualsiasi falsa dichiarazione impegna esclusivamente la responsabilità dell'utente.\n\nL'Editore non è tecnicamente in grado di verificare la maggiore età degli utenti e declina ogni responsabilità in caso di false dichiarazioni."
+    },
+    {
+      "title": "Articolo 5 — Assenza di valore giuridico vincolante",
+      "content": "I MESSAGGI GENERATI DALL'APPLICAZIONE NON HANNO ALCUN VALORE GIURIDICO VINCOLANTE.\n\nI messaggi prodotti da YesBoth:\n— non costituiscono contratti;\n— non godono di presunzione di validità né autenticità;\n— non possono essere invocati come prova davanti a nessun tribunale;\n— non possono derogare alle disposizioni di ordine pubblico relative al consenso, in particolare il diritto penale.\n\nIl consenso verbale, gestuale o fisico prevale SEMPRE su qualsiasi documento scritto. Il rifiuto espresso in qualsiasi forma, in qualsiasi momento, è assolutamente vincolante e immediatamente irrevocabile, nonostante qualsiasi accordo precedente.\n\nIl silenzio, la passività o l'assenza di resistenza fisica non costituiscono consenso ai sensi della legge."
+    },
+    {
+      "title": "Articolo 6 — Limitazione di responsabilità",
+      "content": "CLAUSOLA DI NON RESPONSABILITÀ ESTESA\n\n6.1 — Responsabilità esclusiva dell'utente\nL'utente è il solo e unico responsabile di:\n— l'uso che fa dell'Applicazione e dei messaggi generati;\n— la veridicità dei dati inseriti;\n— gli atti compiuti in relazione all'utilizzo dell'Applicazione;\n— il rispetto dell'integrità fisica e morale di qualsiasi persona coinvolta;\n— il rispetto delle disposizioni legali applicabili.\n\n6.2 — Esclusione totale di responsabilità dell'Editore\nHerrichain ESCLUDE OGNI RESPONSABILITÀ per:\n— qualsiasi danno fisico, morale o materiale legato all'uso dell'Applicazione;\n— qualsiasi reato penale commesso da un utente;\n— qualsiasi controversia civile tra utenti;\n— qualsiasi uso improprio, fraudolento o illecito;\n— qualsiasi errore o inesattezza nei messaggi generati;\n— l'indisponibilità o il malfunzionamento dell'Applicazione.\n\n6.3 — Esclusione di responsabilità dello Sviluppatore\nArtean Digital, in qualità di fornitore di servizi di sviluppo, non è in alcun caso responsabile dell'uso dell'Applicazione da parte degli utenti. La sua responsabilità è strettamente limitata ai suoi obblighi contrattuali nei confronti dell'Editore.\n\n6.4 — Forza maggiore\nNé l'Editore né lo Sviluppatore possono essere ritenuti responsabili in caso di forza maggiore."
+    },
+    {
+      "title": "Articolo 7 — Dati personali e cookie",
+      "content": "7.1 — Nessuna raccolta di dati\nL'Applicazione non raccoglie, elabora, archivia né trasmette alcun dato personale ai sensi del GDPR (Regolamento UE 2016/679).\n\n7.2 — Memorizzazione locale strettamente funzionale\n• «yesboth_locale» (localStorage): memorizza la preferenza linguistica. Conservato fino all'eliminazione da parte dell'utente.\n• «yesboth_disclaimer» (sessionStorage): memorizza la presa visione del disclaimer. Eliminato alla chiusura del browser.\n• «yesboth_cookies» (localStorage): memorizza l'accettazione della politica sui cookie. Conservato fino all'eliminazione da parte dell'utente.\n\n7.3 — Zero cookie di terze parti\nNessun cookie di tracciamento, analytics, pubblicità o tracciamento comportamentale è integrato.\n\n7.4 — Diritti degli utenti\nNon avendo l'Editore in possesso dati personali, i diritti GDPR (accesso, rettifica, cancellazione) si esercitano direttamente sul dispositivo dell'utente."
+    },
+    {
+      "title": "Articolo 8 — Proprietà intellettuale",
+      "content": "L'intera Applicazione YesBoth è protetta dal diritto della proprietà intellettuale.\n\nL'Applicazione NON è software libero né open source.\n\nQualsiasi riproduzione, modifica, distribuzione o uso commerciale senza previa autorizzazione scritta dell'Editore è strettamente vietata e costituisce una violazione soggetta a sanzioni civili e penali.\n\nQUALSIASI USO COMMERCIALE È STRETTAMENTE E ASSOLUTAMENTE VIETATO."
+    },
+    {
+      "title": "Articolo 9 — Comportamenti vietati",
+      "content": "È formalmente vietato utilizzare l'Applicazione per:\n— costringere, manipolare o esercitare pressioni su qualsiasi persona per ottenerne il consenso;\n— far credere che un messaggio generato costituisca un impegno giuridicamente vincolante;\n— impersonare un terzo nei campi di inserimento;\n— utilizzare l'Applicazione per qualsiasi scopo commerciale, professionale o lucrativo;\n— commettere o facilitare qualsiasi reato penale;\n— accedere all'Applicazione da minorenni.\n\nQualsiasi violazione impegna esclusivamente la responsabilità civile e penale dell'utente."
+    },
+    {
+      "title": "Articolo 10 — Legge applicabile e giurisdizione competente",
+      "content": "Le presenti CGU sono regolate esclusivamente dal diritto francese.\n\nIn caso di controversia, le parti cercheranno una soluzione amichevole entro trenta (30) giorni dalla notifica. In assenza di accordo, i tribunali francesi saranno i soli competenti.\n\nGli utenti residenti nell'Unione Europea beneficiano delle disposizioni protettive del loro diritto nazionale quando più favorevoli.\n\n---\nVersione in vigore: Febbraio 2026\nEditore: Herrichain — Associazione francese senza scopo di lucro (loi 1901)\nSviluppatore: Artean Digital — www.arteandigital.fr"
+    }
+  ]
+}

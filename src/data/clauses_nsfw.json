@@ -1,0 +1,19 @@
+[
+  { "id": "libre_eclaire", "label": "Consentement libre et éclairé", "description": "Cet accord est donné sans pression, contrainte ni manipulation", "default": true, "locked": true },
+  { "id": "revocable", "label": "Révocable à tout moment, y compris pendant la scène", "description": "Le safeword stoppe immédiatement tout acte, sans exception", "default": true, "locked": true },
+  { "id": "safeword_prime", "label": "Le safeword prévaut sur tout accord écrit", "description": "Aucun document ne peut neutraliser l'effet immédiat du safeword", "default": true, "locked": true },
+  { "id": "ds", "label": "Dominance / Soumission (D/s)", "description": "Jeu de rôle de pouvoir consenti entre les deux parties", "tristate": true },
+  { "id": "bondage_leger", "label": "Bondage léger (foulards, menottes douces)", "description": "Restriction légère et réversible à tout moment", "tristate": true },
+  { "id": "bondage_technique", "label": "Bondage technique (cordes, shibari)", "description": "Restriction élaborée nécessitant une pratique responsable", "tristate": true },
+  { "id": "impact_leger", "label": "Impact play léger (fessées)", "description": "Contact physique consenti de faible intensité", "tristate": true },
+  { "id": "impact_intense", "label": "Impact play intense (flogger, cane)", "description": "Contact physique consenti d'intensité élevée", "tristate": true },
+  { "id": "sensation", "label": "Sensation play (cire, glaçons, vibrations)", "description": "Stimulation sensorielle consentie", "tristate": true },
+  { "id": "jeu_role", "label": "Jeux de rôle / scénarios fictifs", "description": "Mise en scène fictive consentie entre les parties", "tristate": true },
+  { "id": "jouets", "label": "Jouets et accessoires", "description": "Utilisation d'accessoires intimes consentie", "tristate": true },
+  { "id": "voyeurisme", "label": "Voyeurisme / exhibitionnisme", "description": "Accord sur l'observation ou l'exposition consentie", "tristate": true },
+  { "id": "groupe", "label": "Participation à une scène de groupe", "description": "Accord pour la présence ou participation de tiers nommés", "tristate": true },
+  { "id": "photos_nsfw", "label": "Photos intimes — usage privé uniquement", "description": "Autorisation strictement personnelle, suppression sur révocation", "tristate": true },
+  { "id": "videos_nsfw", "label": "Vidéos intimes — usage privé uniquement", "description": "Autorisation strictement personnelle, suppression sur révocation", "tristate": true },
+  { "id": "aftercare", "label": "Aftercare défini", "description": "Modalités de soin post-scène convenues entre les parties" },
+  { "id": "hard_limits", "label": "Hard limits — pratiques refusées", "description": "Voir clause personnalisée ci-dessous" }
+]

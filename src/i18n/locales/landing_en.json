@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "cgu": "Terms",
+    "launch": "Launch app"
+  },
+  "hero": {
+    "tagline": "Both say yes.",
+    "headline": "Consent communication,\nsimplified.",
+    "sub": "YesBoth is a free, 100% local tool to generate clear consent messages between adults. No data ever leaves your device.",
+    "cta": "Create my agreement",
+    "ctaSub": "Free · No account · 100% local"
+  },
+  "privacy": {
+    "badge": "100% Local",
+    "title": "Your data never leaves your device",
+    "items": [
+      { "icon": "🔒", "title": "Zero server", "desc": "No data is transmitted to any server. The app runs entirely in your browser." },
+      { "icon": "🚫", "title": "Zero storage", "desc": "No information is saved on your device — no tracking cookies, no database." },
+      { "icon": "📴", "title": "Works offline", "desc": "Once loaded, the application works without an internet connection." },
+      { "icon": "👁️", "title": "Auditable code", "desc": "The application is fully transparent. No tracking, no ads, no monetization." }
+    ]
+  },
+  "cookies": {
+    "title": "Cookies & Data",
+    "content": "YesBoth uses no tracking cookies, no analytics, no advertising. The only technical storage used remembers your preferred language and whether you have read the disclaimer. No personal data is collected.",
+    "items": [
+      { "name": "yesboth_locale", "purpose": "Remember your preferred language", "duration": "1 year", "type": "Functional" },
+      { "name": "yesboth_disclaimer", "purpose": "Remember that you have read the disclaimer", "duration": "Session", "type": "Functional" }
+    ]
+  },
+  "howItWorks": {
+    "title": "How does it work?",
+    "steps": [
+      { "num": "1", "title": "Enter the parties", "desc": "Enter the first and last names of both people involved in the agreement." },
+      { "num": "2", "title": "Choose the type", "desc": "General, relational, intimate, or specific practices — according to your situation." },
+      { "num": "3", "title": "Configure clauses", "desc": "Enable or disable each clause as needed. Add a custom clause." },
+      { "num": "4", "title": "Send the message", "desc": "Share directly via WhatsApp, SMS, email, or copy the text." }
+    ]
+  },
+  "disclaimer": {
+    "title": "⚠️ Important",
+    "text": "YesBoth is a communication tool, not a legal contract. It does not replace verbal and physical consent which always prevails. Each party remains fully responsible for their actions. Strictly for adults only."
+  },
+  "footer": {
+    "owner": "© 2026 Herrichain — French non-profit association (loi 1901)",
+    "dev": "Developed by",
+    "legal": "Exclusive intellectual property. Commercial use strictly prohibited.",
+    "cgu": "Terms of Use",
+    "license": "License"
+  }
+}

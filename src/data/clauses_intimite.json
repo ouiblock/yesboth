@@ -1,0 +1,11 @@
+[
+  { "id": "libre_eclaire", "label": "Consentement libre et éclairé", "description": "Cet accord est donné sans pression, contrainte ni manipulation", "default": true, "locked": true },
+  { "id": "revocable", "label": "Révocable à tout moment", "description": "Chacun peut retirer son accord immédiatement et sans justification", "default": true, "locked": true },
+  { "id": "ponctuel", "label": "Valable pour cette occasion uniquement", "description": "Cet accord ne couvre que la présente occasion", "default": true },
+  { "id": "protege", "label": "Rapport protégé uniquement", "description": "Accord exclusif sur l'utilisation d'une protection" },
+  { "id": "non_protege", "label": "Rapport non protégé (post-test IST)", "description": "Accord explicite suite à un dépistage négatif récent partagé" },
+  { "id": "photos_privees", "label": "Photos intimes — usage privé uniquement", "description": "Autorisation strictement limitée à un usage personnel et privé" },
+  { "id": "videos_privees", "label": "Vidéos intimes — usage privé uniquement", "description": "Autorisation strictement limitée à un usage personnel et privé" },
+  { "id": "suppression", "label": "Droit de suppression immédiate sur révocation", "description": "Tout contenu doit être supprimé immédiatement en cas de révocation", "default": true, "locked": true },
+  { "id": "zones_exclues", "label": "Zones / actes expressément exclus", "description": "Voir clause personnalisée ci-dessous" }
+]

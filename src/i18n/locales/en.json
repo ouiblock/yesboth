@@ -1,0 +1,147 @@
+{
+  "app": {
+    "name": "YesBoth",
+    "tagline": "Both say yes."
+  },
+  "disclaimer": {
+    "title": "Read before using YesBoth",
+    "scrollHint": "↓ Scroll to the bottom to continue",
+    "checkbox": "I am of legal age and have read and accepted these terms. I understand that YesBoth is not a legal contract and that I remain fully responsible for my actions.",
+    "button": "Start",
+    "blocks": {
+      "tool": {
+        "title": "⚖️ Communication Tool",
+        "content": "YesBoth is <strong>solely a communication aid tool</strong>.<br />It does <strong>not constitute a legally binding contract</strong>, a notarized document, or a certified legal service.<br /><br /><strong>Legal, moral, and ethical responsibility rests exclusively with the parties</strong> using this tool. YesBoth disclaims all responsibility for the use of generated messages."
+      },
+      "primacy": {
+        "title": "⚠️ Primacy of Verbal Consent",
+        "content": "<strong>Verbal, gestural, or physical refusal ALWAYS prevails</strong> over any written document, without exception and without delay.<br /><br /><strong>Silence does not constitute consent</strong>.<br />A past agreement does <strong>not cover any future unspecified act</strong>."
+      },
+      "revocable": {
+        "title": "🔄 Absolute Revocability",
+        "content": "Consent is <strong>revocable at any time, immediately, without justification, without notice</strong>.<br /><br /><strong>No clause in this document can limit this right.</strong><br />Each person remains <strong>fully responsible</strong> for their actions and decisions, regardless of any generated document."
+      },
+      "responsibility": {
+        "title": "🛡️ Responsibility",
+        "content": "YesBoth <strong>disclaims all responsibility</strong> for the use of generated messages.<br /><br />Legal, moral, and ethical responsibility rests <strong>exclusively with the parties</strong>. This document is a communication aid between consenting adults, nothing more."
+      },
+      "age": {
+        "title": "🔞 Age Requirement",
+        "content": "This application is <strong>strictly reserved for adults (18 years and older)</strong>.<br />By continuing, you certify that you meet the legal age requirement in your country of residence."
+      }
+    }
+  },
+  "step1": {
+    "title": "Who is signing this agreement?",
+    "you": "You",
+    "other": "The other person",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "firstNamePlaceholder": "Your first name",
+    "lastNamePlaceholder": "Your last name",
+    "otherFirstNamePlaceholder": "Their first name",
+    "otherLastNamePlaceholder": "Their last name",
+    "dateLabel": "Agreement date:",
+    "next": "Next →",
+    "disclaimer": "⚠️ <strong>YesBoth is not a legal contract.</strong> Parties remain fully responsible for their actions."
+  },
+  "step2": {
+    "title": "What type of agreement?",
+    "subtitle": "Choose the level that matches your situation",
+    "categories": {
+      "general": {
+        "label": "General & Daily",
+        "description": "Activities, sharing, common responsibilities"
+      },
+      "relation": {
+        "label": "Relationship & Framework",
+        "description": "Flirting, intentions, relationship type, exclusivity"
+      },
+      "intimite": {
+        "label": "Intimacy",
+        "description": "Intimate consent, contraception, content"
+      },
+      "nsfw": {
+        "label": "Specific Practices",
+        "description": "Practices, limits, safeword"
+      }
+    },
+    "nsfwModal": {
+      "title": "Advanced Practices",
+      "content": "You are about to access more elaborate intimate practices requiring clear communication and defined boundaries.",
+      "safeword": "The safeword you define prevails over any document, without exception.",
+      "warning": "This document is <strong>not a legal contract</strong>. Parties remain fully responsible for their actions.",
+      "confirm": "Continue",
+      "cancel": "Back"
+    },
+    "disclaimer": "⚠️ <strong>Communication tool only.</strong> Not a legal document. Each party remains responsible for their consent and actions.",
+    "next": "Next →"
+  },
+  "step3": {
+    "title": "Build your agreement",
+    "safewordLabel": "🔑 Safeword",
+    "safewordRequired": "(required)",
+    "safewordPlaceholder": "e.g., pineapple",
+    "safewordWarning": "⚠️ The safeword <strong>immediately</strong> stops any act, without exception. It prevails over any written agreement.",
+    "customClauseLabel": "📝 Custom clause",
+    "customClauseOptional": "(optional)",
+    "customClausePlaceholder": "Add a clause specific to your situation...",
+    "validityLabel": "⏱ Validity period",
+    "validityOptions": {
+      "ce_soir": "Tonight",
+      "24h": "24h",
+      "7j": "7 days",
+      "30j": "30 days",
+      "indefini": "Indefinite"
+    },
+    "disclaimer": "⚠️ <strong>Reminder:</strong> This document is a communication tool, not a legal contract. Verbal consent always prevails. Each party remains <strong>fully responsible</strong> for their actions.",
+    "generate": "Generate message →",
+    "locked": "Required"
+  },
+  "step4": {
+    "title": "Your agreement is ready",
+    "disclaimer": "⚠️ <strong>This document is not a legal contract.</strong> It is a communication tool only. Verbal and physical consent always prevails. <strong>Each party remains fully responsible for their actions.</strong>",
+    "share": "📤 Send via...",
+    "copy": "📋 Copy message",
+    "copied": "✅ Copied!",
+    "revokeTitle": "🔴 Generate revocation message",
+    "revokeCopy": "📋 Copy revocation",
+    "legalWarning": "<strong>Important legal warning:</strong> YesBoth is a communication aid tool between consenting adults. This document <strong>in no way constitutes</strong> a legally binding contract, a notarized document, or legal proof. Verbal, gestural, or physical refusal <strong>always and immediately</strong> prevails over any written document. YesBoth disclaims all responsibility for the use of generated messages. Legal, moral, and ethical responsibility rests <strong>exclusively with the parties</strong>.",
+    "back": "← Modify agreement"
+  },
+  "message": {
+    "header": "YESBOTH AGREEMENT",
+    "between": "Between",
+    "and": "and",
+    "validity": "Valid for:",
+    "validityMap": {
+      "ce_soir": "tonight only",
+      "24h": "the next 24 hours",
+      "7j": "the next 7 days",
+      "30j": "the next 30 days",
+      "indefini": "an indefinite period, revocable at any time"
+    },
+    "safeword": "SAFEWORD:",
+    "safewordNote": "— immediately stops any act",
+    "customClause": "Specific clause:",
+    "revocable": "REVOCABLE at any time, immediately,\nwithout justification or explanation.\nVerbal or physical refusal always prevails.",
+    "validation": "To validate,",
+    "validationText": "responds:\n\"I freely confirm,",
+    "warning": "WARNING: This document is a communication tool,\nnot a legally binding contract.\nVerbal and physical consent remains\nprimary and revocable at any time.\nParties are fully responsible\nfor their actions, regardless of this document.",
+    "reference": "(Ref. art. 1316-1 & 1367 French Civil Code)",
+    "yes": "[YES]",
+    "no": "[NO]",
+    "maybe": "[TO DISCUSS]",
+    "refused": "— REFUSED"
+  },
+  "revoke": {
+    "header": "REVOCATION — YESBOTH",
+    "intro": "I,",
+    "text": ", revoke my consent\ngiven on",
+    "with": "with",
+    "cancelled": "This agreement is immediately cancelled,\non",
+    "at": "at",
+    "noFuture": "No future act may rely\non the initial agreement.",
+    "warning": "WARNING: This revocation message is a communication\ntool. Legal, moral, and ethical responsibility\nrests exclusively with the parties concerned."
+  }
+}

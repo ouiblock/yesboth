@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "cgu": "CGU",
+    "launch": "Abrir app"
+  },
+  "hero": {
+    "tagline": "Both say yes.",
+    "headline": "La comunicación\ndel consentimiento,\nsimplificada.",
+    "sub": "YesBoth es una herramienta gratuita y 100% local para generar mensajes de consentimiento claros entre adultos. Ningún dato abandona tu dispositivo.",
+    "cta": "Crear mi acuerdo",
+    "ctaSub": "Gratis · Sin registro · 100% local"
+  },
+  "privacy": {
+    "badge": "100% Local",
+    "title": "Tus datos nunca abandonan tu dispositivo",
+    "items": [
+      { "icon": "🔒", "title": "Cero servidor", "desc": "Ningún dato se transmite a ningún servidor. La app funciona completamente en tu navegador." },
+      { "icon": "🚫", "title": "Cero almacenamiento", "desc": "No se guarda ninguna información en tu dispositivo — sin cookies de rastreo, sin base de datos." },
+      { "icon": "📴", "title": "Funciona sin conexión", "desc": "Una vez cargada, la aplicación funciona sin conexión a internet." },
+      { "icon": "👁️", "title": "Código auditable", "desc": "La aplicación es completamente transparente. Sin rastreo, sin publicidad, sin monetización." }
+    ]
+  },
+  "cookies": {
+    "title": "Cookies y Datos",
+    "content": "YesBoth no utiliza cookies de rastreo, ni analíticas, ni publicidad. El único almacenamiento técnico utilizado recuerda tu idioma preferido y si has leído el aviso legal. No se recopilan datos personales.",
+    "items": [
+      { "name": "yesboth_locale", "purpose": "Recordar tu idioma preferido", "duration": "1 año", "type": "Funcional" },
+      { "name": "yesboth_disclaimer", "purpose": "Recordar que has leído el aviso legal", "duration": "Sesión", "type": "Funcional" }
+    ]
+  },
+  "howItWorks": {
+    "title": "¿Cómo funciona?",
+    "steps": [
+      { "num": "1", "title": "Introduce las partes", "desc": "Introduce los nombres y apellidos de las dos personas involucradas en el acuerdo." },
+      { "num": "2", "title": "Elige el tipo", "desc": "General, relacional, íntimo o prácticas específicas — según tu situación." },
+      { "num": "3", "title": "Configura las cláusulas", "desc": "Activa o desactiva cada cláusula según tus necesidades. Añade una cláusula personalizada." },
+      { "num": "4", "title": "Envía el mensaje", "desc": "Comparte directamente por WhatsApp, SMS, email o copia el texto." }
+    ]
+  },
+  "disclaimer": {
+    "title": "⚠️ Importante",
+    "text": "YesBoth es una herramienta de comunicación, no un contrato legal. No reemplaza el consentimiento verbal y físico que siempre prevalece. Cada parte sigue siendo totalmente responsable de sus actos. Estrictamente para adultos."
+  },
+  "footer": {
+    "owner": "© 2026 Herrichain — Asociación sin ánimo de lucro (ley 1901 francesa)",
+    "dev": "Desarrollado por",
+    "legal": "Propiedad intelectual exclusiva. Uso comercial estrictamente prohibido.",
+    "cgu": "Condiciones de uso",
+    "license": "Licencia"
+  }
+}
