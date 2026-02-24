@@ -1,163 +1,77 @@
-# 🤝 YesBoth
-
-**Multilingual Consent Message Generator**
+# YesBoth
 
 > *Both say yes.*
 
-A free, 100% local web application for generating clear consent agreements between consenting adults.
+YesBoth is a free web application that helps adults communicate consent clearly and respectfully. Everything runs locally in your browser - no data is ever sent to a server.
 
-## ✨ Features
+## Why YesBoth?
 
-- 🌍 **Multilingual**: French, English, Spanish, Italian
-- 📱 **Mobile-First**: Responsive design optimized for all devices
-- 🔒 **100% Local**: No data leaves your device - complete privacy
-- 📋 **4-Step Wizard**: Guided process to create personalized agreements
-- 🎯 **Modular Clauses**: 4 categories with customizable options
-- 🎨 **Modern Design**: Beautiful gradient theme (Orange → Violet → Blue)
-- ⚖️ **Legal Protection**: Complete terms and mandatory CGU acceptance
-- 🍪 **GDPR Compliant**: Minimal cookies, no tracking
+Clear communication about consent is essential. YesBoth provides a simple, guided way to create personalized consent agreements that both parties can review and share. The app works entirely offline once loaded, ensuring complete privacy.
 
-## 🚀 Quick Start
+## Features
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+**Privacy First**
+- 100% local processing - your data never leaves your device
+- No tracking, no analytics, no data collection
+- GDPR compliant with minimal cookies
 
-### Installation
+**Multilingual Support**
+- Available in French, English, Spanish, and Italian
+- Easy language switching
+
+**Simple Wizard**
+- Step-by-step guided process
+- Customizable clauses for different situations
+- Optional safeword and custom terms
+- Instant message generation
+
+**Modern & Accessible**
+- Mobile-friendly responsive design
+- Works on all modern browsers
+- Clean, intuitive interface
+
+## Getting Started
+
+### Development
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/yesboth.git
-cd yesboth
-
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
+```
 
-# Build for production
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Production Build
+
+```bash
 npm run build
 npm start
 ```
 
-### Deployment
+The app is deployed on Netlify and can be hosted on any static hosting platform.
 
-The app is ready for static deployment on:
-- **Netlify** (recommended)
-- **Vercel**
-- **GitHub Pages**
-- Any static hosting service
+## Tech Stack
 
-## 📱 How It Works
+Built with Next.js 16, TailwindCSS, and React. Uses the App Router for optimal performance and SEO.
 
-1. **Disclaimer**: Read and accept the initial terms
-2. **Parties**: Enter names of both consenting adults
-3. **Category**: Choose agreement type (General, Relationship, Intimate, NSFW)
-4. **Clauses**: Select relevant consent items and add custom clauses
-5. **Generate**: Get your personalized consent message
+## Important Legal Notice
 
-## 🛠 Tech Stack
+**YesBoth is a communication tool, not a legal contract.** Generated messages have no legally binding value. Both parties remain fully responsible for their actions and decisions. This tool is meant to facilitate clear communication, not replace proper consent practices.
 
-- **Framework**: Next.js 16 (App Router)
-- **Styling**: TailwindCSS with custom design system
-- **Icons**: Lucide React
-- **Internationalization**: React Context + JSON
-- **Language**: TypeScript/JavaScript
-- **Build Tool**: Next.js compiler
+## License
 
-## 📁 Project Structure
+Proprietary license - see [LICENSE](LICENSE) for details.
 
-```
-src/
-├── app/                 # Next.js pages
-│   ├── page.jsx        # Landing page
-│   ├── wizard/page.jsx # Main wizard
-│   └── cgu/page.jsx    # Terms & Conditions
-├── components/         # Reusable components
-│   ├── CookieBanner.jsx
-│   ├── LanguageSelector.jsx
-│   ├── ProgressBar.jsx
-│   └── ShareBlock.jsx
-├── steps/             # Wizard steps
-│   ├── Step0_Disclaimer.jsx
-│   ├── Step1_Parties.jsx
-│   ├── Step2_Category.jsx
-│   ├── Step3_Clauses.jsx
-│   └── Step4_Result.jsx
-├── i18n/              # Internationalization
-│   ├── LandingContext.jsx
-│   ├── LanguageContext.jsx
-│   └── locales/       # Translation files
-├── data/              # Clause definitions
-├── utils/             # Helper functions
-└── styles/            # Global styles
-```
+- Personal use is free and encouraged
+- Commercial use requires a license from Artean Digital
+- Source code is available for review and security audits
 
-## 🎨 Design System
+## About
 
-### Color Palette
-- **Primary Orange**: `#F5A962`
-- **Primary Purple**: `#8B7BA8` 
-- **Primary Blue**: `#5B9BD5`
-- **Text Dark**: `#2C3E50`
-- **Background**: `#F8FAFB`
+Developed by [Artean Digital](https://arteandigital.fr) for the Herrichain association (RNA: W641015204).
 
-### Typography
-- **Font Family**: Inter, Segoe UI, system-ui
-- **Weights**: 400 (regular), 600 (semibold), 700 (bold)
-
-## 🌍 Languages
-
-The application supports 4 languages:
-- 🇫🇷 **French** (default)
-- 🇬🇧 **English**
-- 🇪🇸 **Spanish**
-- 🇮🇹 **Italian**
-
-Translation files are located in `src/i18n/locales/`
-
-## ⚖️ Legal & License
-
-### Important Notice
-YesBoth is a **communication tool**, not a legal contract. Generated messages have no legally binding value. Each party remains fully responsible for their actions.
-
-### License
-**Herrichain/Artean Digital Proprietary License** - All rights reserved
-
-- ❌ **Commercial use strictly prohibited**
-- ✅ **Personal use permitted**
-- 🔒 **Source code auditable but non-modifiable**
-- ⚖️ **French law applies**
-
-See [LICENSE](LICENSE) for complete terms.
-
-## 🔒 Privacy & Security
-
-- **No server**: Everything runs in your browser
-- **No data collection**: No personal data is stored or transmitted
-- **No tracking**: No analytics, no advertising cookies
-- **Local storage**: Only language preference and CGU acceptance
-
-## 🤝 Contributing
-
-This is a proprietary project. For any inquiries or collaboration requests:
-- **Developer**: Artean Digital - www.arteandigital.fr
-- **Publisher**: Herrichain (French non-profit association)
-- **Contact**: contact@arteandigital.fr
-
-## 📄 Documentation
-
-- **Terms & Conditions**: `/cgu`
-- **Privacy Policy**: Included in CGU
-- **API Reference**: No external APIs used
-
-## 🌟 Acknowledgments
-
-Developed by Artean Digital for Herrichain association, promoting safe and consensual communication practices.
+For commercial licensing or inquiries: contact@arteandigital.fr
 
 ---
 
-**© 2026 Herrichain - Association loi 1901**  
-**Developed by Artean Digital**  
-**All rights reserved**
+© 2026 Artean Digital SAS - All rights reserved
