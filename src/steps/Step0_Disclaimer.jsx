@@ -35,7 +35,8 @@ export default function Step0_Disclaimer({ onAccept }) {
         {/* Scrollable content */}
         <div
           ref={scrollRef}
-          className="flex-1 overflow-y-auto px-5 pb-4 space-y-4 scrollbar-hide"
+          className="flex-1 overflow-y-auto px-5 pb-4 space-y-4 scrollbar-hide touch-pan-y overscroll-contain"
+          style={{ WebkitOverflowScrolling: 'touch' }}
         >
           <h2 className="text-lg font-bold text-[#1C1C1E]">À lire avant d'utiliser YesBoth</h2>
 
@@ -88,6 +89,15 @@ export default function Step0_Disclaimer({ onAccept }) {
           </div>
 
           <div className="h-2" />
+          
+          {/* Indicateur de fin de scroll */}
+          {!scrolled && (
+            <div className="sticky bottom-0 left-0 right-0 py-3 bg-gradient-to-t from-white via-white to-transparent text-center">
+              <p className="text-xs font-semibold text-[#1A6B6B] animate-pulse">
+                ↑ Faites défiler vers le haut pour tout lire ↑
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Bottom fixed actions */}
