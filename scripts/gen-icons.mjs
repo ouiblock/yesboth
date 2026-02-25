@@ -38,7 +38,13 @@ function generateIcon(size) {
 try {
   writeFileSync(join(__dirname, '../public/icon-192.png'), generateIcon(192))
   writeFileSync(join(__dirname, '../public/icon-512.png'), generateIcon(512))
-  console.log('Icons generated successfully')
+  
+  // Generate favicons
+  writeFileSync(join(__dirname, '../public/favicon-16x16.png'), generateIcon(16))
+  writeFileSync(join(__dirname, '../public/favicon-32x32.png'), generateIcon(32))
+  writeFileSync(join(__dirname, '../public/favicon-96x96.png'), generateIcon(96))
+  
+  console.log('Icons and favicons generated successfully')
 } catch (e) {
   console.log('canvas not available, skipping icon generation:', e.message)
 }
