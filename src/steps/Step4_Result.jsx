@@ -19,8 +19,8 @@ export default function Step4_Result({ form, onBack }) {
 
       {/* Header */}
       <div className="mb-6 text-center">
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#1A6B6B]/10 mb-3">
-          <span className="text-2xl">✅</span>
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#1A6B6B] mb-3">
+          <span className="text-white font-bold text-lg">YB</span>
         </div>
         <h2 className="text-2xl font-bold text-[#1C1C1E]">{t('step4.title')}</h2>
         <p className="text-[#6B7280] text-sm mt-1">
