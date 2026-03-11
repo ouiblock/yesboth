@@ -47,5 +47,17 @@
     "legal": "Propriété intellectuelle exclusive. Usage commercial strictement interdit.",
     "cgu": "Conditions d'utilisation",
     "license": "Licence"
+  },
+  "consentCounter": {
+    "text": "consentements sécurisés"
+  },
+  "telegram": {
+    "title": "Disponible sur Telegram !",
+    "description": "Utilisez YesBoth directement depuis Telegram. Créez vos messages de consentement en quelques secondes via notre bot intelligent.",
+    "button": "Ouvrir le bot Telegram",
+    "footer": "@yesbothbot • Gratuit • Multilingue • Privé"
+  },
+  "platforms": {
+    "title": "Compatible avec toutes vos plateformes"
   }
 }

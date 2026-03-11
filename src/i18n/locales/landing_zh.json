@@ -47,5 +47,17 @@
     "legal": "独家知识产权。严禁商业使用。",
     "cgu": "使用条款",
     "license": "许可证"
+  },
+  "consentCounter": {
+    "text": "安全同意"
+  },
+  "telegram": {
+    "title": "Telegram上可用！",
+    "description": "直接在Telegram上使用YesBoth。通过我们的智能机器人在几秒钟内创建您的同意消息。",
+    "button": "打开Telegram机器人",
+    "footer": "@yesbothbot • 免费 • 多语言 • 私密"
+  },
+  "platforms": {
+    "title": "与您所有平台兼容"
   }
 }

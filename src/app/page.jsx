@@ -88,7 +88,7 @@ function LandingInner() {
             </div>
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-50 to-teal-50 text-[#1A6B6B] text-xs font-bold px-4 py-2 rounded-full border border-[#1A6B6B]/20">
               <span className="text-lg">🔒</span>
-              <span>{consentCount.toLocaleString()} consentements sécurisés</span>
+              <span>{consentCount.toLocaleString()} {t('consentCounter.text')}</span>
             </div>
           </div>
 
@@ -118,7 +118,7 @@ function LandingInner() {
         <section className="w-full bg-white border-y border-[#E1E8ED] py-8 overflow-hidden">
           <div className="max-w-[480px] mx-auto px-5 mb-4">
             <p className="text-center text-sm font-semibold text-[#2C3E50]">
-              Compatible avec toutes vos plateformes
+              {t('platforms.title')}
             </p>
           </div>
           <div className="relative">
@@ -258,11 +258,11 @@ function LandingInner() {
             <div className="flex items-center justify-center gap-3 mb-4">
               <img src="/telegram.webp" alt="Telegram" className="w-12 h-12" />
               <h2 className="text-2xl font-bold text-[#2C3E50]">
-                Disponible sur Telegram !
+                {t('telegram.title')}
               </h2>
             </div>
             <p className="text-[#5A6C7D] text-sm text-center mb-6 leading-relaxed">
-              Utilisez YesBoth directement depuis Telegram. Créez vos messages de consentement en quelques secondes via notre bot intelligent.
+              {t('telegram.description')}
             </p>
             <div className="flex flex-col gap-3">
               <a
@@ -272,10 +272,10 @@ function LandingInner() {
                 className="flex items-center justify-center gap-2 px-6 py-4 bg-[#0088cc] text-white font-bold text-base rounded-full shadow-lg hover:shadow-xl hover:bg-[#0077b3] active:scale-[0.98] transition-all duration-200"
               >
                 <img src="/telegram.webp" alt="" className="w-6 h-6" />
-                Ouvrir le bot Telegram
+                {t('telegram.button')}
               </a>
               <p className="text-center text-xs text-[#8B95A1]">
-                @yesbothbot • Gratuit • Multilingue • Privé
+                {t('telegram.footer')}
               </p>
             </div>
           </div>

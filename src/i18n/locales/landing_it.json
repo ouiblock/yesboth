@@ -42,10 +42,22 @@
     "text": "YesBoth è uno strumento di comunicazione, non un contratto legale. Non sostituisce il consenso verbale e fisico che prevale sempre. Ogni parte rimane completamente responsabile delle proprie azioni. Riservato esclusivamente agli adulti."
   },
   "footer": {
-    "owner": "© 2026 Herrichain — Associazione no-profit (legge francese 1901)",
+    "owner": "© 2026 Herrichain — Associazione (legge 1901 francese)",
     "dev": "Sviluppato da",
     "legal": "Proprietà intellettuale esclusiva. Uso commerciale strettamente vietato.",
-    "cgu": "Condizioni d'uso",
+    "cgu": "Termini di utilizzo",
     "license": "Licenza"
+  },
+  "consentCounter": {
+    "text": "consensi sicuri"
+  },
+  "telegram": {
+    "title": "Disponibile su Telegram!",
+    "description": "Usa YesBoth direttamente da Telegram. Crea i tuoi messaggi di consenso in pochi secondi con il nostro bot intelligente.",
+    "button": "Apri bot Telegram",
+    "footer": "@yesbothbot • Gratuito • Multilingue • Privato"
+  },
+  "platforms": {
+    "title": "Compatibile con tutte le tue piattaforme"
   }
 }
