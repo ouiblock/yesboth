@@ -3,7 +3,7 @@
 ## Configuration du bot
 
 **Bot Username:** @yesbothbot
-**Token:** 8772869173:AAEBabk-dYXbncQydYngK9Mns9cvoCMAM9Y
+**Token:** Configuré via variable d'environnement `TELEGRAM_BOT_TOKEN`
 
 ## Installation
 
@@ -31,8 +31,10 @@ netlify init
 
 ### 4. Configurer la variable d'environnement
 ```bash
-netlify env:set TELEGRAM_BOT_TOKEN "8772869173:AAEBabk-dYXbncQydYngK9Mns9cvoCMAM9Y"
+netlify env:set TELEGRAM_BOT_TOKEN "VOTRE_TOKEN_TELEGRAM_ICI"
 ```
+
+⚠️ **Important:** Obtenez votre token via [@BotFather](https://t.me/botfather) sur Telegram
 
 ### 5. Déployer
 ```bash
@@ -44,14 +46,14 @@ netlify deploy --prod
 Après le déploiement, notez l'URL fournie (ex: https://yesboth-bot.netlify.app)
 
 ```bash
-curl -X POST https://api.telegram.org/bot8772869173:AAEBabk-dYXbncQydYngK9Mns9cvoCMAM9Y/setWebhook \
+curl -X POST https://api.telegram.org/bot<VOTRE_TOKEN>/setWebhook \
   -H "Content-Type: application/json" \
   -d '{"url": "https://VOTRE-URL-NETLIFY.netlify.app/.netlify/functions/bot"}'
 ```
 
 ### 7. Vérifier le webhook
 ```bash
-curl https://api.telegram.org/bot8772869173:AAEBabk-dYXbncQydYngK9Mns9cvoCMAM9Y/getWebhookInfo
+curl https://api.telegram.org/bot<VOTRE_TOKEN>/getWebhookInfo
 ```
 
 ## Test local (optionnel)
@@ -64,7 +66,7 @@ ngrok http 8888
 netlify dev
 
 # Terminal 3 - Configurer le webhook avec ngrok
-curl -X POST https://api.telegram.org/bot8772869173:AAEBabk-dYXbncQydYngK9Mns9cvoCMAM9Y/setWebhook \
+curl -X POST https://api.telegram.org/bot<VOTRE_TOKEN>/setWebhook \
   -d '{"url": "https://VOTRE-URL-NGROK.ngrok.io/.netlify/functions/bot"}'
 ```
 
