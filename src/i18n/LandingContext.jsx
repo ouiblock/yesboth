@@ -5,8 +5,12 @@ import fr from './locales/landing_fr.json'
 import en from './locales/landing_en.json'
 import es from './locales/landing_es.json'
 import it from './locales/landing_it.json'
+import zh from './locales/landing_zh.json'
+import ru from './locales/landing_ru.json'
+import uk from './locales/landing_uk.json'
+import ar from './locales/landing_ar.json'
 
-const translations = { fr, en, es, it }
+const translations = { fr, en, es, it, zh, ru, uk, ar }
 
 const LandingContext = createContext()
 

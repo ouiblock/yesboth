@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "cgu": "使用条款",
+    "launch": "启动应用"
+  },
+  "hero": {
+    "tagline": "Both say yes.",
+    "headline": "简化\n同意\n沟通",
+    "sub": "YesBoth 是一个免费且 100% 本地的工具，用于在成年人之间生成清晰的同意消息。您的数据不会离开您的设备。",
+    "cta": "创建我的协议",
+    "ctaSub": "免费 · 无需注册 · 100% 本地"
+  },
+  "privacy": {
+    "badge": "100% 本地",
+    "title": "您的数据永远不会离开您的设备",
+    "items": [
+      { "icon": "🔒", "title": "零服务器", "desc": "没有数据传输到服务器。应用完全在您的浏览器中运行。" },
+      { "icon": "🚫", "title": "零存储", "desc": "您的设备上不保存任何信息（无跟踪 cookie，无数据库）。" },
+      { "icon": "📴", "title": "离线工作", "desc": "加载后，应用无需互联网连接即可运行。" },
+      { "icon": "👁️", "title": "可审计代码", "desc": "应用是透明的。无跟踪，无广告，无盈利。" }
+    ]
+  },
+  "cookies": {
+    "title": "Cookie 和数据",
+    "content": "YesBoth 不使用任何跟踪 cookie、分析或广告。唯一使用的技术 cookie 会记住您的首选语言以及您是否已阅读免责声明。不收集任何个人数据。",
+    "items": [
+      { "name": "yesboth_locale", "purpose": "记住您的首选语言", "duration": "1年", "type": "功能性" },
+      { "name": "yesboth_disclaimer", "purpose": "记住您已阅读免责声明", "duration": "会话", "type": "功能性" }
+    ]
+  },
+  "howItWorks": {
+    "title": "如何运作？",
+    "steps": [
+      { "num": "1", "title": "输入双方信息", "desc": "输入协议涉及的两个人的名字和姓氏。" },
+      { "num": "2", "title": "选择类型", "desc": "一般、关系、亲密或特定实践 - 根据您的情况。" },
+      { "num": "3", "title": "配置条款", "desc": "根据您的需求启用或禁用每个条款。添加自定义条款。" },
+      { "num": "4", "title": "发送消息", "desc": "通过 WhatsApp、短信、电子邮件直接分享或复制文本。" }
+    ]
+  },
+  "disclaimer": {
+    "title": "⚠️ 重要",
+    "text": "YesBoth 是一个沟通工具，而不是法律合同。它不能取代始终优先的口头和身体同意。每一方对自己的行为完全负责。严格限于成年人使用。"
+  },
+  "footer": {
+    "owner": "© 2026 Herrichain — 1901法协会",
+    "dev": "开发者",
+    "legal": "独家知识产权。严禁商业使用。",
+    "cgu": "使用条款",
+    "license": "许可证"
+  }
+}

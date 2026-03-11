@@ -10,6 +10,10 @@ const LANGS = [
   { code: 'en', label: 'EN' },
   { code: 'es', label: 'ES' },
   { code: 'it', label: 'IT' },
+  { code: 'zh', label: '中文' },
+  { code: 'ru', label: 'RU' },
+  { code: 'uk', label: 'UA' },
+  { code: 'ar', label: 'AR' },
 ]
 
 function LandingInner() {
@@ -120,31 +124,67 @@ function LandingInner() {
           <div className="relative">
             <div className="flex animate-scroll">
               {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex items-center gap-12 px-6 flex-shrink-0">
-                  <div className="flex flex-col items-center gap-2 min-w-[80px]">
+                <div key={setIndex} className="flex items-center gap-8 px-6 flex-shrink-0">
+                  <div className="flex flex-col items-center gap-2 min-w-[70px]">
                     <div className="w-12 h-12 flex items-center justify-center text-[#000000]">
                       <img src="/ios-logo.svg" alt="iOS" className="w-10 h-10" />
                     </div>
                     <span className="text-xs font-medium text-[#5A6C7D]">iOS</span>
                   </div>
-                  <div className="flex flex-col items-center gap-2 min-w-[80px]">
+                  <div className="flex flex-col items-center gap-2 min-w-[70px]">
                     <div className="w-12 h-12 flex items-center justify-center text-[#3DDC84]">
                       <img src="/android-logo.svg" alt="Android" className="w-10 h-10" />
                     </div>
                     <span className="text-xs font-medium text-[#5A6C7D]">Android</span>
                   </div>
-                  <div className="flex flex-col items-center gap-2 min-w-[80px]">
+                  <a href="https://t.me/yesbothbot" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 min-w-[70px] hover:scale-110 transition-transform">
                     <div className="w-12 h-12 flex items-center justify-center">
                       <img src="/telegram.webp" alt="Telegram" className="w-10 h-10" />
                     </div>
                     <span className="text-xs font-medium text-[#5A6C7D]">Telegram</span>
-                  </div>
-                  <div className="flex flex-col items-center gap-2 min-w-[80px]">
+                  </a>
+                  <div className="flex flex-col items-center gap-2 min-w-[70px]">
                     <div className="w-12 h-12 flex items-center justify-center text-[#3A76F0]">
                       <img src="/signal-logo.svg" alt="Signal" className="w-10 h-10" />
                     </div>
                     <span className="text-xs font-medium text-[#5A6C7D]">Signal</span>
                   </div>
+                  <a href="https://www.messenger.com" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 min-w-[70px] hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex items-center justify-center text-[#0084FF]">
+                      <img src="/messenger-logo.svg" alt="Messenger" className="w-10 h-10" />
+                    </div>
+                    <span className="text-xs font-medium text-[#5A6C7D]">Messenger</span>
+                  </a>
+                  <a href="https://www.wechat.com" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 min-w-[70px] hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex items-center justify-center text-[#09B83E]">
+                      <img src="/wechat-logo.svg" alt="WeChat" className="w-10 h-10" />
+                    </div>
+                    <span className="text-xs font-medium text-[#5A6C7D]">WeChat</span>
+                  </a>
+                  <a href="https://line.me" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 min-w-[70px] hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex items-center justify-center text-[#00B900]">
+                      <img src="/line-logo.svg" alt="Line" className="w-10 h-10" />
+                    </div>
+                    <span className="text-xs font-medium text-[#5A6C7D]">Line</span>
+                  </a>
+                  <a href="https://vk.com" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 min-w-[70px] hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex items-center justify-center text-[#0077FF]">
+                      <img src="/vk-logo.svg" alt="VK" className="w-10 h-10" />
+                    </div>
+                    <span className="text-xs font-medium text-[#5A6C7D]">VK</span>
+                  </a>
+                  <a href="https://www.kik.com" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 min-w-[70px] hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex items-center justify-center text-[#82BC23]">
+                      <img src="/kik-logo.svg" alt="Kik" className="w-10 h-10" />
+                    </div>
+                    <span className="text-xs font-medium text-[#5A6C7D]">Kik</span>
+                  </a>
+                  <a href="https://www.viber.com" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 min-w-[70px] hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex items-center justify-center text-[#665CAC]">
+                      <img src="/viber-logo.svg" alt="Viber" className="w-10 h-10" />
+                    </div>
+                    <span className="text-xs font-medium text-[#5A6C7D]">Viber</span>
+                  </a>
                 </div>
               ))}
             </div>
@@ -159,7 +199,7 @@ function LandingInner() {
               }
             }
             .animate-scroll {
-              animation: scroll 20s linear infinite;
+              animation: scroll 30s linear infinite;
             }
             .animate-scroll:hover {
               animation-play-state: paused;
