@@ -1,12 +1,13 @@
 {
-  "builds": [
-    {
-      "name": "yesboth",
-      "dir": "out",
-      "config": {
-        "buildCommand": "npm run build",
-        "publishDir": "out"
-      }
-    }
-  ]
+	"builds": [
+		{
+			"name": "yesboth",
+			"dir": "out",
+			"config": {
+				"buildCommand": "npm run build",
+				"publishDir": "out"
+			}
+		}
+	],
+	"siteId": "b21f0913-4979-4ac3-9792-f14b30496438"
 }

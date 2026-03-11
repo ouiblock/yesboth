@@ -1,0 +1,19 @@
+{
+  "name": "yesboth-telegram-bot",
+  "version": "1.0.0",
+  "description": "YesBoth Telegram Bot - Netlify Functions",
+  "main": "netlify/functions/bot.js",
+  "scripts": {
+    "start": "netlify dev",
+    "build": "echo 'No build step needed'"
+  },
+  "dependencies": {
+    "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

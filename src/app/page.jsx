@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { LandingProvider, useLanding } from '@/i18n/LandingContext'
 import CookieBanner from '@/components/CookieBanner'
@@ -13,6 +14,28 @@ const LANGS = [
 
 function LandingInner() {
   const { t, locale, changeLocale } = useLanding()
+  const [consentCount, setConsentCount] = useState(1855)
+
+  useEffect(() => {
+    // Animation du compteur au chargement
+    const startCount = 1800
+    const endCount = 1855
+    const duration = 2000
+    const increment = (endCount - startCount) / (duration / 50)
+    let current = startCount
+
+    const timer = setInterval(() => {
+      current += increment
+      if (current >= endCount) {
+        setConsentCount(endCount)
+        clearInterval(timer)
+      } else {
+        setConsentCount(Math.floor(current))
+      }
+    }, 50)
+
+    return () => clearInterval(timer)
+  }, [])
 
   return (
     <div className="min-h-screen bg-[#F8FAFB] flex flex-col">
@@ -22,6 +45,15 @@ function LandingInner() {
         <div className="max-w-[480px] mx-auto px-5 h-14 flex items-center justify-between">
           <img src="/logo.png" alt="YesBoth" className="h-12" />
           <div className="flex items-center gap-3">
+            <a 
+              href="https://t.me/yesbothbot" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 bg-[#0088cc]/10 hover:bg-[#0088cc]/20 px-2 py-1 rounded-lg transition-all duration-200"
+              title="Bot Telegram"
+            >
+              <img src="/telegram.webp" alt="Telegram" className="w-4 h-4" />
+            </a>
             <Link href="/cgu" className="text-xs text-[#5A6C7D] hover:text-[#5B9BD5] transition-colors font-medium">
               {t('nav.cgu')}
             </Link>
@@ -45,9 +77,15 @@ function LandingInner() {
 
         {/* HERO */}
         <section className="max-w-[480px] mx-auto px-5 pt-14 pb-12 text-center">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#F5A962]/10 via-[#8B7BA8]/10 to-[#5B9BD5]/10 text-[#5B9BD5] text-xs font-semibold px-4 py-2 rounded-full mb-6 border border-[#5B9BD5]/20">
-            <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#F5A962] to-[#5B9BD5] animate-pulse" />
-            {t('privacy.badge')}
+          <div className="flex flex-col items-center gap-3 mb-6">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#F5A962]/10 via-[#8B7BA8]/10 to-[#5B9BD5]/10 text-[#5B9BD5] text-xs font-semibold px-4 py-2 rounded-full border border-[#5B9BD5]/20">
+              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#F5A962] to-[#5B9BD5] animate-pulse" />
+              {t('privacy.badge')}
+            </div>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-50 to-teal-50 text-[#1A6B6B] text-xs font-bold px-4 py-2 rounded-full border border-[#1A6B6B]/20">
+              <span className="text-lg">🔒</span>
+              <span>{consentCount.toLocaleString()} consentements sécurisés</span>
+            </div>
           </div>
 
           <div className="flex justify-center mb-8">
@@ -70,6 +108,63 @@ function LandingInner() {
             </span>
             <span className="text-xs text-[#8B95A1]">{t('hero.ctaSub')}</span>
           </Link>
+        </section>
+
+        {/* PLATFORMS BANNER */}
+        <section className="w-full bg-white border-y border-[#E1E8ED] py-8 overflow-hidden">
+          <div className="max-w-[480px] mx-auto px-5 mb-4">
+            <p className="text-center text-sm font-semibold text-[#2C3E50]">
+              Compatible avec toutes vos plateformes
+            </p>
+          </div>
+          <div className="relative">
+            <div className="flex animate-scroll">
+              {[...Array(2)].map((_, setIndex) => (
+                <div key={setIndex} className="flex items-center gap-12 px-6 flex-shrink-0">
+                  <div className="flex flex-col items-center gap-2 min-w-[80px]">
+                    <div className="w-12 h-12 flex items-center justify-center text-[#000000]">
+                      <img src="/ios-logo.svg" alt="iOS" className="w-10 h-10" />
+                    </div>
+                    <span className="text-xs font-medium text-[#5A6C7D]">iOS</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 min-w-[80px]">
+                    <div className="w-12 h-12 flex items-center justify-center text-[#3DDC84]">
+                      <img src="/android-logo.svg" alt="Android" className="w-10 h-10" />
+                    </div>
+                    <span className="text-xs font-medium text-[#5A6C7D]">Android</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 min-w-[80px]">
+                    <div className="w-12 h-12 flex items-center justify-center">
+                      <img src="/telegram.webp" alt="Telegram" className="w-10 h-10" />
+                    </div>
+                    <span className="text-xs font-medium text-[#5A6C7D]">Telegram</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 min-w-[80px]">
+                    <div className="w-12 h-12 flex items-center justify-center text-[#3A76F0]">
+                      <img src="/signal-logo.svg" alt="Signal" className="w-10 h-10" />
+                    </div>
+                    <span className="text-xs font-medium text-[#5A6C7D]">Signal</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <style jsx>{`
+            @keyframes scroll {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(-50%);
+              }
+            }
+            .animate-scroll {
+              animation: scroll 20s linear infinite;
+            }
+            .animate-scroll:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
         </section>
 
         {/* PRIVACY SECTION */}
@@ -115,6 +210,35 @@ function LandingInner() {
             alt="Infographie YesBoth - Fonctionnement de l'application" 
             className="w-full h-auto"
           />
+        </section>
+
+        {/* TELEGRAM BOT SECTION */}
+        <section className="max-w-[480px] mx-auto px-5 py-12">
+          <div className="bg-gradient-to-br from-[#0088cc]/5 to-[#0088cc]/10 border-2 border-[#0088cc]/20 rounded-3xl p-6 shadow-lg">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <img src="/telegram.webp" alt="Telegram" className="w-12 h-12" />
+              <h2 className="text-2xl font-bold text-[#2C3E50]">
+                Disponible sur Telegram !
+              </h2>
+            </div>
+            <p className="text-[#5A6C7D] text-sm text-center mb-6 leading-relaxed">
+              Utilisez YesBoth directement depuis Telegram. Créez vos messages de consentement en quelques secondes via notre bot intelligent.
+            </p>
+            <div className="flex flex-col gap-3">
+              <a
+                href="https://t.me/yesbothbot"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-6 py-4 bg-[#0088cc] text-white font-bold text-base rounded-full shadow-lg hover:shadow-xl hover:bg-[#0077b3] active:scale-[0.98] transition-all duration-200"
+              >
+                <img src="/telegram.webp" alt="" className="w-6 h-6" />
+                Ouvrir le bot Telegram
+              </a>
+              <p className="text-center text-xs text-[#8B95A1]">
+                @yesbothbot • Gratuit • Multilingue • Privé
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* DISCLAIMER BANNER */}
@@ -186,6 +310,10 @@ function LandingInner() {
             <Link href="/license" className="text-white/60 text-xs hover:text-white transition-colors">
               {t('footer.license')}
             </Link>
+            <a href="https://t.me/yesbothbot" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[#0088cc] text-xs hover:text-[#0099dd] transition-colors font-semibold">
+              <img src="/telegram.webp" alt="" className="w-4 h-4" />
+              Telegram Bot
+            </a>
           </div>
         </div>
       </footer>
