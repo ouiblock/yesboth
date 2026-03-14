@@ -1,5 +1,13 @@
 [build]
-  publish = "."
+  command = "npm install"
+  publish = "public"
 
 [functions]
   directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
+[plugins.inputs]
+enabled = false
