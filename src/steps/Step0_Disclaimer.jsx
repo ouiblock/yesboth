@@ -1,8 +1,37 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { useLanguage } from '@/i18n/LanguageContext'
+
+const LANGS = [
+  { code: 'fr', label: 'FR' },
+  { code: 'en', label: 'EN' },
+  { code: 'es', label: 'ES' },
+  { code: 'it', label: 'IT' },
+  { code: 'zh', label: '中文' },
+  { code: 'ru', label: 'RU' },
+  { code: 'uk', label: 'UA' },
+  { code: 'ar', label: 'AR' },
+]
+
+const BLOCKS = ['tool', 'primacy', 'revocable', 'responsibility', 'age']
+const BLOCK_BG = {
+  tool: 'bg-white rounded-2xl p-4 shadow-sm border border-[#E5E7EB]',
+  primacy: 'bg-red-50 border border-red-200 rounded-2xl p-4',
+  revocable: 'bg-white rounded-2xl p-4 shadow-sm border border-[#E5E7EB]',
+  responsibility: 'bg-white rounded-2xl p-4 shadow-sm border border-[#E5E7EB]',
+  age: 'bg-[#1A6B6B]/5 border border-[#1A6B6B]/20 rounded-2xl p-4',
+}
+const TITLE_COLOR = {
+  tool: 'text-[#1C1C1E]',
+  primacy: 'text-[#EF4444]',
+  revocable: 'text-[#1C1C1E]',
+  responsibility: 'text-[#1C1C1E]',
+  age: 'text-[#1A6B6B]',
+}
 
 export default function Step0_Disclaimer({ onAccept }) {
+  const { t, locale, changeLocale } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [checked, setChecked] = useState(false)
   const scrollRef = useRef(null)
@@ -23,13 +52,28 @@ export default function Step0_Disclaimer({ onAccept }) {
   return (
     <div className="h-screen bg-[#F8F7F4] flex flex-col z-50">
       <div className="flex-1 flex flex-col max-w-[480px] mx-auto w-full h-full">
-        {/* Logo */}
-        <div className="flex-shrink-0 pt-10 pb-6 px-5 text-center">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#1A6B6B] mb-3">
-            <span className="text-white font-bold text-xl">YB</span>
+        {/* Logo + lang selector */}
+        <div className="flex-shrink-0 pt-8 pb-4 px-5">
+          <div className="flex justify-end mb-3">
+            <div className="flex gap-1 flex-wrap justify-end">
+              {LANGS.map(l => (
+                <button
+                  key={l.code}
+                  onClick={() => changeLocale(l.code)}
+                  className={`px-2 py-1 rounded-lg text-xs font-semibold transition-all ${locale === l.code ? 'bg-[#1A6B6B] text-white' : 'bg-white text-[#6B7280] border border-[#E5E7EB] hover:border-[#1A6B6B]'}`}
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
           </div>
-          <h1 className="text-2xl font-bold text-[#1A6B6B]">YesBoth</h1>
-          <p className="text-[#6B7280] text-sm mt-1">Both say yes.</p>
+          <div className="text-center">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#1A6B6B] mb-3">
+              <span className="text-white font-bold text-xl">YB</span>
+            </div>
+            <h1 className="text-2xl font-bold text-[#1A6B6B]">YesBoth</h1>
+            <p className="text-[#6B7280] text-sm mt-1">{t('app.tagline')}</p>
+          </div>
         </div>
 
         {/* Scrollable content */}
@@ -38,63 +82,21 @@ export default function Step0_Disclaimer({ onAccept }) {
           className="flex-1 overflow-y-auto px-5 pb-4 space-y-4 scrollbar-hide touch-pan-y overscroll-contain"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
-          <h2 className="text-lg font-bold text-[#1C1C1E]">À lire avant d'utiliser YesBoth</h2>
+          <h2 className="text-lg font-bold text-[#1C1C1E]">{t('disclaimer.title')}</h2>
 
-          {/* Bloc 1 */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-[#E5E7EB]">
-            <h3 className="font-semibold text-[#1C1C1E] text-sm mb-2">⚖️ Outil de communication</h3>
-            <p className="text-[#6B7280] text-sm leading-relaxed">
-              YesBoth est <strong>uniquement un outil d'aide à la communication</strong>.<br />
-              Il ne constitue <strong>pas un contrat juridiquement contraignant</strong>, un acte notarié, ni un service juridique certifié.<br /><br />
-              <strong>La responsabilité juridique, morale et éthique repose exclusivement sur les parties</strong> qui utilisent cet outil. YesBoth décline toute responsabilité quant à l'usage des messages générés.
-            </p>
-          </div>
-
-          {/* Bloc 2 — Avertissement rouge */}
-          <div className="bg-red-50 border border-red-200 rounded-2xl p-4">
-            <h3 className="font-semibold text-[#EF4444] text-sm mb-2">⚠️ Primauté du consentement oral</h3>
-            <p className="text-[#1C1C1E] text-sm leading-relaxed">
-              Le <strong>refus verbal, gestuel ou physique prévaut TOUJOURS</strong> sur tout document écrit, sans exception et sans délai.<br /><br />
-              Le <strong>silence ne vaut pas consentement</strong>.<br />
-              Un accord passé ne couvre <strong>aucun acte futur non spécifié</strong>.
-            </p>
-          </div>
-
-          {/* Bloc 3 */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-[#E5E7EB]">
-            <h3 className="font-semibold text-[#1C1C1E] text-sm mb-2">🔄 Révocabilité absolue</h3>
-            <p className="text-[#6B7280] text-sm leading-relaxed">
-              Le consentement est <strong>révocable à tout moment, immédiatement, sans justification, sans préavis</strong>.<br /><br />
-              <strong>Aucune clause de ce document ne peut limiter ce droit.</strong><br />
-              Chaque personne reste <strong>entièrement responsable</strong> de ses actes et décisions, indépendamment de tout document généré.
-            </p>
-          </div>
-
-          {/* Bloc 4 */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-[#E5E7EB]">
-            <h3 className="font-semibold text-[#1C1C1E] text-sm mb-2">🛡️ Responsabilité</h3>
-            <p className="text-[#6B7280] text-sm leading-relaxed">
-              YesBoth <strong>décline toute responsabilité</strong> quant à l'usage des messages générés.<br /><br />
-              La responsabilité juridique, morale et éthique repose <strong>exclusivement sur les parties</strong>. Ce document est une aide à la communication entre adultes consentants, rien de plus.
-            </p>
-          </div>
-
-          {/* Bloc 5 */}
-          <div className="bg-[#1A6B6B]/5 border border-[#1A6B6B]/20 rounded-2xl p-4">
-            <h3 className="font-semibold text-[#1A6B6B] text-sm mb-2">🔞 Majorité obligatoire</h3>
-            <p className="text-[#1C1C1E] text-sm leading-relaxed">
-              Cette application est <strong>strictement réservée aux personnes majeures (18 ans et plus)</strong>.<br />
-              En continuant, vous certifiez avoir l'âge légal requis dans votre pays de résidence.
-            </p>
-          </div>
+          {BLOCKS.map(block => (
+            <div key={block} className={BLOCK_BG[block]}>
+              <h3 className={`font-semibold text-sm mb-2 ${TITLE_COLOR[block]}`}>{t(`disclaimer.blocks.${block}.title`)}</h3>
+              <p className="text-[#6B7280] text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t(`disclaimer.blocks.${block}.content`) }} />
+            </div>
+          ))}
 
           <div className="h-2" />
           
-          {/* Indicateur de fin de scroll */}
           {!scrolled && (
             <div className="sticky bottom-0 left-0 right-0 py-3 bg-gradient-to-t from-white via-white to-transparent text-center">
               <p className="text-xs font-semibold text-[#1A6B6B] animate-pulse">
-                ↑ Faites défiler vers le haut pour tout lire ↑
+                {t('disclaimer.scrollHint')}
               </p>
             </div>
           )}
@@ -103,7 +105,7 @@ export default function Step0_Disclaimer({ onAccept }) {
         {/* Bottom fixed actions */}
         <div className="flex-shrink-0 px-5 pb-8 pt-4 bg-[#F8F7F4] border-t border-[#E5E7EB] space-y-4">
           {!scrolled && (
-            <p className="text-center text-xs text-[#6B7280]">↓ Faites défiler jusqu'en bas pour continuer</p>
+            <p className="text-center text-xs text-[#6B7280]">{t('disclaimer.scrollHint')}</p>
           )}
           <label className="flex items-start gap-3 cursor-pointer">
             <input
@@ -113,7 +115,7 @@ export default function Step0_Disclaimer({ onAccept }) {
               className="mt-0.5 w-5 h-5 rounded accent-[#1A6B6B] flex-shrink-0"
             />
             <span className="text-sm text-[#1C1C1E] leading-relaxed">
-              Je suis <strong>majeur(e)</strong> et j'ai lu et accepté ces conditions. Je comprends que <strong>YesBoth n'est pas un contrat juridique</strong> et que je reste <strong>entièrement responsable</strong> de mes actes.
+              {t('disclaimer.checkbox')}
             </span>
           </label>
           <button
@@ -126,7 +128,7 @@ export default function Step0_Disclaimer({ onAccept }) {
               }
             `}
           >
-            Commencer
+            {t('disclaimer.button')}
           </button>
         </div>
       </div>

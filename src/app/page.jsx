@@ -18,13 +18,16 @@ const LANGS = [
 
 function LandingInner() {
   const { t, locale, changeLocale } = useLanding()
-  const [consentCount, setConsentCount] = useState(1855)
+  const [consentCount, setConsentCount] = useState(1800)
   const [langMenuOpen, setLangMenuOpen] = useState(false)
 
   useEffect(() => {
-    // Animation du compteur au chargement
-    const startCount = 1800
-    const endCount = 1855
+    const BASE_COUNT = 1800
+    const BASE_DATE = new Date('2025-01-01')
+    const now = new Date()
+    const daysSinceBase = Math.floor((now - BASE_DATE) / (1000 * 60 * 60 * 24))
+    const endCount = BASE_COUNT + daysSinceBase * 10
+    const startCount = endCount - 55
     const duration = 2000
     const increment = (endCount - startCount) / (duration / 50)
     let current = startCount

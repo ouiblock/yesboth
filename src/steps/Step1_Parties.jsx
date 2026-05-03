@@ -2,8 +2,10 @@
 
 import Link from 'next/link'
 import ProgressBar from '@/components/ProgressBar'
+import { useLanguage } from '@/i18n/LanguageContext'
 
 export default function Step1_Parties({ form, setForm, onNext }) {
+  const { t } = useLanguage()
   const { initiateur, partenaire, date, lieu } = form
 
   const handleChange = (who, field, value) => {
@@ -35,32 +37,32 @@ export default function Step1_Parties({ form, setForm, onNext }) {
 
       {/* Title */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-[#2C3E50]">Qui signe cet accord ?</h2>
+        <h2 className="text-2xl font-bold text-[#2C3E50]">{t('step1.title')}</h2>
       </div>
 
       {/* Form */}
       <div className="space-y-5 flex-1">
         {/* Initiateur */}
         <div className="bg-white rounded-2xl p-4 shadow-sm border border-[#E5E7EB]">
-          <label className="block text-sm font-semibold text-[#2C3E50] mb-2">Vous</label>
+          <label className="block text-sm font-semibold text-[#2C3E50] mb-2">{t('step1.you')}</label>
           <div className="space-y-3">
             <div>
-              <label className="text-xs text-[#6B7280] font-medium mb-1 block">Prénom *</label>
+              <label className="text-xs text-[#6B7280] font-medium mb-1 block">{t('step1.firstName')} *</label>
               <input
                 type="text"
                 value={initiateur.prenom}
                 onChange={e => handleChange('initiateur', 'prenom', e.target.value)}
-                placeholder="Votre prénom"
+                placeholder={t('step1.firstNamePlaceholder')}
                 className="w-full px-4 py-3 rounded-xl border border-[#E5E7EB] bg-[#F8F7F4] text-[#1C1C1E] text-sm focus:border-[#1A6B6B] transition-all duration-200 ease-in-out"
               />
             </div>
             <div>
-              <label className="text-xs text-[#6B7280] font-medium mb-1 block">Nom *</label>
+              <label className="text-xs text-[#6B7280] font-medium mb-1 block">{t('step1.lastName')} *</label>
               <input
                 type="text"
                 value={initiateur.nom}
                 onChange={e => handleChange('initiateur', 'nom', e.target.value)}
-                placeholder="Votre nom"
+                placeholder={t('step1.lastNamePlaceholder')}
                 className="w-full px-4 py-3 rounded-xl border border-[#E5E7EB] bg-[#F8F7F4] text-[#1C1C1E] text-sm focus:border-[#1A6B6B] transition-all duration-200 ease-in-out"
               />
             </div>
@@ -69,25 +71,25 @@ export default function Step1_Parties({ form, setForm, onNext }) {
 
         {/* Partenaire */}
         <div className="bg-white rounded-2xl p-4 shadow-sm border border-[#E5E7EB]">
-          <label className="block text-sm font-semibold text-[#2C3E50] mb-2">L'autre personne</label>
+          <label className="block text-sm font-semibold text-[#2C3E50] mb-2">{t('step1.other')}</label>
           <div className="space-y-3">
             <div>
-              <label className="text-xs text-[#6B7280] font-medium mb-1 block">Prénom *</label>
+              <label className="text-xs text-[#6B7280] font-medium mb-1 block">{t('step1.firstName')} *</label>
               <input
                 type="text"
                 value={partenaire.prenom}
                 onChange={e => handleChange('partenaire', 'prenom', e.target.value)}
-                placeholder="Son prénom"
+                placeholder={t('step1.otherFirstNamePlaceholder')}
                 className="w-full px-4 py-3 rounded-xl border border-[#E5E7EB] bg-[#F8F7F4] text-[#1C1C1E] text-sm focus:border-[#1A6B6B] transition-all duration-200 ease-in-out"
               />
             </div>
             <div>
-              <label className="text-xs text-[#6B7280] font-medium mb-1 block">Nom *</label>
+              <label className="text-xs text-[#6B7280] font-medium mb-1 block">{t('step1.lastName')} *</label>
               <input
                 type="text"
                 value={partenaire.nom}
                 onChange={e => handleChange('partenaire', 'nom', e.target.value)}
-                placeholder="Son nom"
+                placeholder={t('step1.otherLastNamePlaceholder')}
                 className="w-full px-4 py-3 rounded-xl border border-[#E5E7EB] bg-[#F8F7F4] text-[#1C1C1E] text-sm focus:border-[#1A6B6B] transition-all duration-200 ease-in-out"
               />
             </div>
@@ -96,19 +98,18 @@ export default function Step1_Parties({ form, setForm, onNext }) {
 
         {/* Date et Lieu */}
         <div className="bg-white rounded-2xl p-4 shadow-sm border border-[#E5E7EB]">
-          <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Date et Lieu</label>
+          <label className="block text-sm font-semibold text-[#2C3E50] mb-3">{t('step1.dateLabel')}</label>
           <div className="space-y-3">
             <div>
-              <label className="text-xs text-[#6B7280] font-medium mb-1 block">Date de l'accord</label>
               <p className="text-sm font-medium text-[#1C1C1E] px-4 py-3 rounded-xl bg-[#F8F7F4] border border-[#E5E7EB]">{date}</p>
             </div>
             <div>
-              <label className="text-xs text-[#6B7280] font-medium mb-1 block">Lieu (optionnel)</label>
+              <label className="text-xs text-[#6B7280] font-medium mb-1 block">{t('step1.locationLabel') || 'Lieu (optionnel)'}</label>
               <input
                 type="text"
                 value={lieu}
                 onChange={e => handleLieuChange(e.target.value)}
-                placeholder="Ex: Paris, Biarritz, À domicile..."
+                placeholder={t('step1.locationPlaceholder') || 'Ex: Paris, Biarritz...'}
                 className="w-full px-4 py-3 rounded-xl border border-[#E5E7EB] bg-[#F8F7F4] text-[#1C1C1E] text-sm focus:border-[#5B9BD5] focus:ring-2 focus:ring-[#5B9BD5]/20 transition-all duration-200 ease-in-out"
               />
             </div>
@@ -118,9 +119,7 @@ export default function Step1_Parties({ form, setForm, onNext }) {
 
       {/* Footer disclaimer */}
       <div className="mt-4 mb-5 bg-amber-50 border border-amber-200 rounded-xl p-3">
-        <p className="text-xs text-amber-800 leading-relaxed text-center">
-          ⚠️ <strong>YesBoth n'est pas un contrat juridique.</strong> Les parties restent entièrement responsables de leurs actes.
-        </p>
+        <p className="text-xs text-amber-800 leading-relaxed text-center" dangerouslySetInnerHTML={{ __html: t('step1.disclaimer') }} />
       </div>
 
       <button
@@ -128,7 +127,7 @@ export default function Step1_Parties({ form, setForm, onNext }) {
         onClick={onNext}
         className="w-full py-4 bg-gradient-to-r from-[#F5A962] to-[#5B9BD5] text-white font-semibold rounded-full disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg active:scale-[0.98] transition-all duration-200 ease-in-out"
       >
-        Suivant →
+        {t('step1.next')}
       </button>
     </div>
   )

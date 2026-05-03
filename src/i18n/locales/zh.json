@@ -1,0 +1,110 @@
+{
+  "app": { "name": "YesBoth", "tagline": "双方同意。" },
+  "disclaimer": {
+    "title": "使用YesBoth前请阅读",
+    "scrollHint": "↓ 向下滚动继续",
+    "checkbox": "我已成年，已阅读并接受这些条款。我理解YesBoth不是法律合同，我对自己的行为负全部责任。",
+    "button": "开始",
+    "blocks": {
+      "tool": { "title": "⚖️ 沟通工具", "content": "YesBoth <strong>仅为沟通辅助工具</strong>。<br />它<strong>不构成具有法律约束力的合同</strong>、公证行为或经认证的法律服务。<br /><br /><strong>法律、道德和伦理责任完全由</strong>使用该工具的各方承担。" },
+      "primacy": { "title": "⚠️ 口头同意优先", "content": "<strong>口头、手势或肢体拒绝始终优先</strong>于任何书面文件，无一例外。<br /><br /><strong>沉默不代表同意</strong>。" },
+      "revocable": { "title": "🔄 绝对可撤销", "content": "同意可在<strong>任何时候立即撤销，无需理由，无需提前通知</strong>。" },
+      "responsibility": { "title": "🛡️ 责任", "content": "YesBoth<strong>对生成消息的使用不承担任何责任</strong>。" },
+      "age": { "title": "🔞 必须成年", "content": "本应用程序<strong>严格限于18岁及以上人士使用</strong>。" }
+    }
+  },
+  "step1": {
+    "title": "谁签署此协议？",
+    "you": "您",
+    "other": "另一方",
+    "firstName": "名字",
+    "lastName": "姓氏",
+    "firstNamePlaceholder": "您的名字",
+    "lastNamePlaceholder": "您的姓氏",
+    "otherFirstNamePlaceholder": "对方名字",
+    "otherLastNamePlaceholder": "对方姓氏",
+    "dateLabel": "协议日期：",
+    "locationLabel": "地点（可选）",
+    "locationPlaceholder": "例如：北京、上海、家中...",
+    "next": "下一步 →",
+    "disclaimer": "⚠️ <strong>YesBoth不是法律合同。</strong> 各方对自己的行为负全部责任。"
+  },
+  "step2": {
+    "title": "什么类型的协议？",
+    "subtitle": "选择适合您情况的级别",
+    "categories": {
+      "general": { "label": "日常与通用", "description": "活动、分享、共同责任" },
+      "relation": { "label": "关系与框架", "description": "调情、意图、关系类型、排他性" },
+      "intimite": { "label": "亲密关系", "description": "亲密同意、避孕、内容" },
+      "nsfw": { "label": "特定实践", "description": "实践、限制、安全词" }
+    },
+    "nsfwModal": {
+      "title": "高级实践",
+      "content": "您将访问需要清晰沟通和明确界限的更复杂亲密实践。",
+      "safeword": "您定义的安全词优先于任何文件，无一例外。",
+      "warning": "本文件<strong>不是法律合同</strong>。各方对自己的行为负全部责任。",
+      "confirm": "继续",
+      "cancel": "返回"
+    },
+    "disclaimer": "⚠️ <strong>仅为沟通工具。</strong> 非法律行为。每方对自己的同意和行为负责。",
+    "next": "下一步 →"
+  },
+  "step3": {
+    "title": "构建您的协议",
+    "safewordLabel": "🔑 安全词",
+    "safewordRequired": "（必填）",
+    "safewordPlaceholder": "例如：菠萝",
+    "safewordWarning": "⚠️ 安全词<strong>立即</strong>停止一切行为，无一例外。优先于任何书面协议。",
+    "customClauseLabel": "📝 自定义条款",
+    "customClauseOptional": "（可选）",
+    "customClausePlaceholder": "添加适合您情况的具体条款...",
+    "validityLabel": "⏱ 有效期",
+    "validityOptions": { "ce_soir": "今晚", "24h": "24小时", "7j": "7天", "30j": "30天", "indefini": "无限期" },
+    "disclaimer": "⚠️ <strong>提醒：</strong> 本文件是沟通工具，非法律合同。口头同意始终优先。各方<strong>完全负责</strong>自己的行为。",
+    "generate": "生成消息 →",
+    "locked": "必填",
+    "cguAccept": "我已阅读并接受",
+    "cguLink": "使用条款",
+    "cguNote": "我理解YesBoth是沟通工具而非法律合同。"
+  },
+  "step4": {
+    "title": "您的协议已准备好",
+    "disclaimer": "⚠️ <strong>本文件不是法律合同。</strong> 仅为沟通工具。口头和肢体同意始终优先。<strong>各方对自己的行为负全部责任。</strong>",
+    "share": "📤 分享至...",
+    "copy": "📋 复制消息",
+    "copied": "✅ 已复制！",
+    "revokeTitle": "🔴 生成撤销消息",
+    "revokeCopy": "📋 复制撤销",
+    "legalWarning": "<strong>重要法律声明：</strong> YesBoth是成年人之间的沟通辅助工具。本文件<strong>绝不构成</strong>具有法律约束力的合同。口头、手势或肢体拒绝<strong>始终立即</strong>优先于任何书面文件。",
+    "back": "← 修改协议"
+  },
+  "message": {
+    "header": "YESBOTH协议",
+    "between": "在",
+    "and": "和",
+    "validity": "有效期：",
+    "validityMap": { "ce_soir": "仅今晚", "24h": "未来24小时", "7j": "未来7天", "30j": "未来30天", "indefini": "无限期，随时可撤销" },
+    "safeword": "安全词：",
+    "safewordNote": "— 立即停止一切行为",
+    "customClause": "特定条款：",
+    "revocable": "随时可撤销，立即生效，\n无需理由或解释。\n口头或肢体拒绝始终优先。",
+    "validation": "为验证，",
+    "validationText": "请回复：\n\"我自由确认，",
+    "warning": "声明：本文件是沟通工具，\n非具有法律约束力的合同。\n口头和肢体同意仍为优先。\n各方对其行为完全负责。",
+    "reference": "（参考民法典第1316-1条）",
+    "yes": "[是]",
+    "no": "[否]",
+    "maybe": "[待讨论]",
+    "refused": "— 拒绝"
+  },
+  "revoke": {
+    "header": "撤销 — YESBOTH",
+    "intro": "我，",
+    "text": "，撤销我的同意\n给予日期",
+    "with": "与",
+    "cancelled": "本协议立即取消，\n日期",
+    "at": "时间",
+    "noFuture": "任何后续行为不能依据\n原始协议。",
+    "warning": "声明：本撤销消息是沟通工具。\n法律、道德和伦理责任\n完全由相关方承担。"
+  }
+}

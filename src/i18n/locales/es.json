@@ -42,6 +42,8 @@
     "otherFirstNamePlaceholder": "Su nombre",
     "otherLastNamePlaceholder": "Su apellido",
     "dateLabel": "Fecha del acuerdo:",
+    "locationLabel": "Lugar (opcional)",
+    "locationPlaceholder": "Ej: Madrid, Barcelona, En casa...",
     "next": "Siguiente →",
     "disclaimer": "⚠️ <strong>YesBoth no es un contrato legal.</strong> Las partes siguen siendo totalmente responsables de sus actos."
   },
@@ -96,7 +98,10 @@
     },
     "disclaimer": "⚠️ <strong>Recordatorio:</strong> Este documento es una herramienta de comunicación, no un contrato legal. El consentimiento verbal siempre prevalece. Cada parte sigue siendo <strong>totalmente responsable</strong> de sus actos.",
     "generate": "Generar mensaje →",
-    "locked": "Obligatorio"
+    "locked": "Obligatorio",
+    "cguAccept": "He leído y acepto los",
+    "cguLink": "Términos de Uso",
+    "cguNote": "Entiendo que YesBoth es una herramienta de comunicación y no un contrato legal."
   },
   "step4": {
     "title": "Tu acuerdo está listo",

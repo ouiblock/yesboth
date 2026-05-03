@@ -42,6 +42,8 @@
     "otherFirstNamePlaceholder": "Their first name",
     "otherLastNamePlaceholder": "Their last name",
     "dateLabel": "Agreement date:",
+    "locationLabel": "Location (optional)",
+    "locationPlaceholder": "e.g. Paris, London, At home...",
     "next": "Next →",
     "disclaimer": "⚠️ <strong>YesBoth is not a legal contract.</strong> Parties remain fully responsible for their actions."
   },
@@ -96,7 +98,10 @@
     },
     "disclaimer": "⚠️ <strong>Reminder:</strong> This document is a communication tool, not a legal contract. Verbal consent always prevails. Each party remains <strong>fully responsible</strong> for their actions.",
     "generate": "Generate message →",
-    "locked": "Required"
+    "locked": "Required",
+    "cguAccept": "I have read and accept the",
+    "cguLink": "Terms of Use",
+    "cguNote": "I understand that YesBoth is a communication tool and not a legal contract."
   },
   "step4": {
     "title": "Your agreement is ready",

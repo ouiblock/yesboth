@@ -4,42 +4,24 @@ import { useState } from 'react'
 import Link from 'next/link'
 import ProgressBar from '@/components/ProgressBar'
 import CategoryCard from '@/components/CategoryCard'
+import { useLanguage } from '@/i18n/LanguageContext'
 
-const CATEGORIES = [
-  {
-    id: 'general',
-    emoji: '🌿',
-    label: 'Général & Quotidien',
-    description: 'Activités, partage, responsabilités communes',
-    badgeColor: '#10B981',
-  },
-  {
-    id: 'relation',
-    emoji: '🤝',
-    label: 'Relation & Cadre',
-    description: 'Flirt, intentions, type de relation, exclusivité',
-    badgeColor: '#3B82F6',
-  },
-  {
-    id: 'intimite',
-    emoji: '💋',
-    label: 'Intimité',
-    description: 'Consentement intime, contraception, contenu',
-    badgeColor: '#F59E0B',
-  },
-  {
-    id: 'nsfw',
-    emoji: '🔴',
-    label: 'Pratiques spécifiques',
-    description: 'Pratiques, limites, safeword',
-    badge: '18+',
-    badgeColor: '#EF4444',
-    nsfw: true,
-  },
+const CATEGORY_META = [
+  { id: 'general', emoji: '🌿', badgeColor: '#10B981' },
+  { id: 'relation', emoji: '🤝', badgeColor: '#3B82F6' },
+  { id: 'intimite', emoji: '💋', badgeColor: '#F59E0B' },
+  { id: 'nsfw', emoji: '🔴', badge: '18+', badgeColor: '#EF4444', nsfw: true },
 ]
 
 export default function Step2_Category({ form, setForm, onNext }) {
+  const { t } = useLanguage()
   const [nsfwModal, setNsfwModal] = useState(false)
+
+  const CATEGORIES = CATEGORY_META.map(meta => ({
+    ...meta,
+    label: t(`step2.categories.${meta.id}.label`),
+    description: t(`step2.categories.${meta.id}.description`),
+  }))
 
   const handleSelect = (cat) => {
     if (cat.nsfw) {
@@ -66,8 +48,8 @@ export default function Step2_Category({ form, setForm, onNext }) {
 
       {/* Title */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-[#1C1C1E]">Quel type d'accord ?</h2>
-        <p className="text-[#6B7280] text-sm mt-1">Choisis le niveau qui correspond à votre situation</p>
+        <h2 className="text-2xl font-bold text-[#1C1C1E]">{t('step2.title')}</h2>
+        <p className="text-[#6B7280] text-sm mt-1">{t('step2.subtitle')}</p>
       </div>
 
       {/* Categories */}
@@ -84,9 +66,7 @@ export default function Step2_Category({ form, setForm, onNext }) {
 
       {/* Footer disclaimer */}
       <div className="mt-5 mb-5 bg-amber-50 border border-amber-200 rounded-xl p-3">
-        <p className="text-xs text-amber-800 leading-relaxed text-center">
-          ⚠️ <strong>Outil de communication uniquement.</strong> Pas un acte juridique. Chaque partie reste responsable de son consentement et de ses actes.
-        </p>
+        <p className="text-xs text-amber-800 leading-relaxed text-center" dangerouslySetInnerHTML={{ __html: t('step2.disclaimer') }} />
       </div>
 
       <button
@@ -99,7 +79,7 @@ export default function Step2_Category({ form, setForm, onNext }) {
           }
         `}
       >
-        Suivant →
+        {t('step2.next')}
       </button>
 
       {/* NSFW Modal */}
@@ -109,28 +89,26 @@ export default function Step2_Category({ form, setForm, onNext }) {
             <div className="text-center mb-4">
               <span className="text-4xl">⚠️</span>
             </div>
-            <h3 className="font-bold text-[#1C1C1E] text-lg text-center mb-3">Pratiques élaborées</h3>
+            <h3 className="font-bold text-[#1C1C1E] text-lg text-center mb-3">{t('step2.nsfwModal.title')}</h3>
             <p className="text-[#6B7280] text-sm leading-relaxed text-center mb-3">
-              Vous allez accéder à des pratiques intimes plus élaborées nécessitant une communication claire et des limites définies.
+              {t('step2.nsfwModal.content')}
             </p>
             <p className="text-[#EF4444] text-sm font-semibold text-center mb-4">
-              Le safeword que vous définirez prévaut sur tout document, sans exception.
+              {t('step2.nsfwModal.safeword')}
             </p>
-            <p className="text-xs text-[#6B7280] text-center mb-5 leading-relaxed">
-              Ce document n'est <strong>pas un contrat juridique</strong>. Les parties restent entièrement responsables de leurs actes.
-            </p>
+            <p className="text-xs text-[#6B7280] text-center mb-5 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('step2.nsfwModal.warning') }} />
             <div className="space-y-2">
               <button
                 onClick={confirmNsfw}
                 className="w-full py-3 rounded-full bg-[#EF4444] text-white font-semibold text-sm transition-all duration-200 ease-in-out hover:bg-red-600"
               >
-                Continuer
+                {t('step2.nsfwModal.confirm')}
               </button>
               <button
                 onClick={() => setNsfwModal(false)}
                 className="w-full py-3 rounded-full border border-[#E5E7EB] text-[#6B7280] font-semibold text-sm transition-all duration-200 ease-in-out hover:bg-gray-50"
               >
-                Retour
+                {t('step2.nsfwModal.cancel')}
               </button>
             </div>
           </div>

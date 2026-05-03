@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import ProgressBar from '@/components/ProgressBar'
 import ClauseItem from '@/components/ClauseItem'
+import { useLanguage } from '@/i18n/LanguageContext'
 import clausesGeneral from '@/data/clauses_general.json'
 import clausesRelation from '@/data/clauses_relation.json'
 import clausesIntimiite from '@/data/clauses_intimite.json'
@@ -16,17 +17,17 @@ const DATA_MAP = {
   nsfw: clausesNsfw,
 }
 
-const VALIDITE_OPTIONS = [
-  { id: 'ce_soir', label: 'Ce soir' },
-  { id: '24h', label: '24h' },
-  { id: '7j', label: '7 jours' },
-  { id: '30j', label: '30 jours' },
-  { id: 'indefini', label: 'Indéfini' },
-]
+const VALIDITE_IDS = ['ce_soir', '24h', '7j', '30j', 'indefini']
 
 export default function Step3_Clauses({ form, setForm, onNext, onBack }) {
+  const { t } = useLanguage()
   const clauseData = DATA_MAP[form.categorie] || []
   const [cguAccepted, setCguAccepted] = useState(false)
+
+  const VALIDITE_OPTIONS = VALIDITE_IDS.map(id => ({
+    id,
+    label: t(`step3.validityOptions.${id}`),
+  }))
 
   useEffect(() => {
     if (form.clauses.length === 0) {
@@ -62,7 +63,7 @@ export default function Step3_Clauses({ form, setForm, onNext, onBack }) {
       </div>
 
       <div className="px-5 mb-4">
-        <h2 className="text-2xl font-bold text-[#1C1C1E]">Construis ton accord</h2>
+        <h2 className="text-2xl font-bold text-[#1C1C1E]">{t('step3.title')}</h2>
         <p className="text-[#6B7280] text-sm mt-1">
           {form.initiateur.prenom} & {form.partenaire.prenom}
         </p>
@@ -90,30 +91,28 @@ export default function Step3_Clauses({ form, setForm, onNext, onBack }) {
         {isNsfw && (
           <div className="bg-red-50 border border-red-200 rounded-2xl p-4">
             <label className="block text-sm font-semibold text-[#EF4444] mb-2">
-              🔑 Safeword <span className="text-red-400 font-normal">(obligatoire)</span>
+              {t('step3.safewordLabel')} <span className="text-red-400 font-normal">{t('step3.safewordRequired')}</span>
             </label>
             <input
               type="text"
               value={form.safeword}
               onChange={e => setForm(prev => ({ ...prev, safeword: e.target.value }))}
-              placeholder="ex : ananas"
+              placeholder={t('step3.safewordPlaceholder')}
               className="w-full px-4 py-3 rounded-xl border border-red-200 bg-white text-[#1C1C1E] text-sm focus:border-[#EF4444] transition-all duration-200 ease-in-out"
             />
-            <p className="text-xs text-[#EF4444] mt-2 leading-relaxed">
-              ⚠️ Le safeword stoppe <strong>immédiatement</strong> tout acte, sans exception. Il prévaut sur tout accord écrit.
-            </p>
+            <p className="text-xs text-[#EF4444] mt-2 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('step3.safewordWarning') }} />
           </div>
         )}
 
         {/* Clause libre */}
         <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] p-4">
           <label className="block text-sm font-semibold text-[#1C1C1E] mb-2">
-            📝 Clause personnalisée <span className="text-[#6B7280] font-normal">(optionnel)</span>
+            {t('step3.customClauseLabel')} <span className="text-[#6B7280] font-normal">{t('step3.customClauseOptional')}</span>
           </label>
           <textarea
             value={form.clauseLibre}
             onChange={e => setForm(prev => ({ ...prev, clauseLibre: e.target.value }))}
-            placeholder="Ajoutez une clause spécifique à votre situation..."
+            placeholder={t('step3.customClausePlaceholder')}
             rows={3}
             className="w-full px-4 py-3 rounded-xl border border-[#E5E7EB] bg-[#F8F7F4] text-[#1C1C1E] text-sm focus:border-[#1A6B6B] transition-all duration-200 ease-in-out resize-none"
           />
@@ -121,7 +120,7 @@ export default function Step3_Clauses({ form, setForm, onNext, onBack }) {
 
         {/* Durée de validité */}
         <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] p-4">
-          <p className="text-sm font-semibold text-[#1C1C1E] mb-3">⏱ Durée de validité</p>
+          <p className="text-sm font-semibold text-[#1C1C1E] mb-3">{t('step3.validityLabel')}</p>
           <div className="flex gap-2 flex-wrap">
             {VALIDITE_OPTIONS.map(opt => (
               <button
@@ -151,17 +150,17 @@ export default function Step3_Clauses({ form, setForm, onNext, onBack }) {
             />
             <div className="flex-1">
               <p className="text-xs text-blue-900 leading-relaxed">
-                <strong>J'ai lu et j'accepte les </strong>
+                <strong>{t('step3.cguAccept') || "J'ai lu et j'accepte les"} </strong>
                 <a 
                   href="/cgu" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-800 underline font-medium"
                 >
-                  Conditions Générales d'Utilisation
+                  {t('step3.cguLink') || 'Conditions Générales d\'Utilisation'}
                 </a>
                 <br />
-                Je comprends que YesBoth est un outil de communication et non un contrat juridique.
+                {t('step3.cguNote') || 'Je comprends que YesBoth est un outil de communication et non un contrat juridique.'}
               </p>
             </div>
           </label>
@@ -169,9 +168,7 @@ export default function Step3_Clauses({ form, setForm, onNext, onBack }) {
 
         {/* Disclaimer */}
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
-          <p className="text-xs text-amber-800 leading-relaxed text-center">
-            ⚠️ <strong>Rappel :</strong> Ce document est un outil de communication, non un contrat juridique. Le consentement verbal prévaut toujours. Chaque partie reste <strong>entièrement responsable</strong> de ses actes.
-          </p>
+          <p className="text-xs text-amber-800 leading-relaxed text-center" dangerouslySetInnerHTML={{ __html: t('step3.disclaimer') }} />
         </div>
       </div>
 
@@ -187,7 +184,7 @@ export default function Step3_Clauses({ form, setForm, onNext, onBack }) {
             }
           `}
         >
-          Générer le message →
+          {t('step3.generate')}
         </button>
       </div>
     </div>

@@ -3,6 +3,18 @@ const { Telegraf, Markup } = require('telegraf');
 // Stockage des sessions (en mémoire)
 const sessions = new Map();
 
+// Mapping des locales pour formatage de date
+const dateLocales = {
+  fr: 'fr-FR',
+  en: 'en-US',
+  es: 'es-ES',
+  it: 'it-IT',
+  zh: 'zh-CN',
+  ru: 'ru-RU',
+  uk: 'uk-UA',
+  ar: 'ar-SA'
+};
+
 // Traductions
 const translations = {
   fr: {
@@ -92,6 +104,70 @@ const translations = {
     validationText: "il seguente messaggio: \"Accetto questi termini. Firmato",
     warning: "⚠️ PROMEMORIA: Il rifiuto verbale/fisico prevale SEMPRE. Il silenzio non significa consenso.",
     reference: "📱 Generato tramite YesBoth — www.yesboth.com"
+  },
+  zh: {
+    header: "同意消息",
+    between: "在",
+    and: "和",
+    yes: "✅",
+    safeword: "🔴 安全词:",
+    safewordNote: "(说出即立即停止)",
+    customClause: "📝 自定义条款:",
+    validity: "⏱️ 有效期:",
+    validityMap: { ce_soir: "仅今晚", "24h": "24小时", "7j": "7天", "30j": "30天", indefini: "无限期（随时可撤销）" },
+    revocable: "🔄 此同意随时可撤销，无需理由。",
+    validation: "✍️ 为验证，请发送给",
+    validationText: "以下消息：\"我接受这些条款。签名",
+    warning: "⚠️ 提醒：口头/肢体拒绝始终优先。沉默不代表同意。",
+    reference: "📱 由 YesBoth 生成 — www.yesboth.com"
+  },
+  ru: {
+    header: "СООБЩЕНИЕ О СОГЛАСИИ",
+    between: "Между",
+    and: "и",
+    yes: "✅",
+    safeword: "🔴 Безопасное слово:",
+    safewordNote: "(немедленная остановка при произнесении)",
+    customClause: "📝 Индивидуальный пункт:",
+    validity: "⏱️ Срок действия:",
+    validityMap: { ce_soir: "Только сегодня вечером", "24h": "24 часа", "7j": "7 дней", "30j": "30 дней", indefini: "Бессрочно (отзываемо в любой момент)" },
+    revocable: "🔄 Это согласие ОТЗЫВАЕМО в любой момент, без обоснования.",
+    validation: "✍️ Для подтверждения отправьте",
+    validationText: "следующее сообщение: \"Я принимаю эти условия. Подписано",
+    warning: "⚠️ НАПОМИНАНИЕ: Устный/физический отказ ВСЕГДА имеет приоритет. Молчание не означает согласие.",
+    reference: "📱 Создано через YesBoth — www.yesboth.com"
+  },
+  uk: {
+    header: "ПОВІДОМЛЕННЯ ПРО ЗГОДУ",
+    between: "Між",
+    and: "та",
+    yes: "✅",
+    safeword: "🔴 Безпечне слово:",
+    safewordNote: "(негайна зупинка при вимові)",
+    customClause: "📝 Індивідуальний пункт:",
+    validity: "⏱️ Термін дії:",
+    validityMap: { ce_soir: "Тільки сьогодні ввечері", "24h": "24 години", "7j": "7 днів", "30j": "30 днів", indefini: "Безстроково (відкличне в будь-який момент)" },
+    revocable: "🔄 Ця згода ВІДКЛИЧНА в будь-який момент, без обґрунтування.",
+    validation: "✍️ Для підтвердження надішліть",
+    validationText: "таке повідомлення: \"Я приймаю ці умови. Підписано",
+    warning: "⚠️ НАГАДУВАННЯ: Усна/фізична відмова ЗАВЖДИ має пріоритет. Мовчання не означає згоду.",
+    reference: "📱 Створено через YesBoth — www.yesboth.com"
+  },
+  ar: {
+    header: "رسالة الموافقة",
+    between: "بين",
+    and: "و",
+    yes: "✅",
+    safeword: "🔴 كلمة الأمان:",
+    safewordNote: "(توقف فوري عند النطق بها)",
+    customClause: "📝 بند مخصص:",
+    validity: "⏱️ مدة الصلاحية:",
+    validityMap: { ce_soir: "الليلة فقط", "24h": "24 ساعة", "7j": "7 أيام", "30j": "30 يوماً", indefini: "غير محدد (قابل للإلغاء في أي وقت)" },
+    revocable: "🔄 هذه الموافقة قابلة للإلغاء في أي وقت، دون مبرر.",
+    validation: "✍️ للتأكيد، أرسل إلى",
+    validationText: "الرسالة التالية: \"أقبل هذه الشروط. موقع",
+    warning: "⚠️ تذكير: الرفض الشفهي/الجسدي يتقدم دائماً. الصمت لا يعني الموافقة.",
+    reference: "📱 تم إنشاؤه عبر YesBoth — www.yesboth.com"
   }
 };
 
@@ -144,12 +220,12 @@ bot.use((ctx, next) => {
   const chatId = ctx.chat?.id;
   if (chatId && !sessions.has(chatId)) {
     sessions.set(chatId, {
-      lang: 'fr',
+      lang: 'en',
       step: null,
       form: {
         initiateur: { prenom: '', nom: '' },
         partenaire: { prenom: '', nom: '' },
-        date: new Date().toLocaleDateString('fr-FR'),
+        date: new Date().toLocaleDateString('en-US'),
         lieu: '',
         category: '',
         clauses: [],
@@ -165,28 +241,66 @@ bot.use((ctx, next) => {
 const getSession = (chatId) => sessions.get(chatId);
 
 // Commandes
+const startMessages = {
+  fr: '🎯 Bienvenue sur YesBoth Bot\n\nOutil de communication pour consentement clair entre adultes.\n\n⚠️ Ceci est un outil d\'aide à la communication, pas un contrat juridique.\n\nTapez /consent pour commencer.',
+  en: '🎯 Welcome to YesBoth Bot\n\nCommunication tool for clear consent between adults.\n\n⚠️ This is a communication aid, not a legal contract.\n\nType /consent to start.',
+  es: '🎯 Bienvenido a YesBoth Bot\n\nHerramienta de comunicación para el consentimiento claro entre adultos.\n\n⚠️ Esta es una herramienta de comunicación, no un contrato legal.\n\nEscribe /consent para empezar.',
+  it: '🎯 Benvenuto su YesBoth Bot\n\nStrumento di comunicazione per il consenso chiaro tra adulti.\n\n⚠️ Questo è uno strumento di comunicazione, non un contratto legale.\n\nDigita /consent per iniziare.',
+  zh: '🎯 欢迎使用 YesBoth Bot\n\n成人间清晰同意的沟通工具。\n\n⚠️ 这是沟通辅助工具，非法律合同。\n\n输入 /consent 开始。',
+  ru: '🎯 Добро пожаловать в YesBoth Bot\n\nИнструмент коммуникации для чёткого согласия между взрослыми.\n\n⚠️ Это инструмент коммуникации, не юридический контракт.\n\nВведите /consent для начала.',
+  uk: '🎯 Ласкаво просимо до YesBoth Bot\n\nІнструмент комунікації для чіткої згоди між дорослими.\n\n⚠️ Це інструмент комунікації, не юридичний контракт.\n\nВведіть /consent для початку.',
+  ar: '🎯 مرحباً بك في YesBoth Bot\n\nأداة تواصل للموافقة الواضحة بين البالغين.\n\n⚠️ هذه أداة تواصل، وليست عقداً قانونياً.\n\nاكتب /consent للبدء.'
+};
+
+const cancelMessages = {
+  fr: '❌ Création annulée. Tapez /consent pour recommencer.',
+  en: '❌ Creation cancelled. Type /consent to start again.',
+  es: '❌ Creación cancelada. Escribe /consent para empezar de nuevo.',
+  it: '❌ Creazione annullata. Digita /consent per ricominciare.',
+  zh: '❌ 已取消。输入 /consent 重新开始。',
+  ru: '❌ Создание отменено. Введите /consent чтобы начать снова.',
+  uk: '❌ Створення скасовано. Введіть /consent щоб почати знову.',
+  ar: '❌ تم الإلغاء. اكتب /consent للبدء من جديد.'
+};
+
 bot.start((ctx) => {
   const session = getSession(ctx.chat.id);
+  const lang = session.lang || 'en';
   session.step = null;
-  ctx.replyWithMarkdownV2(`🎯 *Bienvenue sur YesBoth Bot*\n\nOutil de communication pour consentement clair entre adultes\\.\n\n*Important :* Ceci est un outil d'aide à la communication, pas un contrat juridique\\.\n\nPour commencer, tapez : /consent`);
+  ctx.reply(startMessages[lang] || startMessages.en);
 });
 
 bot.help((ctx) => {
-  ctx.replyWithMarkdownV2(`📖 *Commandes disponibles :*\n\n/start \\- Démarrer le bot\n/consent \\- Créer un message de consentement\n/info \\- Informations sur YesBoth\n/legal \\- Mentions légales\n/cancel \\- Annuler la création en cours\n/help \\- Afficher cette aide\n\n🚀 Tapez /consent pour commencer\\!`);
+  const session = getSession(ctx.chat.id);
+  const lang = session.lang || 'en';
+  const helpMessages = {
+    fr: '📖 Commandes disponibles :\n\n/start — Démarrer le bot\n/consent — Créer un message de consentement\n/info — Informations sur YesBoth\n/legal — Mentions légales\n/cancel — Annuler la création en cours\n/help — Afficher cette aide\n\n🚀 Tapez /consent pour commencer !',
+    en: '📖 Available commands:\n\n/start — Start the bot\n/consent — Create a consent message\n/info — About YesBoth\n/legal — Legal notice\n/cancel — Cancel current creation\n/help — Show this help\n\n🚀 Type /consent to start!',
+    es: '📖 Comandos disponibles:\n\n/start — Iniciar el bot\n/consent — Crear un mensaje de consentimiento\n/info — Información sobre YesBoth\n/legal — Aviso legal\n/cancel — Cancelar la creación actual\n/help — Mostrar esta ayuda\n\n🚀 ¡Escribe /consent para empezar!',
+    it: '📖 Comandi disponibili:\n\n/start — Avvia il bot\n/consent — Crea un messaggio di consenso\n/info — Informazioni su YesBoth\n/legal — Note legali\n/cancel — Annulla la creazione corrente\n/help — Mostra questa guida\n\n🚀 Digita /consent per iniziare!',
+    zh: '📖 可用命令：\n\n/start — 启动机器人\n/consent — 创建同意消息\n/info — 关于 YesBoth\n/cancel — 取消当前创建\n/help — 显示此帮助\n\n🚀 输入 /consent 开始！',
+    ru: '📖 Доступные команды:\n\n/start — Запустить бота\n/consent — Создать сообщение о согласии\n/info — О YesBoth\n/cancel — Отменить текущее создание\n/help — Показать эту справку\n\n🚀 Введите /consent чтобы начать!',
+    uk: '📖 Доступні команди:\n\n/start — Запустити бота\n/consent — Створити повідомлення про згоду\n/info — Про YesBoth\n/cancel — Скасувати поточне створення\n/help — Показати цю довідку\n\n🚀 Введіть /consent щоб почати!',
+    ar: '📖 الأوامر المتاحة:\n\n/start — تشغيل البوت\n/consent — إنشاء رسالة موافقة\n/info — حول YesBoth\n/cancel — إلغاء الإنشاء الحالي\n/help — عرض هذه المساعدة\n\n🚀 اكتب /consent للبدء!'
+  };
+  ctx.reply(helpMessages[lang] || helpMessages.en);
 });
 
 bot.command('cancel', (ctx) => {
   const session = getSession(ctx.chat.id);
+  const lang = session.lang || 'en';
   session.step = null;
-  ctx.reply('❌ Création annulée. Tapez /consent pour recommencer.');
+  ctx.reply(cancelMessages[lang] || cancelMessages.en);
 });
 
 bot.command('consent', (ctx) => {
   const keyboard = Markup.inlineKeyboard([
     [Markup.button.callback('🇫🇷 Français', 'lang_fr'), Markup.button.callback('🇬🇧 English', 'lang_en')],
-    [Markup.button.callback('🇪🇸 Español', 'lang_es'), Markup.button.callback('🇮🇹 Italiano', 'lang_it')]
+    [Markup.button.callback('🇪🇸 Español', 'lang_es'), Markup.button.callback('🇮🇹 Italiano', 'lang_it')],
+    [Markup.button.callback('🇨🇳 中文', 'lang_zh'), Markup.button.callback('🇷🇺 Русский', 'lang_ru')],
+    [Markup.button.callback('🇺🇦 Українська', 'lang_uk'), Markup.button.callback('🇸🇦 العربية', 'lang_ar')]
   ]);
-  ctx.reply('Choisissez la langue / Choose language:', keyboard);
+  ctx.reply('🌍 Choose language / Choisissez la langue:', keyboard);
 });
 
 bot.command('info', (ctx) => {
@@ -202,17 +316,22 @@ bot.action(/lang_(.+)/, (ctx) => {
   const lang = ctx.match[1];
   const session = getSession(ctx.chat.id);
   session.lang = lang;
+  session.form.date = new Date().toLocaleDateString(dateLocales[lang] || 'en-US');
   session.step = 'initiator_firstname';
   
   const messages = {
     fr: '✅ Langue sélectionnée : Français\n\n👤 Quel est VOTRE prénom ?',
     en: '✅ Language selected: English\n\n👤 What is YOUR first name?',
     es: '✅ Idioma seleccionado: Español\n\n👤 ¿Cuál es TU nombre?',
-    it: '✅ Lingua selezionata: Italiano\n\n👤 Qual è il TUO nome?'
+    it: '✅ Lingua selezionata: Italiano\n\n👤 Qual è il TUO nome?',
+    zh: '✅ 已选择语言：中文\n\n👤 您的名字是？',
+    ru: '✅ Язык выбран: Русский\n\n👤 Введите ВАШЕ имя:',
+    uk: '✅ Мову вибрано: Українська\n\n👤 Яке ВАШЕ ім\'я?',
+    ar: '✅ تم اختيار اللغة: العربية\n\n👤 ما هو اسمك الأول؟'
   };
   
   ctx.answerCbQuery();
-  ctx.reply(messages[lang]);
+  ctx.reply(messages[lang] || messages.en);
 });
 
 // Gestion des messages texte
@@ -247,29 +366,54 @@ bot.on('text', (ctx) => {
       initiator_lastname: '👥 Qual è il NOME dell\'altra persona?',
       partner_firstname: 'Qual è il suo COGNOME?',
       partner_lastname: '📍 Dove si svolge questo incontro? (città, luogo...)\n\n💡 Digita "skip" per saltare',
+    },
+    zh: {
+      initiator_firstname: '您的姓氏是？',
+      initiator_lastname: '👥 对方的名字是？',
+      partner_firstname: '对方的姓氏是？',
+      partner_lastname: '📍 这次相遇在哪里？（城市、地点...）\n\n💡 输入 "skip" 跳过',
+    },
+    ru: {
+      initiator_firstname: 'Введите вашу ФАМИЛИЮ:',
+      initiator_lastname: '👥 Введите ИМЯ другого человека:',
+      partner_firstname: 'Введите ФАМИЛИЮ другого человека:',
+      partner_lastname: '📍 Где проходит эта встреча? (город, место...)\n\n💡 Введите "skip" чтобы пропустить',
+    },
+    uk: {
+      initiator_firstname: 'Яке ваше ПРІЗВИЩЕ?',
+      initiator_lastname: '👥 Яке ІМ\'Я іншої людини?',
+      partner_firstname: 'Яке ПРІЗВИЩЕ іншої людини?',
+      partner_lastname: '📍 Де відбувається ця зустріч? (місто, місце...)\n\n💡 Введіть "skip" щоб пропустити',
+    },
+    ar: {
+      initiator_firstname: 'ما هو اسم عائلتك؟',
+      initiator_lastname: '👥 ما هو الاسم الأول للشخص الآخر؟',
+      partner_firstname: 'ما هو اسم عائلة الشخص الآخر؟',
+      partner_lastname: '📍 أين تجري هذه المقابلة؟ (مدينة، مكان...)\n\n💡 اكتب "skip" للتخطي',
     }
   };
   
+  const m = msgs[lang] || msgs.en;
   switch(session.step) {
     case 'initiator_firstname':
       session.form.initiateur.prenom = text;
       session.step = 'initiator_lastname';
-      ctx.reply(msgs[lang].initiator_firstname);
+      ctx.reply(m.initiator_firstname);
       break;
     case 'initiator_lastname':
       session.form.initiateur.nom = text;
       session.step = 'partner_firstname';
-      ctx.reply(msgs[lang].initiator_lastname);
+      ctx.reply(m.initiator_lastname);
       break;
     case 'partner_firstname':
       session.form.partenaire.prenom = text;
       session.step = 'partner_lastname';
-      ctx.reply(msgs[lang].partner_firstname);
+      ctx.reply(m.partner_firstname);
       break;
     case 'partner_lastname':
       session.form.partenaire.nom = text;
       session.step = 'location';
-      ctx.reply(msgs[lang].partner_lastname);
+      ctx.reply(m.partner_lastname);
       break;
     case 'location':
       if (text.toLowerCase() !== 'skip') {
@@ -339,10 +483,42 @@ function showCategories(ctx, lang) {
         ['🎭 BDSM/Fetish', 'cat_nsfw'],
         ['🤝 Relazione generale', 'cat_relation']
       ]
+    },
+    zh: {
+      title: '选择同意类别？',
+      buttons: [
+        ['💞 亲密关系', 'cat_intimite'],
+        ['🎭 BDSM/特殊', 'cat_nsfw'],
+        ['🤝 一般关系', 'cat_relation']
+      ]
+    },
+    ru: {
+      title: 'Какая категория согласия?',
+      buttons: [
+        ['💞 Интимные отношения', 'cat_intimite'],
+        ['🎭 БДСМ/Фетиш', 'cat_nsfw'],
+        ['🤝 Общие отношения', 'cat_relation']
+      ]
+    },
+    uk: {
+      title: 'Яка категорія згоди?',
+      buttons: [
+        ['💞 Інтимні стосунки', 'cat_intimite'],
+        ['🎭 БДСМ/Фетиш', 'cat_nsfw'],
+        ['🤝 Загальні стосунки', 'cat_relation']
+      ]
+    },
+    ar: {
+      title: 'أي فئة موافقة؟',
+      buttons: [
+        ['💞 علاقة حميمة', 'cat_intimite'],
+        ['🎭 BDSM/فتيش', 'cat_nsfw'],
+        ['🤝 علاقة عامة', 'cat_relation']
+      ]
     }
   };
   
-  const cat = categories[lang];
+  const cat = categories[lang] || categories.en;
   const keyboard = Markup.inlineKeyboard(
     cat.buttons.map(([text, data]) => [Markup.button.callback(text, data)])
   );
@@ -369,34 +545,52 @@ function showClauses(ctx, lang, category) {
       fr: ['Baisers', 'Caresses', 'Rapport protégé', 'Rapport non protégé', 'Sexe oral'],
       en: ['Kissing', 'Caressing', 'Protected sex', 'Unprotected sex', 'Oral sex'],
       es: ['Besos', 'Caricias', 'Sexo protegido', 'Sexo sin protección', 'Sexo oral'],
-      it: ['Baci', 'Carezze', 'Sesso protetto', 'Sesso non protetto', 'Sesso orale']
+      it: ['Baci', 'Carezze', 'Sesso protetto', 'Sesso non protetto', 'Sesso orale'],
+      zh: ['接吻', '爱抚', '有保护性行为', '无保护性行为', '口交'],
+      ru: ['Поцелуи', 'Ласки', 'Защищённый секс', 'Незащищённый секс', 'Оральный секс'],
+      uk: ['Поцілунки', 'Пестощі', 'Захищений секс', 'Незахищений секс', 'Оральний секс'],
+      ar: ['تقبيل', 'مداعبة', 'جنس محمي', 'جنس غير محمي', 'جنس فموي']
     },
     nsfw: {
       fr: ['Bondage léger', 'Domination/Soumission', 'Jeux de rôle', 'Utilisation d\'accessoires'],
       en: ['Light bondage', 'Domination/Submission', 'Role play', 'Use of accessories'],
       es: ['Bondage ligero', 'Dominación/Sumisión', 'Juego de roles', 'Uso de accesorios'],
-      it: ['Bondage leggero', 'Dominazione/Sottomissione', 'Gioco di ruolo', 'Uso di accessori']
+      it: ['Bondage leggero', 'Dominazione/Sottomissione', 'Gioco di ruolo', 'Uso di accessori'],
+      zh: ['轻度束缚', '支配/服从', '角色扮演', '使用道具'],
+      ru: ['Лёгкое бондаж', 'Доминирование/Подчинение', 'Ролевые игры', 'Использование аксессуаров'],
+      uk: ['Легкий бондаж', 'Домінування/Підкорення', 'Рольові ігри', 'Використання аксесуарів'],
+      ar: ['ربط خفيف', 'هيمنة/خضوع', 'لعب الأدوار', 'استخدام الإكسسوارات']
     },
     relation: {
       fr: ['Sorties ensemble', 'Présentation aux amis', 'Exclusivité', 'Communication régulière'],
       en: ['Going out together', 'Meeting friends', 'Exclusivity', 'Regular communication'],
       es: ['Salir juntos', 'Conocer amigos', 'Exclusividad', 'Comunicación regular'],
-      it: ['Uscire insieme', 'Incontrare amici', 'Esclusività', 'Comunicazione regolare']
+      it: ['Uscire insieme', 'Incontrare amici', 'Esclusività', 'Comunicazione regolare'],
+      zh: ['一起外出', '介绍给朋友', '专一性', '定期沟通'],
+      ru: ['Совместные прогулки', 'Знакомство с друзьями', 'Эксклюзивность', 'Регулярное общение'],
+      uk: ['Спільні виходи', 'Знайомство з друзями', 'Ексклюзивність', 'Регулярне спілкування'],
+      ar: ['الخروج معاً', 'التعرف على الأصدقاء', 'الحصرية', 'التواصل المنتظم']
     }
   };
   
-  const clauses = clausesData[category][lang];
+  const effectiveLang = clausesData[category][lang] ? lang : 'en';
+  const clauses = clausesData[category][effectiveLang];
   session.form.clauses = clauses.map(label => ({ label, state: false }));
   
+  const clauseList = clauses.map((c, i) => `${i + 1}. ${c}`).join('\n');
   const messages = {
-    fr: `Sélectionnez les clauses acceptées :\n\n${clauses.map((c, i) => `${i + 1}. ${c}`).join('\n')}\n\nRépondez avec les numéros séparés par des espaces (ex: 1 3 5)`,
-    en: `Select accepted clauses:\n\n${clauses.map((c, i) => `${i + 1}. ${c}`).join('\n')}\n\nReply with numbers separated by spaces (e.g., 1 3 5)`,
-    es: `Seleccione las cláusulas aceptadas:\n\n${clauses.map((c, i) => `${i + 1}. ${c}`).join('\n')}\n\nResponda con números separados por espacios (ej: 1 3 5)`,
-    it: `Seleziona le clausole accettate:\n\n${clauses.map((c, i) => `${i + 1}. ${c}`).join('\n')}\n\nRispondi con numeri separati da spazi (es: 1 3 5)`
+    fr: `Sélectionnez les clauses acceptées :\n\n${clauseList}\n\nRépondez avec les numéros séparés par des espaces (ex: 1 3 5)`,
+    en: `Select accepted clauses:\n\n${clauseList}\n\nReply with numbers separated by spaces (e.g., 1 3 5)`,
+    es: `Seleccione las cláusulas aceptadas:\n\n${clauseList}\n\nResponda con números separados por espacios (ej: 1 3 5)`,
+    it: `Seleziona le clausole accettate:\n\n${clauseList}\n\nRispondi con numeri separati da spazi (es: 1 3 5)`,
+    zh: `选择已接受的条款：\n\n${clauseList}\n\n用空格分隔的数字回复（例如：1 3 5）`,
+    ru: `Выберите принятые пункты:\n\n${clauseList}\n\nОтветьте числами через пробел (например: 1 3 5)`,
+    uk: `Виберіть прийняті пункти:\n\n${clauseList}\n\nВідповідайте числами через пробіл (наприклад: 1 3 5)`,
+    ar: `اختر البنود المقبولة:\n\n${clauseList}\n\nأجب بأرقام مفصولة بمسافات (مثال: 1 3 5)`
   };
   
   session.step = 'clause_selection';
-  ctx.reply(messages[lang]);
+  ctx.reply(messages[lang] || messages.en);
 }
 
 // Demander le safeword
@@ -405,9 +599,13 @@ function askSafeword(ctx, lang) {
     fr: '🔴 Voulez-vous définir un mot de sécurité ?\n\n💡 Tapez le mot ou "skip" pour passer',
     en: '🔴 Do you want to set a safeword?\n\n💡 Type the word or "skip" to skip',
     es: '🔴 ¿Quieres establecer una palabra de seguridad?\n\n💡 Escribe la palabra o "skip" para omitir',
-    it: '🔴 Vuoi impostare una parola di sicurezza?\n\n💡 Digita la parola o "skip" per saltare'
+    it: '🔴 Vuoi impostare una parola di sicurezza?\n\n💡 Digita la parola o "skip" per saltare',
+    zh: '🔴 是否设置安全词？\n\n💡 输入安全词或 "skip" 跳过',
+    ru: '🔴 Хотите задать безопасное слово?\n\n💡 Введите слово или "skip" чтобы пропустить',
+    uk: '🔴 Бажаєте встановити безпечне слово?\n\n💡 Введіть слово або "skip" щоб пропустити',
+    ar: '🔴 هل تريد تحديد كلمة أمان؟\n\n💡 اكتب الكلمة أو "skip" للتخطي'
   };
-  ctx.reply(messages[lang]);
+  ctx.reply(messages[lang] || messages.en);
 }
 
 // Demander clause personnalisée
@@ -416,9 +614,13 @@ function askCustomClause(ctx, lang) {
     fr: '📝 Voulez-vous ajouter une clause personnalisée ?\n\n💡 Tapez la clause ou "skip" pour passer',
     en: '📝 Do you want to add a custom clause?\n\n💡 Type the clause or "skip" to skip',
     es: '📝 ¿Quieres agregar una cláusula personalizada?\n\n💡 Escribe la cláusula o "skip" para omitir',
-    it: '📝 Vuoi aggiungere una clausola personalizzata?\n\n💡 Digita la clausola o "skip" per saltare'
+    it: '📝 Vuoi aggiungere una clausola personalizzata?\n\n💡 Digita la clausola o "skip" per saltare',
+    zh: '📝 是否添加自定义条款？\n\n💡 输入条款或 "skip" 跳过',
+    ru: '📝 Хотите добавить индивидуальный пункт?\n\n💡 Введите пункт или "skip" чтобы пропустить',
+    uk: '📝 Бажаєте додати індивідуальний пункт?\n\n💡 Введіть пункт або "skip" щоб пропустити',
+    ar: '📝 هل تريد إضافة بند مخصص؟\n\n💡 اكتب البند أو "skip" للتخطي'
   };
-  ctx.reply(messages[lang]);
+  ctx.reply(messages[lang] || messages.en);
 }
 
 // Afficher les options de validité
@@ -463,10 +665,50 @@ function showValidity(ctx, lang) {
         ['30 giorni', 'val_30j'],
         ['Indefinito', 'val_indefini']
       ]
+    },
+    zh: {
+      title: '⏱️ 有效期是多久？',
+      buttons: [
+        ['仅今晚', 'val_ce_soir'],
+        ['24小时', 'val_24h'],
+        ['7天', 'val_7j'],
+        ['30天', 'val_30j'],
+        ['无限期', 'val_indefini']
+      ]
+    },
+    ru: {
+      title: '⏱️ Каков срок действия?',
+      buttons: [
+        ['Только сегодня вечером', 'val_ce_soir'],
+        ['24 часа', 'val_24h'],
+        ['7 дней', 'val_7j'],
+        ['30 дней', 'val_30j'],
+        ['Бессрочно', 'val_indefini']
+      ]
+    },
+    uk: {
+      title: '⏱️ Який термін дії?',
+      buttons: [
+        ['Тільки сьогодні ввечері', 'val_ce_soir'],
+        ['24 години', 'val_24h'],
+        ['7 днів', 'val_7j'],
+        ['30 днів', 'val_30j'],
+        ['Безстроково', 'val_indefini']
+      ]
+    },
+    ar: {
+      title: '⏱️ ما هي مدة الصلاحية؟',
+      buttons: [
+        ['الليلة فقط', 'val_ce_soir'],
+        ['24 ساعة', 'val_24h'],
+        ['7 أيام', 'val_7j'],
+        ['30 يوماً', 'val_30j'],
+        ['غير محدد', 'val_indefini']
+      ]
     }
   };
   
-  const val = validities[lang];
+  const val = validities[lang] || validities.en;
   const keyboard = Markup.inlineKeyboard(
     val.buttons.map(([text, data]) => [Markup.button.callback(text, data)])
   );
@@ -490,18 +732,39 @@ bot.action(/val_(.+)/, (ctx) => {
     fr: '✅ Votre message de consentement est prêt !',
     en: '✅ Your consent message is ready!',
     es: '✅ ¡Tu mensaje de consentimiento está listo!',
-    it: '✅ Il tuo messaggio di consenso è pronto!'
+    it: '✅ Il tuo messaggio di consenso è pronto!',
+    zh: '✅ 您的同意消息已准备好！',
+    ru: '✅ Ваше сообщение о согласии готово!',
+    uk: '✅ Ваше повідомлення про згоду готове!',
+    ar: '✅ رسالة موافقتك جاهزة!'
   };
-  
-  ctx.reply(finalMessages[session.lang]);
+
+  const newConsentLabels = {
+    fr: '🔄 Créer un nouveau consentement',
+    en: '🔄 Create a new consent',
+    es: '🔄 Crear un nuevo consentimiento',
+    it: '🔄 Crea un nuovo consenso',
+    zh: '🔄 创建新同意',
+    ru: '🔄 Создать новое согласие',
+    uk: '🔄 Створити нову згоду',
+    ar: '🔄 إنشاء موافقة جديدة'
+  };
+
+  const lang = session.lang || 'fr';
+  const newConsentKeyboard = Markup.inlineKeyboard([
+    [Markup.button.callback(newConsentLabels[lang] || newConsentLabels.en, 'new_consent')]
+  ]);
+
+  ctx.reply(finalMessages[lang] || finalMessages.en);
   ctx.reply(message);
+  ctx.reply('─────────────────────────────────', newConsentKeyboard);
   
   // Réinitialiser la session
   session.step = null;
   session.form = {
     initiateur: { prenom: '', nom: '' },
     partenaire: { prenom: '', nom: '' },
-    date: new Date().toLocaleDateString('fr-FR'),
+    date: new Date().toLocaleDateString(dateLocales[lang] || 'en-US'),
     lieu: '',
     category: '',
     clauses: [],
@@ -509,6 +772,18 @@ bot.action(/val_(.+)/, (ctx) => {
     safeword: '',
     validite: '24h'
   };
+});
+
+// Bouton nouveau consentement
+bot.action('new_consent', (ctx) => {
+  ctx.answerCbQuery();
+  const keyboard = Markup.inlineKeyboard([
+    [Markup.button.callback('🇫🇷 Français', 'lang_fr'), Markup.button.callback('🇬🇧 English', 'lang_en')],
+    [Markup.button.callback('🇪🇸 Español', 'lang_es'), Markup.button.callback('🇮🇹 Italiano', 'lang_it')],
+    [Markup.button.callback('🇨🇳 中文', 'lang_zh'), Markup.button.callback('🇷🇺 Русский', 'lang_ru')],
+    [Markup.button.callback('🇺🇦 Українська', 'lang_uk'), Markup.button.callback('🇸🇦 العربية', 'lang_ar')]
+  ]);
+  ctx.reply('🌍 Choose language / Choisissez la langue:', keyboard);
 });
 
 // Handler pour Netlify Functions
