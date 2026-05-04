@@ -401,7 +401,7 @@ const legalMessages = {
 
 bot.command('info', async (ctx) => {
   try {
-    const session = await getSession(ctx.chat.id);
+    const session = await loadSession(ctx.chat.id);
     const lang = session.lang || 'en';
     ctx.reply(infoMessages[lang] || infoMessages.en);
   } catch (e) { console.error('[info]', e); }
@@ -409,7 +409,7 @@ bot.command('info', async (ctx) => {
 
 bot.command('legal', async (ctx) => {
   try {
-    const session = await getSession(ctx.chat.id);
+    const session = await loadSession(ctx.chat.id);
     const lang = session.lang || 'en';
     ctx.reply(legalMessages[lang] || legalMessages.en);
   } catch (e) { console.error('[legal]', e); }

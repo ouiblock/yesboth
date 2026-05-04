@@ -40,15 +40,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     alternateLocale: ["fr_FR", "es_ES", "it_IT"],
-    url: "https://yesboth.netlify.app",
+    url: "https://yesboth.com",
     siteName: "YesBoth",
     title: "YesBoth — Consent Communication Made Simple",
     description: "Free multilingual consent message generator. 100% local & private. No data leaves your device.",
     images: [
       {
-        url: "/logo.png",
-        width: 1200,
-        height: 630,
+        url: "https://yesboth.com/logo.png",
+        width: 600,
+        height: 600,
         alt: "YesBoth - Both say yes",
         type: "image/png"
       }
@@ -60,21 +60,21 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "YesBoth — Consent Communication Made Simple",
     description: "Free multilingual consent message generator. 100% local & private.",
-    images: ["/logo.png"],
+    images: ["https://yesboth.com/logo.png"],
     creator: "@arteandigital"
   },
   
   // Icons & Favicon
   icons: {
     icon: [
-      { url: "/logo.png", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "any" },
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/icon-512.png", sizes: "512x512", type: "image/png" }
     ],
     apple: [
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" }
     ],
-    shortcut: "/logo.png"
+    shortcut: "/favicon.png"
   },
   
   // Additional metadata
@@ -91,12 +91,12 @@ export const metadata: Metadata = {
   },
   
   alternates: {
-    canonical: "https://yesboth.netlify.app",
+    canonical: "https://yesboth.com",
     languages: {
-      "en": "https://yesboth.netlify.app",
-      "fr": "https://yesboth.netlify.app",
-      "es": "https://yesboth.netlify.app",
-      "it": "https://yesboth.netlify.app"
+      "en": "https://yesboth.com",
+      "fr": "https://yesboth.com",
+      "es": "https://yesboth.com",
+      "it": "https://yesboth.com"
     }
   },
   
@@ -121,7 +121,7 @@ export default function RootLayout({
     "@type": "WebApplication",
     "name": "YesBoth",
     "alternateName": "Both say yes",
-    "url": "https://yesboth.netlify.app",
+    "url": "https://yesboth.com",
     "description": "Free multilingual consent message generator for adults. 100% local, private & secure.",
     "applicationCategory": "CommunicationApplication",
     "operatingSystem": "Web Browser",
@@ -153,7 +153,7 @@ export default function RootLayout({
         "name": "SAS BASK'IN BIARRITZ",
         "legalName": "SAS BASK'IN BIARRITZ",
         "alternateName": "BASK'IN BIARRITZ",
-        "url": "https://arteandigital.fr",
+        "url": "https://yesboth.com",
         "sameAs": [
           "https://arteandigital.fr"
         ],
@@ -173,10 +173,10 @@ export default function RootLayout({
       "@type": "Organization",
       "name": "SAS BASK'IN BIARRITZ",
       "alternateName": "BASK'IN BIARRITZ",
-      "url": "https://arteandigital.fr",
+      "url": "https://yesboth.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://yesboth.netlify.app/logo.png"
+        "url": "https://yesboth.com/logo.png"
       }
     },
     "inLanguage": ["en", "fr", "es", "it"],
@@ -204,11 +204,9 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icon-192.png" />
         
         {/* Favicon */}
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon-16x16.svg" />
-        <link rel="icon" type="image/svg+xml" sizes="96x96" href="/favicon-96x96.svg" />
-        <link rel="shortcut icon" href="/favicon.svg" />
-        <link rel="apple-touch-icon" href="/favicon-96x96.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
         
         {/* JSON-LD Structured Data */}
         <script
