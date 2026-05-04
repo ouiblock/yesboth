@@ -1,7 +1,78 @@
 const { Telegraf, Markup } = require('telegraf');
+const { getStore } = require('@netlify/blobs');
 
-// Stockage des sessions (en mémoire)
-const sessions = new Map();
+// Store de sessions persistant (Netlify Blobs) avec fallback mémoire locale
+// pour les dev environments sans Netlify Blobs disponible.
+const memoryFallback = new Map();
+let blobsStore = null;
+
+function getStoreSafe() {
+  if (blobsStore) return blobsStore;
+  try {
+    blobsStore = getStore({ name: 'telegram-sessions', consistency: 'strong' });
+    return blobsStore;
+  } catch (e) {
+    console.warn('[sessions] Netlify Blobs indisponible, fallback mémoire :', e.message);
+    return null;
+  }
+}
+
+const DEFAULT_SESSION = () => ({
+  lang: 'en',
+  step: null,
+  form: {
+    initiateur: { prenom: '', nom: '' },
+    partenaire: { prenom: '', nom: '' },
+    date: new Date().toLocaleDateString('en-US'),
+    lieu: '',
+    category: '',
+    clauses: [],
+    clauseLibre: '',
+    safeword: '',
+    validite: '24h'
+  }
+});
+
+async function loadSession(chatId) {
+  const key = String(chatId);
+  const store = getStoreSafe();
+  if (store) {
+    try {
+      const data = await store.get(key, { type: 'json' });
+      if (data) return data;
+    } catch (e) {
+      console.error('[sessions] load error:', e.message);
+    }
+  } else if (memoryFallback.has(key)) {
+    return memoryFallback.get(key);
+  }
+  const fresh = DEFAULT_SESSION();
+  await saveSession(chatId, fresh);
+  return fresh;
+}
+
+async function saveSession(chatId, session) {
+  const key = String(chatId);
+  const store = getStoreSafe();
+  if (store) {
+    try {
+      await store.setJSON(key, session);
+      return;
+    } catch (e) {
+      console.error('[sessions] save error:', e.message);
+    }
+  }
+  memoryFallback.set(key, session);
+}
+
+async function clearSession(chatId) {
+  const key = String(chatId);
+  const store = getStoreSafe();
+  if (store) {
+    try { await store.delete(key); return; } catch (e) { /* ignore */ }
+  }
+  memoryFallback.delete(key);
+}
 
 // Mapping des locales pour formatage de date
 const dateLocales = {
@@ -37,6 +108,7 @@ const translations = {
     validation: "✍️ Pour validation, merci d'envoyer à",
     validationText: "le message suivant : \"J'accepte ces termes. Signé",
     warning: "⚠️ RAPPEL : Le refus verbal/gestuel prévaut TOUJOURS. Le silence ne vaut pas consentement.",
+    legalRef: "⚖️ Référence légale : art. 222-22 s. C. pénal & art. 1366-1367 C. civ. — France",
     reference: "📱 Généré via YesBoth — www.yesboth.com"
   },
   en: {
@@ -59,6 +131,7 @@ const translations = {
     validation: "✍️ For validation, please send to",
     validationText: "the following message: \"I accept these terms. Signed",
     warning: "⚠️ REMINDER: Verbal/physical refusal ALWAYS prevails. Silence does not mean consent.",
+    legalRef: "⚖️ Legal reference: Sexual Offences Act 2003, s. 74 — UK",
     reference: "📱 Generated via YesBoth — www.yesboth.com"
   },
   es: {
@@ -81,6 +154,7 @@ const translations = {
     validation: "✍️ Para validación, envíe a",
     validationText: "el siguiente mensaje: \"Acepto estos términos. Firmado",
     warning: "⚠️ RECORDATORIO: El rechazo verbal/físico SIEMPRE prevalece. El silencio no significa consentimiento.",
+    legalRef: "⚖️ Referencia legal: LO 10/2022 de libertad sexual y art. 178 Código Penal — España",
     reference: "📱 Generado vía YesBoth — www.yesboth.com"
   },
   it: {
@@ -103,6 +177,7 @@ const translations = {
     validation: "✍️ Per la convalida, inviare a",
     validationText: "il seguente messaggio: \"Accetto questi termini. Firmato",
     warning: "⚠️ PROMEMORIA: Il rifiuto verbale/fisico prevale SEMPRE. Il silenzio non significa consenso.",
+    legalRef: "⚖️ Riferimento legale: art. 609-bis Codice penale — Italia",
     reference: "📱 Generato tramite YesBoth — www.yesboth.com"
   },
   zh: {
@@ -119,6 +194,7 @@ const translations = {
     validation: "✍️ 为验证，请发送给",
     validationText: "以下消息：\"我接受这些条款。签名",
     warning: "⚠️ 提醒：口头/肢体拒绝始终优先。沉默不代表同意。",
+    legalRef: "⚖️ 法律参考：《中华人民共和国刑法》第236条",
     reference: "📱 由 YesBoth 生成 — www.yesboth.com"
   },
   ru: {
@@ -135,6 +211,7 @@ const translations = {
     validation: "✍️ Для подтверждения отправьте",
     validationText: "следующее сообщение: \"Я принимаю эти условия. Подписано",
     warning: "⚠️ НАПОМИНАНИЕ: Устный/физический отказ ВСЕГДА имеет приоритет. Молчание не означает согласие.",
+    legalRef: "⚖️ Правовая ссылка: ст. 131-135 УК РФ — Россия",
     reference: "📱 Создано через YesBoth — www.yesboth.com"
   },
   uk: {
@@ -151,6 +228,7 @@ const translations = {
     validation: "✍️ Для підтвердження надішліть",
     validationText: "таке повідомлення: \"Я приймаю ці умови. Підписано",
     warning: "⚠️ НАГАДУВАННЯ: Усна/фізична відмова ЗАВЖДИ має пріоритет. Мовчання не означає згоду.",
+    legalRef: "⚖️ Правове посилання: ст. 152 КК України — «добровільна згода»",
     reference: "📱 Створено через YesBoth — www.yesboth.com"
   },
   ar: {
@@ -167,6 +245,7 @@ const translations = {
     validation: "✍️ للتأكيد، أرسل إلى",
     validationText: "الرسالة التالية: \"أقبل هذه الشروط. موقع",
     warning: "⚠️ تذكير: الرفض الشفهي/الجسدي يتقدم دائماً. الصمت لا يعني الموافقة.",
+    legalRef: "⚖️ المرجع: التشريعات المحلية المعمول بها (مثلاً المادة 267 من قانون العقوبات المصري، المادتان 485-486 من القانون الجنائي المغربي)",
     reference: "📱 تم إنشاؤه عبر YesBoth — www.yesboth.com"
   }
 };
@@ -208,6 +287,8 @@ ${trans.validation} ${prenomB} ${trans.validationText} ${prenomB}, ${date}."
 
 ${trans.warning}
 
+${trans.legalRef}
+
 ${trans.reference}
 ─────────────────────────────────`;
 };
@@ -215,30 +296,8 @@ ${trans.reference}
 // Initialiser le bot
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
-// Middleware pour gérer les sessions
-bot.use((ctx, next) => {
-  const chatId = ctx.chat?.id;
-  if (chatId && !sessions.has(chatId)) {
-    sessions.set(chatId, {
-      lang: 'en',
-      step: null,
-      form: {
-        initiateur: { prenom: '', nom: '' },
-        partenaire: { prenom: '', nom: '' },
-        date: new Date().toLocaleDateString('en-US'),
-        lieu: '',
-        category: '',
-        clauses: [],
-        clauseLibre: '',
-        safeword: '',
-        validite: '24h'
-      }
-    });
-  }
-  return next();
-});
-
-const getSession = (chatId) => sessions.get(chatId);
+// Alias rétro-compatible : retourne une promesse de session
+const getSession = (chatId) => loadSession(chatId);
 
 // Commandes
 const startMessages = {
@@ -263,15 +322,19 @@ const cancelMessages = {
   ar: '❌ تم الإلغاء. اكتب /consent للبدء من جديد.'
 };
 
-bot.start((ctx) => {
-  const session = getSession(ctx.chat.id);
-  const lang = session.lang || 'en';
-  session.step = null;
-  ctx.reply(startMessages[lang] || startMessages.en);
+bot.start(async (ctx) => {
+  try {
+    const session = await loadSession(ctx.chat.id);
+    const lang = session.lang || 'en';
+    session.step = null;
+    await saveSession(ctx.chat.id, session);
+    ctx.reply(startMessages[lang] || startMessages.en);
+  } catch (e) { console.error('[start]', e); }
 });
 
-bot.help((ctx) => {
-  const session = getSession(ctx.chat.id);
+bot.help(async (ctx) => {
+  try {
+  const session = await loadSession(ctx.chat.id);
   const lang = session.lang || 'en';
   const helpMessages = {
     fr: '📖 Commandes disponibles :\n\n/start — Démarrer le bot\n/consent — Créer un message de consentement\n/info — Informations sur YesBoth\n/legal — Mentions légales\n/cancel — Annuler la création en cours\n/help — Afficher cette aide\n\n🚀 Tapez /consent pour commencer !',
@@ -284,40 +347,83 @@ bot.help((ctx) => {
     ar: '📖 الأوامر المتاحة:\n\n/start — تشغيل البوت\n/consent — إنشاء رسالة موافقة\n/info — حول YesBoth\n/cancel — إلغاء الإنشاء الحالي\n/help — عرض هذه المساعدة\n\n🚀 اكتب /consent للبدء!'
   };
   ctx.reply(helpMessages[lang] || helpMessages.en);
+  } catch (e) { console.error('[help]', e); }
 });
 
-bot.command('cancel', (ctx) => {
-  const session = getSession(ctx.chat.id);
-  const lang = session.lang || 'en';
-  session.step = null;
-  ctx.reply(cancelMessages[lang] || cancelMessages.en);
+bot.command('cancel', async (ctx) => {
+  try {
+    const session = await loadSession(ctx.chat.id);
+    const lang = session.lang || 'en';
+    session.step = null;
+    await saveSession(ctx.chat.id, session);
+    ctx.reply(cancelMessages[lang] || cancelMessages.en);
+  } catch (e) { console.error('[cancel]', e); }
 });
 
-bot.command('consent', (ctx) => {
-  const keyboard = Markup.inlineKeyboard([
-    [Markup.button.callback('🇫🇷 Français', 'lang_fr'), Markup.button.callback('🇬🇧 English', 'lang_en')],
-    [Markup.button.callback('🇪🇸 Español', 'lang_es'), Markup.button.callback('🇮🇹 Italiano', 'lang_it')],
-    [Markup.button.callback('🇨🇳 中文', 'lang_zh'), Markup.button.callback('🇷🇺 Русский', 'lang_ru')],
-    [Markup.button.callback('🇺🇦 Українська', 'lang_uk'), Markup.button.callback('🇸🇦 العربية', 'lang_ar')]
-  ]);
-  ctx.reply('🌍 Choose language / Choisissez la langue:', keyboard);
+bot.command('consent', async (ctx) => {
+  try {
+    // Réinitialiser la session pour permettre un nouveau consentement
+    const session = await loadSession(ctx.chat.id);
+    const fresh = DEFAULT_SESSION();
+    fresh.lang = session.lang || 'en';
+    await saveSession(ctx.chat.id, fresh);
+    const keyboard = Markup.inlineKeyboard([
+      [Markup.button.callback('🇫🇷 Français', 'lang_fr'), Markup.button.callback('🇬🇧 English', 'lang_en')],
+      [Markup.button.callback('🇪🇸 Español', 'lang_es'), Markup.button.callback('🇮🇹 Italiano', 'lang_it')],
+      [Markup.button.callback('🇨🇳 中文', 'lang_zh'), Markup.button.callback('🇷🇺 Русский', 'lang_ru')],
+      [Markup.button.callback('🇺🇦 Українська', 'lang_uk'), Markup.button.callback('🇸🇦 العربية', 'lang_ar')]
+    ]);
+    ctx.reply('🌍 Choose language / Choisissez la langue:', keyboard);
+  } catch (e) { console.error('[consent]', e); }
 });
 
-bot.command('info', (ctx) => {
-  ctx.replyWithMarkdownV2(`ℹ️ *À propos de YesBoth*\n\n✅ 100% privé et sécurisé\n✅ Aucune collecte de données\n✅ Multilingue \\(FR/EN/ES/IT\\)\n✅ Gratuit pour usage personnel\n\nOutil de communication pour adultes consentants\\.\n\n🌐 www\\.yesboth\\.com`);
+const infoMessages = {
+  fr: 'ℹ️ À propos de YesBoth\n\n✅ 100% privé et sécurisé\n✅ Aucune collecte de données\n✅ Multilingue (8 langues)\n✅ Gratuit pour usage personnel\n\nOutil de communication pour adultes consentants.\n\n🌐 www.yesboth.com',
+  en: 'ℹ️ About YesBoth\n\n✅ 100% private and secure\n✅ No data collection\n✅ Multilingual (8 languages)\n✅ Free for personal use\n\nCommunication tool for consenting adults.\n\n🌐 www.yesboth.com',
+  es: 'ℹ️ Sobre YesBoth\n\n✅ 100% privado y seguro\n✅ Sin recopilación de datos\n✅ Multilingüe (8 idiomas)\n✅ Gratis para uso personal\n\nHerramienta de comunicación para adultos que consienten.\n\n🌐 www.yesboth.com',
+  it: 'ℹ️ Informazioni su YesBoth\n\n✅ 100% privato e sicuro\n✅ Nessuna raccolta dati\n✅ Multilingue (8 lingue)\n✅ Gratuito per uso personale\n\nStrumento di comunicazione per adulti consenzienti.\n\n🌐 www.yesboth.com',
+  zh: 'ℹ️ 关于 YesBoth\n\n✅ 100% 私密安全\n✅ 不收集数据\n✅ 多语言（8种语言）\n✅ 个人使用免费\n\n成人间同意的沟通工具。\n\n🌐 www.yesboth.com',
+  ru: 'ℹ️ О YesBoth\n\n✅ 100% конфиденциально и безопасно\n✅ Без сбора данных\n✅ Многоязычный (8 языков)\n✅ Бесплатно для личного использования\n\nИнструмент коммуникации для согласных взрослых.\n\n🌐 www.yesboth.com',
+  uk: 'ℹ️ Про YesBoth\n\n✅ 100% приватно та безпечно\n✅ Без збору даних\n✅ Багатомовний (8 мов)\n✅ Безкоштовно для особистого використання\n\nІнструмент комунікації для згодних дорослих.\n\n🌐 www.yesboth.com',
+  ar: 'ℹ️ حول YesBoth\n\n✅ خاص وآمن 100%\n✅ لا جمع للبيانات\n✅ متعدد اللغات (8 لغات)\n✅ مجاني للاستخدام الشخصي\n\nأداة تواصل للبالغين الراضين.\n\n🌐 www.yesboth.com'
+};
+
+const legalMessages = {
+  fr: '⚖️ Mention légale importante\n\nYesBoth est un outil de communication uniquement.\n\n❌ Ce n\'est PAS un contrat juridique\n❌ Ce n\'est PAS un acte notarié\n❌ Ce n\'est PAS un service juridique\n\n✅ La responsabilité repose sur les parties\n✅ Le consentement reste révocable à tout moment\n✅ Le refus verbal/gestuel prévaut toujours\n\n⚖️ Référence légale : art. 222-22 s. C. pénal & art. 1366-1367 C. civ. — France\n\nDéveloppé par SAS BASK\'IN BIARRITZ\n257 Avenue d\'Atherbea, 64210 Bidart, France',
+  en: '⚖️ Important legal notice\n\nYesBoth is a communication tool only.\n\n❌ It is NOT a legal contract\n❌ It is NOT a notarized document\n❌ It is NOT a legal service\n\n✅ Responsibility lies with the parties\n✅ Consent remains revocable at any time\n✅ Verbal/physical refusal always prevails\n\n⚖️ Legal reference: Sexual Offences Act 2003, s. 74 — UK\n\nDeveloped by SAS BASK\'IN BIARRITZ\n257 Avenue d\'Atherbea, 64210 Bidart, France',
+  es: '⚖️ Aviso legal importante\n\nYesBoth es solo una herramienta de comunicación.\n\n❌ NO es un contrato legal\n❌ NO es un acta notarial\n❌ NO es un servicio legal\n\n✅ La responsabilidad recae en las partes\n✅ El consentimiento es revocable en todo momento\n✅ El rechazo verbal/físico siempre prevalece\n\n⚖️ Referencia legal: LO 10/2022 y art. 178 Código Penal — España\n\nDesarrollado por SAS BASK\'IN BIARRITZ\n257 Avenue d\'Atherbea, 64210 Bidart, Francia',
+  it: '⚖️ Avviso legale importante\n\nYesBoth è solo uno strumento di comunicazione.\n\n❌ NON è un contratto legale\n❌ NON è un atto notarile\n❌ NON è un servizio legale\n\n✅ La responsabilità è delle parti\n✅ Il consenso è revocabile in qualsiasi momento\n✅ Il rifiuto verbale/fisico prevale sempre\n\n⚖️ Riferimento legale: art. 609-bis Codice penale — Italia\n\nSviluppato da SAS BASK\'IN BIARRITZ\n257 Avenue d\'Atherbea, 64210 Bidart, Francia',
+  zh: '⚖️ 重要法律声明\n\nYesBoth 仅为沟通工具。\n\n❌ 这不是法律合同\n❌ 这不是公证文件\n❌ 这不是法律服务\n\n✅ 责任由当事人承担\n✅ 同意随时可撤销\n✅ 口头/肢体拒绝始终优先\n\n⚖️ 法律参考：《中华人民共和国刑法》第236条\n\n由 SAS BASK\'IN BIARRITZ 开发\n法国 64210 Bidart, 257 Avenue d\'Atherbea',
+  ru: '⚖️ Важное правовое уведомление\n\nYesBoth — это только инструмент коммуникации.\n\n❌ Это НЕ юридический договор\n❌ Это НЕ нотариальный акт\n❌ Это НЕ юридическая услуга\n\n✅ Ответственность лежит на сторонах\n✅ Согласие отзываемо в любой момент\n✅ Устный/физический отказ всегда имеет приоритет\n\n⚖️ Правовая ссылка: ст. 131-135 УК РФ — Россия\n\nРазработано SAS BASK\'IN BIARRITZ\n257 Avenue d\'Atherbea, 64210 Bidart, Франция',
+  uk: '⚖️ Важливе правове повідомлення\n\nYesBoth — це лише інструмент комунікації.\n\n❌ Це НЕ юридичний договір\n❌ Це НЕ нотаріальний акт\n❌ Це НЕ юридична послуга\n\n✅ Відповідальність лежить на сторонах\n✅ Згода відклична в будь-який момент\n✅ Усна/фізична відмова завжди має пріоритет\n\n⚖️ Правове посилання: ст. 152 КК України — «добровільна згода»\n\nРозроблено SAS BASK\'IN BIARRITZ\n257 Avenue d\'Atherbea, 64210 Bidart, Франція',
+  ar: '⚖️ إشعار قانوني مهم\n\nYesBoth هي أداة تواصل فقط.\n\n❌ ليست عقداً قانونياً\n❌ ليست وثيقة موثقة\n❌ ليست خدمة قانونية\n\n✅ المسؤولية تقع على الأطراف\n✅ الموافقة قابلة للإلغاء في أي وقت\n✅ الرفض الشفهي/الجسدي له الأولوية دائماً\n\n⚖️ المرجع: التشريعات المحلية المعمول بها (مثلاً المادة 267 من قانون العقوبات المصري، المادتان 485-486 من القانون الجنائي المغربي)\n\nتم تطويرها بواسطة SAS BASK\'IN BIARRITZ\n257 Avenue d\'Atherbea, 64210 Bidart, فرنسا'
+};
+
+bot.command('info', async (ctx) => {
+  try {
+    const session = await getSession(ctx.chat.id);
+    const lang = session.lang || 'en';
+    ctx.reply(infoMessages[lang] || infoMessages.en);
+  } catch (e) { console.error('[info]', e); }
 });
 
-bot.command('legal', (ctx) => {
-  ctx.replyWithMarkdownV2(`⚖️ *Mention légale importante*\n\nYesBoth est un *outil de communication uniquement*\\.\n\n❌ Ce n'est PAS un contrat juridique\n❌ Ce n'est PAS un acte notarié\n❌ Ce n'est PAS un service juridique\n\n✅ La responsabilité repose sur les parties\n✅ Le consentement reste révocable à tout moment\n✅ Le refus verbal/gestuel prévaut toujours\n\nDéveloppé par SAS BASK'IN BIARRITZ\n257 Avenue d'Atherbea, 64210 Bidart, France`);
+bot.command('legal', async (ctx) => {
+  try {
+    const session = await getSession(ctx.chat.id);
+    const lang = session.lang || 'en';
+    ctx.reply(legalMessages[lang] || legalMessages.en);
+  } catch (e) { console.error('[legal]', e); }
 });
 
 // Gestion de la sélection de langue
-bot.action(/lang_(.+)/, (ctx) => {
+bot.action(/lang_(.+)/, async (ctx) => {
+  try {
   const lang = ctx.match[1];
-  const session = getSession(ctx.chat.id);
+  const session = await loadSession(ctx.chat.id);
   session.lang = lang;
   session.form.date = new Date().toLocaleDateString(dateLocales[lang] || 'en-US');
   session.step = 'initiator_firstname';
+  await saveSession(ctx.chat.id, session);
   
   const messages = {
     fr: '✅ Langue sélectionnée : Français\n\n👤 Quel est VOTRE prénom ?',
@@ -332,11 +438,15 @@ bot.action(/lang_(.+)/, (ctx) => {
   
   ctx.answerCbQuery();
   ctx.reply(messages[lang] || messages.en);
+  } catch (e) { console.error('[lang]', e); }
 });
 
 // Gestion des messages texte
-bot.on('text', (ctx) => {
-  const session = getSession(ctx.chat.id);
+bot.on('text', async (ctx) => {
+  try {
+  // Ignorer les commandes (elles sont gérées par les handlers dédiés)
+  if (ctx.message.text.startsWith('/')) return;
+  const session = await loadSession(ctx.chat.id);
   if (!session || !session.step) return;
   
   const text = ctx.message.text;
@@ -422,16 +532,30 @@ bot.on('text', (ctx) => {
       session.step = 'category';
       showCategories(ctx, lang);
       break;
-    case 'clause_selection':
-      const numbers = text.split(' ').map(n => parseInt(n) - 1).filter(n => !isNaN(n));
-      numbers.forEach(i => {
-        if (session.form.clauses[i]) {
-          session.form.clauses[i].state = true;
-        }
-      });
+    case 'clause_selection': {
+      const total = session.form.clauses.length;
+      const numbers = text.split(/[\s,]+/).map(n => parseInt(n, 10) - 1).filter(n => !isNaN(n) && n >= 0 && n < total);
+      if (numbers.length === 0 && text.toLowerCase() !== 'skip') {
+        const errorMsgs = {
+          fr: '⚠️ Réponse invalide. Tapez les numéros séparés par des espaces (ex : 1 3 5) ou "skip" pour n\'en choisir aucune.',
+          en: '⚠️ Invalid reply. Type numbers separated by spaces (e.g., 1 3 5) or "skip" to pick none.',
+          es: '⚠️ Respuesta no válida. Escribe números separados por espacios (ej: 1 3 5) o "skip" para no elegir ninguna.',
+          it: '⚠️ Risposta non valida. Digita i numeri separati da spazi (es: 1 3 5) o "skip" per non sceglierne nessuna.',
+          zh: '⚠️ 回复无效。请用空格分隔数字（例如：1 3 5）或输入 "skip" 跳过。',
+          ru: '⚠️ Неверный ответ. Введите числа через пробел (напр. 1 3 5) или "skip" чтобы пропустить.',
+          uk: '⚠️ Невірна відповідь. Введіть числа через пробіл (напр. 1 3 5) або "skip" щоб пропустити.',
+          ar: '⚠️ إجابة غير صالحة. اكتب الأرقام مفصولة بمسافات (مثال: 1 3 5) أو "skip" لتخطيها.'
+        };
+        ctx.reply(errorMsgs[lang] || errorMsgs.en);
+        await saveSession(ctx.chat.id, session);
+        return;
+      }
+      numbers.forEach(i => { if (session.form.clauses[i]) session.form.clauses[i].state = true; });
       session.step = 'safeword';
+      await saveSession(ctx.chat.id, session);
       askSafeword(ctx, lang);
       break;
+    }
     case 'safeword':
       if (text.toLowerCase() !== 'skip') {
         session.form.safeword = text;
@@ -444,9 +568,12 @@ bot.on('text', (ctx) => {
         session.form.clauseLibre = text;
       }
       session.step = 'validity';
+      await saveSession(ctx.chat.id, session);
       showValidity(ctx, lang);
       break;
   }
+  await saveSession(ctx.chat.id, session);
+  } catch (e) { console.error('[text]', e); }
 });
 
 // Afficher les catégories
@@ -527,19 +654,20 @@ function showCategories(ctx, lang) {
 }
 
 // Gestion de la sélection de catégorie
-bot.action(/cat_(.+)/, (ctx) => {
-  const category = ctx.match[1];
-  const session = getSession(ctx.chat.id);
-  session.form.category = category;
-  session.step = 'clauses';
-  
-  ctx.answerCbQuery();
-  showClauses(ctx, session.lang, category);
+bot.action(/cat_(.+)/, async (ctx) => {
+  try {
+    const category = ctx.match[1];
+    const session = await loadSession(ctx.chat.id);
+    session.form.category = category;
+    session.step = 'clauses';
+    ctx.answerCbQuery();
+    await showClauses(ctx, session.lang, category, session);
+    await saveSession(ctx.chat.id, session);
+  } catch (e) { console.error('[cat]', e); }
 });
 
-// Afficher les clauses
-function showClauses(ctx, lang, category) {
-  const session = getSession(ctx.chat.id);
+// Afficher les clauses (session passée en argument — sync)
+function showClauses(ctx, lang, category, session) {
   const clausesData = {
     intimite: {
       fr: ['Baisers', 'Caresses', 'Rapport protégé', 'Rapport non protégé', 'Sexe oral'],
@@ -717,9 +845,10 @@ function showValidity(ctx, lang) {
 }
 
 // Gestion de la sélection de validité
-bot.action(/val_(.+)/, (ctx) => {
+bot.action(/val_(.+)/, async (ctx) => {
+  try {
   const validity = ctx.match[1];
-  const session = getSession(ctx.chat.id);
+  const session = await loadSession(ctx.chat.id);
   session.form.validite = validity;
   
   ctx.answerCbQuery();
@@ -759,31 +888,30 @@ bot.action(/val_(.+)/, (ctx) => {
   ctx.reply(message);
   ctx.reply('─────────────────────────────────', newConsentKeyboard);
   
-  // Réinitialiser la session
-  session.step = null;
-  session.form = {
-    initiateur: { prenom: '', nom: '' },
-    partenaire: { prenom: '', nom: '' },
-    date: new Date().toLocaleDateString(dateLocales[lang] || 'en-US'),
-    lieu: '',
-    category: '',
-    clauses: [],
-    clauseLibre: '',
-    safeword: '',
-    validite: '24h'
-  };
+  // Réinitialiser la session (prêt pour un nouveau consentement)
+  const fresh = DEFAULT_SESSION();
+  fresh.lang = lang;
+  fresh.form.date = new Date().toLocaleDateString(dateLocales[lang] || 'en-US');
+  await saveSession(ctx.chat.id, fresh);
+  } catch (e) { console.error('[val]', e); }
 });
 
 // Bouton nouveau consentement
-bot.action('new_consent', (ctx) => {
-  ctx.answerCbQuery();
-  const keyboard = Markup.inlineKeyboard([
-    [Markup.button.callback('🇫🇷 Français', 'lang_fr'), Markup.button.callback('🇬🇧 English', 'lang_en')],
-    [Markup.button.callback('🇪🇸 Español', 'lang_es'), Markup.button.callback('🇮🇹 Italiano', 'lang_it')],
-    [Markup.button.callback('🇨🇳 中文', 'lang_zh'), Markup.button.callback('🇷🇺 Русский', 'lang_ru')],
-    [Markup.button.callback('🇺🇦 Українська', 'lang_uk'), Markup.button.callback('🇸🇦 العربية', 'lang_ar')]
-  ]);
-  ctx.reply('🌍 Choose language / Choisissez la langue:', keyboard);
+bot.action('new_consent', async (ctx) => {
+  try {
+    ctx.answerCbQuery();
+    const fresh = DEFAULT_SESSION();
+    const existing = await loadSession(ctx.chat.id);
+    fresh.lang = existing.lang || 'en';
+    await saveSession(ctx.chat.id, fresh);
+    const keyboard = Markup.inlineKeyboard([
+      [Markup.button.callback('🇫🇷 Français', 'lang_fr'), Markup.button.callback('🇬🇧 English', 'lang_en')],
+      [Markup.button.callback('🇪🇸 Español', 'lang_es'), Markup.button.callback('🇮🇹 Italiano', 'lang_it')],
+      [Markup.button.callback('🇨🇳 中文', 'lang_zh'), Markup.button.callback('🇷🇺 Русский', 'lang_ru')],
+      [Markup.button.callback('🇺🇦 Українська', 'lang_uk'), Markup.button.callback('🇸🇦 العربية', 'lang_ar')]
+    ]);
+    ctx.reply('🌍 Choose language / Choisissez la langue:', keyboard);
+  } catch (e) { console.error('[new_consent]', e); }
 });
 
 // Handler pour Netlify Functions
