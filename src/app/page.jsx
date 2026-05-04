@@ -101,38 +101,68 @@ function LandingInner() {
       <main className="flex-1">
 
         {/* HERO */}
-        <section className="max-w-[480px] mx-auto px-5 pt-14 pb-12 text-center">
-          <div className="flex flex-col items-center gap-3 mb-6">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#F5A962]/10 via-[#8B7BA8]/10 to-[#5B9BD5]/10 text-[#5B9BD5] text-xs font-semibold px-4 py-2 rounded-full border border-[#5B9BD5]/20">
-              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#F5A962] to-[#5B9BD5] animate-pulse" />
-              {t('privacy.badge')}
+        <section className="relative overflow-hidden">
+          {/* Gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-[#F8FAFB] to-[#F0F4F8] pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#F5A962]/10 via-[#8B7BA8]/10 to-[#5B9BD5]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative max-w-[480px] mx-auto px-5 pt-10 pb-12 text-center">
+
+            {/* Badges */}
+            <div className="flex flex-col items-center gap-2.5 mb-8">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#F5A962]/15 via-[#8B7BA8]/15 to-[#5B9BD5]/15 text-[#5B9BD5] text-xs font-bold px-5 py-2 rounded-full border border-[#5B9BD5]/25 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#F5A962] to-[#5B9BD5] animate-pulse" />
+                {t('privacy.badge')}
+              </div>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-50 to-teal-50 text-[#1A6B6B] text-xs font-bold px-5 py-2 rounded-full border border-[#1A6B6B]/20 shadow-sm">
+                <span className="text-base">🔒</span>
+                <span>{consentCount.toLocaleString()} {t('consentCounter.text')}</span>
+              </div>
             </div>
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-50 to-teal-50 text-[#1A6B6B] text-xs font-bold px-4 py-2 rounded-full border border-[#1A6B6B]/20">
-              <span className="text-lg">🔒</span>
-              <span>{consentCount.toLocaleString()} {t('consentCounter.text')}</span>
+
+            {/* Logo principal */}
+            <div className="flex justify-center mb-6">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#F5A962]/20 to-[#5B9BD5]/20 rounded-full blur-2xl scale-110" />
+                <img
+                  src="/logo.png"
+                  alt="YesBoth — Both say yes"
+                  className="relative h-72 w-auto drop-shadow-xl"
+                />
+              </div>
             </div>
+
+            {/* Headline */}
+            <h1 className="text-[2.4rem] font-extrabold leading-tight mb-3 whitespace-pre-line" style={{background:'linear-gradient(135deg,#F5A962,#8B7BA8,#5B9BD5)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>
+              {t('hero.headline')}
+            </h1>
+            <p className="text-[#5A6C7D] text-[15px] leading-relaxed mb-8 max-w-[360px] mx-auto">
+              {t('hero.sub')}
+            </p>
+
+            {/* CTA */}
+            <Link href="/wizard" className="inline-flex flex-col items-center gap-2">
+              <span className="px-9 py-4 bg-gradient-to-r from-[#F5A962] via-[#8B7BA8] to-[#5B9BD5] text-white font-bold text-base rounded-full shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-block">
+                {t('hero.cta')} →
+              </span>
+              <span className="text-[11px] text-[#8B95A1] font-medium">{t('hero.ctaSub')}</span>
+            </Link>
+
+            {/* Legal refs bloc — visible uniquement en anglais */}
+            {t('legalRef.countries') && Array.isArray(t('legalRef.countries')) && (
+              <div className="mt-10 bg-white/80 backdrop-blur border border-[#E1E8ED] rounded-2xl px-5 py-4 shadow-sm text-left">
+                <p className="text-xs font-bold text-[#2C3E50] mb-2">{t('legalRef.title')}</p>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {t('legalRef.countries').map((c, i) => (
+                    <span key={i} className="text-[11px] font-semibold bg-gradient-to-r from-[#F5A962]/10 to-[#5B9BD5]/10 text-[#5B9BD5] border border-[#5B9BD5]/20 px-3 py-1 rounded-full">
+                      {c}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-[11px] text-[#5A6C7D] leading-relaxed">{t('legalRef.text')}</p>
+              </div>
+            )}
           </div>
-
-          <div className="flex justify-center mb-8">
-            <img src="/logo.png" alt="YesBoth" className="h-80 w-auto" />
-          </div>
-
-          <h1 className="text-4xl font-bold text-[#2C3E50] leading-tight mb-4 whitespace-pre-line">
-            {t('hero.headline')}
-          </h1>
-          <p className="text-[#5A6C7D] text-base leading-relaxed mb-8">
-            {t('hero.sub')}
-          </p>
-
-          <Link
-            href="/wizard"
-            className="inline-flex flex-col items-center gap-1"
-          >
-            <span className="px-8 py-4 bg-gradient-to-r from-[#F5A962] via-[#8B7BA8] to-[#5B9BD5] text-white font-bold text-base rounded-full shadow-lg hover:shadow-xl active:scale-[0.98] transition-all duration-200 inline-block">
-              {t('hero.cta')}
-            </span>
-            <span className="text-xs text-[#8B95A1]">{t('hero.ctaSub')}</span>
-          </Link>
         </section>
 
         {/* PLATFORMS BANNER */}

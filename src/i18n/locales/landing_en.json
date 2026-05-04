@@ -37,9 +37,14 @@
       { "num": "4", "title": "Send the message", "desc": "Share directly via WhatsApp, SMS, email, or copy the text." }
     ]
   },
+  "legalRef": {
+    "title": "⚖️ Legal Framework",
+    "text": "Consent references: Sexual Offences Act 2003 s.74 (UK) · Title IX & MeToo Accountability Act (USA) · Crimes Act 1958 s.36 (Australia) · Crimes Act 1961 s.128A (New Zealand)",
+    "countries": ["🇬🇧 UK", "🇺🇸 USA", "🇦🇺 Australia", "🇳🇿 New Zealand"]
+  },
   "disclaimer": {
     "title": "⚠️ Important",
-    "text": "YesBoth is a communication tool, not a legal contract. It does not replace verbal and physical consent which always prevails. Each party remains fully responsible for their actions. Strictly for adults only."
+    "text": "YesBoth is a communication tool, not a legal contract. It does not replace verbal and physical consent which always prevails. Each party remains fully responsible for their actions. Strictly for adults only.\n\n⚖️ Legal references: Sexual Offences Act 2003 s.74 (UK) · Title IX (USA) · Crimes Act 1958 s.36 (Australia) · Crimes Act 1961 s.128A (New Zealand)."
   },
   "footer": {
     "owner": " 2026 Herrichain — 1901 Association",
