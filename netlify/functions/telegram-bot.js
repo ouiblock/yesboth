@@ -293,11 +293,9 @@ ${trans.reference}
 ─────────────────────────────────`;
 };
 
-// Initialiser le bot
-const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
-
-// Alias rétro-compatible : retourne une promesse de session
-const getSession = (chatId) => loadSession(chatId);
+// Init bot
+if (!process.env.TELEGRAM_BOT_TOKEN) console.error('[bot] TELEGRAM_BOT_TOKEN is not set!');
+const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN || 'MISSING_TOKEN');
 
 // Commandes
 const startMessages = {
