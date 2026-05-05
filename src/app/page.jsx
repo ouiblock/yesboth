@@ -127,7 +127,8 @@ function LandingInner() {
                 <img
                   src="/yesboth2.png"
                   alt="YesBoth — Both say yes"
-                  className="relative h-72 w-auto drop-shadow-xl"
+                  className="relative h-72 w-auto"
+                  style={{ mixBlendMode: 'multiply' }}
                 />
               </div>
             </div>
