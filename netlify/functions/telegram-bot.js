@@ -577,78 +577,17 @@ bot.on('text', async (ctx) => {
 // Afficher les catégories
 function showCategories(ctx, lang) {
   const categories = {
-    fr: {
-      title: 'Quelle catégorie de consentement ?',
-      buttons: [
-        ['💞 Relation intime', 'cat_intimite'],
-        ['🎭 BDSM/Fétichisme', 'cat_nsfw'],
-        ['🤝 Relation générale', 'cat_relation']
-      ]
-    },
-    en: {
-      title: 'Which consent category?',
-      buttons: [
-        ['💞 Intimate relationship', 'cat_intimite'],
-        ['🎭 BDSM/Fetish', 'cat_nsfw'],
-        ['🤝 General relationship', 'cat_relation']
-      ]
-    },
-    es: {
-      title: '¿Qué categoría de consentimiento?',
-      buttons: [
-        ['💞 Relación íntima', 'cat_intimite'],
-        ['🎭 BDSM/Fetichismo', 'cat_nsfw'],
-        ['🤝 Relación general', 'cat_relation']
-      ]
-    },
-    it: {
-      title: 'Quale categoria di consenso?',
-      buttons: [
-        ['💞 Relazione intima', 'cat_intimite'],
-        ['🎭 BDSM/Fetish', 'cat_nsfw'],
-        ['🤝 Relazione generale', 'cat_relation']
-      ]
-    },
-    zh: {
-      title: '选择同意类别？',
-      buttons: [
-        ['💞 亲密关系', 'cat_intimite'],
-        ['🎭 BDSM/特殊', 'cat_nsfw'],
-        ['🤝 一般关系', 'cat_relation']
-      ]
-    },
-    ru: {
-      title: 'Какая категория согласия?',
-      buttons: [
-        ['💞 Интимные отношения', 'cat_intimite'],
-        ['🎭 БДСМ/Фетиш', 'cat_nsfw'],
-        ['🤝 Общие отношения', 'cat_relation']
-      ]
-    },
-    uk: {
-      title: 'Яка категорія згоди?',
-      buttons: [
-        ['💞 Інтимні стосунки', 'cat_intimite'],
-        ['🎭 БДСМ/Фетиш', 'cat_nsfw'],
-        ['🤝 Загальні стосунки', 'cat_relation']
-      ]
-    },
-    ar: {
-      title: 'أي فئة موافقة؟',
-      buttons: [
-        ['💞 علاقة حميمة', 'cat_intimite'],
-        ['🎭 BDSM/فتيش', 'cat_nsfw'],
-        ['🤝 علاقة عامة', 'cat_relation']
-      ]
-    }
+    fr: { title: '📋 Quelle catégorie de consentement ?', buttons: [['🌿 Général','cat_general'],['🤝 Relation','cat_relation'],['💋 Intime','cat_intimite'],['🔴 BDSM/NSFW (18+)','cat_nsfw']] },
+    en: { title: '📋 Which consent category?', buttons: [['🌿 General','cat_general'],['🤝 Relationship','cat_relation'],['💋 Intimate','cat_intimite'],['🔴 BDSM/NSFW (18+)','cat_nsfw']] },
+    es: { title: '📋 ¿Qué categoría de consentimiento?', buttons: [['🌿 General','cat_general'],['🤝 Relación','cat_relation'],['💋 Íntimo','cat_intimite'],['🔴 BDSM/NSFW (18+)','cat_nsfw']] },
+    it: { title: '📋 Quale categoria di consenso?', buttons: [['🌿 Generale','cat_general'],['🤝 Relazione','cat_relation'],['💋 Intimo','cat_intimite'],['🔴 BDSM/NSFW (18+)','cat_nsfw']] },
+    zh: { title: '📋 选择同意类别？', buttons: [['🌿 一般','cat_general'],['🤝 关系','cat_relation'],['� 亲密','cat_intimite'],['🔴 BDSM/NSFW (18+)','cat_nsfw']] },
+    ru: { title: '📋 Какая категория согласия?', buttons: [['🌿 Общее','cat_general'],['🤝 Отношения','cat_relation'],['💋 Интимное','cat_intimite'],['🔴 БДСМ/NSFW (18+)','cat_nsfw']] },
+    uk: { title: '📋 Яка категорія згоди?', buttons: [['🌿 Загальне','cat_general'],['🤝 Стосунки','cat_relation'],['💋 Інтимне','cat_intimite'],['🔴 БДСМ/NSFW (18+)','cat_nsfw']] },
+    ar: { title: '📋 أي فئة موافقة؟', buttons: [['🌿 عام','cat_general'],['🤝 علاقة','cat_relation'],['💋 حميم','cat_intimite'],['🔴 BDSM/NSFW (18+)','cat_nsfw']] }
   };
-  
   const cat = categories[lang] || categories.en;
-  const keyboard = Markup.inlineKeyboard(
-    cat.buttons.map(([text, data]) => [Markup.button.callback(text, data)])
-  );
-  
-  ctx.reply(cat.title, keyboard);
+  ctx.reply(cat.title, Markup.inlineKeyboard(cat.buttons.map(([t, d]) => [Markup.button.callback(t, d)])));
 }
 
 // Gestion de la sélection de catégorie
@@ -664,57 +603,65 @@ bot.action(/cat_(.+)/, async (ctx) => {
   } catch (e) { console.error('[cat]', e); }
 });
 
-// Afficher les clauses (session passée en argument — sync)
+// Afficher les clauses — 4 catégories identiques à la webapp
 function showClauses(ctx, lang, category, session) {
   const clausesData = {
-    intimite: {
-      fr: ['Baisers', 'Caresses', 'Rapport protégé', 'Rapport non protégé', 'Sexe oral'],
-      en: ['Kissing', 'Caressing', 'Protected sex', 'Unprotected sex', 'Oral sex'],
-      es: ['Besos', 'Caricias', 'Sexo protegido', 'Sexo sin protección', 'Sexo oral'],
-      it: ['Baci', 'Carezze', 'Sesso protetto', 'Sesso non protetto', 'Sesso orale'],
-      zh: ['接吻', '爱抚', '有保护性行为', '无保护性行为', '口交'],
-      ru: ['Поцелуи', 'Ласки', 'Защищённый секс', 'Незащищённый секс', 'Оральный секс'],
-      uk: ['Поцілунки', 'Пестощі', 'Захищений секс', 'Незахищений секс', 'Оральний секс'],
-      ar: ['تقبيل', 'مداعبة', 'جنس محمي', 'جنس غير محمي', 'جنس فموي']
-    },
-    nsfw: {
-      fr: ['Bondage léger', 'Domination/Soumission', 'Jeux de rôle', 'Utilisation d\'accessoires'],
-      en: ['Light bondage', 'Domination/Submission', 'Role play', 'Use of accessories'],
-      es: ['Bondage ligero', 'Dominación/Sumisión', 'Juego de roles', 'Uso de accesorios'],
-      it: ['Bondage leggero', 'Dominazione/Sottomissione', 'Gioco di ruolo', 'Uso di accessori'],
-      zh: ['轻度束缚', '支配/服从', '角色扮演', '使用道具'],
-      ru: ['Лёгкое бондаж', 'Доминирование/Подчинение', 'Ролевые игры', 'Использование аксессуаров'],
-      uk: ['Легкий бондаж', 'Домінування/Підкорення', 'Рольові ігри', 'Використання аксесуарів'],
-      ar: ['ربط خفيف', 'هيمنة/خضوع', 'لعب الأدوار', 'استخدام الإكسسوارات']
+    general: {
+      fr: ['✅ Consentement libre et éclairé (verrouillé)','✅ Révocable à tout moment (verrouillé)','Activité à risque physique','Partage d\'un véhicule ou bien','Droit à l\'image — photos/vidéos','Accord de confidentialité','Partage d\'informations personnelles','Clause personnalisée'],
+      en: ['✅ Free and informed consent (locked)','✅ Revocable at any time (locked)','Physically risky activity','Sharing a vehicle or property','Image rights — photos/videos','Confidentiality agreement','Sharing personal information','Custom clause'],
+      es: ['✅ Consentimiento libre e informado (bloqueado)','✅ Revocable en cualquier momento (bloqueado)','Actividad de riesgo físico','Compartir vehículo o bien','Derechos de imagen — fotos/vídeos','Acuerdo de confidencialidad','Compartir información personal','Cláusula personalizada'],
+      it: ['✅ Consenso libero e informato (bloccato)','✅ Revocabile in qualsiasi momento (bloccato)','Attività a rischio fisico','Condivisione di veicolo o bene','Diritto all\'immagine — foto/video','Accordo di riservatezza','Condivisione di informazioni personali','Clausola personalizzata'],
+      zh: ['✅ 自由知情同意（已锁定）','✅ 随时可撤销（已锁定）','有肢体风险的活动','共享车辆或财产','肖像权 — 照片/视频','保密协议','共享个人信息','自定义条款'],
+      ru: ['✅ Свободное и осознанное согласие (заблокировано)','✅ Отзываемо в любой момент (заблокировано)','Деятельность с физическим риском','Совместное использование транспорта или имущества','Права на изображение — фото/видео','Соглашение о конфиденциальности','Обмен личной информацией','Индивидуальный пункт'],
+      uk: ['✅ Вільна та усвідомлена згода (заблоковано)','✅ Відклична в будь-який момент (заблоковано)','Діяльність із фізичним ризиком','Спільне використання транспорту або майна','Право на зображення — фото/відео','Угода про конфіденційність','Обмін особистою інформацією','Індивідуальний пункт'],
+      ar: ['✅ موافقة حرة ومستنيرة (مقفلة)','✅ قابلة للإلغاء في أي وقت (مقفلة)','نشاط ذو مخاطر جسدية','مشاركة مركبة أو ممتلكات','حقوق الصورة — صور/فيديو','اتفاقية سرية','مشاركة معلومات شخصية','بند مخصص']
     },
     relation: {
-      fr: ['Sorties ensemble', 'Présentation aux amis', 'Exclusivité', 'Communication régulière'],
-      en: ['Going out together', 'Meeting friends', 'Exclusivity', 'Regular communication'],
-      es: ['Salir juntos', 'Conocer amigos', 'Exclusividad', 'Comunicación regular'],
-      it: ['Uscire insieme', 'Incontrare amici', 'Esclusività', 'Comunicazione regolare'],
-      zh: ['一起外出', '介绍给朋友', '专一性', '定期沟通'],
-      ru: ['Совместные прогулки', 'Знакомство с друзьями', 'Эксклюзивность', 'Регулярное общение'],
-      uk: ['Спільні виходи', 'Знайомство з друзями', 'Ексклюзивність', 'Регулярне спілкування'],
-      ar: ['الخروج معاً', 'التعرف على الأصدقاء', 'الحصرية', 'التواصل المنتظم']
+      fr: ['✅ Consentement libre et éclairé (verrouillé)','✅ Révocable à tout moment (verrouillé)','Flirt & intentions clarifiées','Relation exclusive (monogamie)','Relation ouverte','Sans engagement romantique (NSA)','Friends with benefits','Accord de discrétion totale','Test IST — résultats partagés','Accord sur la contraception'],
+      en: ['✅ Free and informed consent (locked)','✅ Revocable at any time (locked)','Flirting & clarified intentions','Exclusive relationship (monogamy)','Open relationship','No strings attached (NSA)','Friends with benefits','Total discretion agreement','STI test — shared results','Contraception agreement'],
+      es: ['✅ Consentimiento libre e informado (bloqueado)','✅ Revocable en cualquier momento (bloqueado)','Flirteo e intenciones aclaradas','Relación exclusiva (monogamia)','Relación abierta','Sin compromiso romántico (NSA)','Amigos con beneficios','Acuerdo de discreción total','Test ITS — resultados compartidos','Acuerdo sobre anticoncepción'],
+      it: ['✅ Consenso libero e informato (bloccato)','✅ Revocabile in qualsiasi momento (bloccato)','Flirt e intenzioni chiarite','Relazione esclusiva (monogamia)','Relazione aperta','Senza impegno romantico (NSA)','Friends with benefits','Accordo di totale discrezione','Test MST — risultati condivisi','Accordo sulla contraccezione'],
+      zh: ['✅ 自由知情同意（已锁定）','✅ 随时可撤销（已锁定）','调情与明确意图','排他性关系（一夫一妻）','开放式关系','无浪漫承诺（NSA）','朋友加好处','完全保密协议','性病检测 — 共享结果','避孕协议'],
+      ru: ['✅ Свободное и осознанное согласие (заблокировано)','✅ Отзываемо в любой момент (заблокировано)','Флирт и уточнённые намерения','Эксклюзивные отношения (моногамия)','Открытые отношения','Без романтических обязательств (NSA)','Друзья с привилегиями','Соглашение о полной дискретности','Тест на ИППП — общие результаты','Соглашение о контрацепции'],
+      uk: ['✅ Вільна та усвідомлена згода (заблоковано)','✅ Відклична в будь-який момент (заблоковано)','Флірт та уточнені наміри','Ексклюзивні стосунки (моногамія)','Відкриті стосунки','Без романтичних зобов\'язань (NSA)','Друзі з привілеями','Угода про повну дискретність','Тест на ІПСШ — спільні результати','Угода щодо контрацепції'],
+      ar: ['✅ موافقة حرة ومستنيرة (مقفلة)','✅ قابلة للإلغاء في أي وقت (مقفلة)','مغازلة ونوايا واضحة','علاقة حصرية (أحادية)','علاقة مفتوحة','بلا التزام رومانسي (NSA)','أصدقاء مع امتيازات','اتفاقية تكتم تام','فحص الأمراض المنقولة جنسياً — نتائج مشتركة','اتفاقية منع الحمل']
+    },
+    intimite: {
+      fr: ['✅ Consentement libre et éclairé (verrouillé)','✅ Révocable à tout moment (verrouillé)','Valable pour cette occasion uniquement','Rapport protégé uniquement','Rapport non protégé (post-test IST)','Photos intimes — usage privé uniquement','Vidéos intimes — usage privé uniquement','✅ Droit de suppression immédiate sur révocation (verrouillé)','Zones / actes expressément exclus'],
+      en: ['✅ Free and informed consent (locked)','✅ Revocable at any time (locked)','Valid for this occasion only','Protected sex only','Unprotected sex (post STI test)','Intimate photos — private use only','Intimate videos — private use only','✅ Right to immediate deletion on revocation (locked)','Expressly excluded zones / acts'],
+      es: ['✅ Consentimiento libre e informado (bloqueado)','✅ Revocable en cualquier momento (bloqueado)','Válido solo para esta ocasión','Solo sexo protegido','Sexo sin protección (post-test ITS)','Fotos íntimas — solo uso privado','Videos íntimos — solo uso privado','✅ Derecho de eliminación inmediata en revocación (bloqueado)','Zonas / actos expresamente excluidos'],
+      it: ['✅ Consenso libero e informato (bloccato)','✅ Revocabile in qualsiasi momento (bloccato)','Valido solo per questa occasione','Solo sesso protetto','Sesso non protetto (post-test MST)','Foto intime — solo uso privato','Video intimi — solo uso privato','✅ Diritto alla cancellazione immediata in caso di revoca (bloccato)','Zone / atti espressamente esclusi'],
+      zh: ['✅ 自由知情同意（已锁定）','✅ 随时可撤销（已锁定）','仅适用于本次场合','仅限安全性行为','无保护性行为（性病检测后）','私密照片 — 仅供私人使用','私密视频 — 仅供私人使用','✅ 撤销时立即删除权（已锁定）','明确排除的区域/行为'],
+      ru: ['✅ Свободное и осознанное согласие (заблокировано)','✅ Отзываемо в любой момент (заблокировано)','Действительно только для этого случая','Только защищённый секс','Незащищённый секс (после теста на ИППП)','Интимные фото — только личное использование','Интимные видео — только личное использование','✅ Право на немедленное удаление при отзыве (заблокировано)','Явно исключённые зоны/действия'],
+      uk: ['✅ Вільна та усвідомлена згода (заблоковано)','✅ Відклична в будь-який момент (заблоковано)','Дійсна лише для цього випадку','Лише захищений секс','Незахищений секс (після тесту на ІПСШ)','Інтимні фото — лише особисте використання','Інтимні відео — лише особисте використання','✅ Право на негайне видалення при відкликанні (заблоковано)','Явно виключені зони/дії'],
+      ar: ['✅ موافقة حرة ومستنيرة (مقفلة)','✅ قابلة للإلغاء في أي وقت (مقفلة)','صالحة لهذه المناسبة فقط','الجنس الآمن فقط','الجنس غير المحمي (بعد فحص الأمراض)','صور حميمة — للاستخدام الخاص فقط','مقاطع فيديو حميمة — للاستخدام الخاص فقط','✅ حق الحذف الفوري عند الإلغاء (مقفل)','مناطق / أفعال مستبعدة صراحةً']
+    },
+    nsfw: {
+      fr: ['✅ Consentement libre et éclairé (verrouillé)','✅ Révocable pendant la scène — safeword (verrouillé)','✅ Le safeword prévaut sur tout accord (verrouillé)','Dominance / Soumission (D/s)','Bondage léger (foulards, menottes douces)','Bondage technique (cordes, shibari)','Impact play léger (fessées)','Impact play intense (flogger, cane)','Sensation play (cire, glaçons, vibrations)','Jeux de rôle / scénarios fictifs','Jouets et accessoires','Voyeurisme / exhibitionnisme','Participation à une scène de groupe','Photos intimes — usage privé uniquement','Vidéos intimes — usage privé uniquement','Aftercare défini','Hard limits — pratiques refusées'],
+      en: ['✅ Free and informed consent (locked)','✅ Revocable during scene — safeword (locked)','✅ Safeword overrides all agreements (locked)','Dominance / Submission (D/s)','Light bondage (scarves, soft cuffs)','Technical bondage (ropes, shibari)','Light impact play (spanking)','Intense impact play (flogger, cane)','Sensation play (wax, ice, vibration)','Role play / fictional scenarios','Toys and accessories','Voyeurism / exhibitionism','Group scene participation','Intimate photos — private use only','Intimate videos — private use only','Aftercare defined','Hard limits — refused practices'],
+      es: ['✅ Consentimiento libre e informado (bloqueado)','✅ Revocable durante la escena — safeword (bloqueado)','✅ El safeword anula todos los acuerdos (bloqueado)','Dominación / Sumisión (D/s)','Bondage ligero (pañuelos, esposas suaves)','Bondage técnico (cuerdas, shibari)','Impact play ligero (azotes)','Impact play intenso (flogger, bastón)','Sensation play (cera, hielo, vibración)','Juegos de rol / escenarios ficticios','Juguetes y accesorios','Voyeurismo / exhibicionismo','Participación en escena de grupo','Fotos íntimas — solo uso privado','Videos íntimos — solo uso privado','Aftercare definido','Hard limits — prácticas rechazadas'],
+      it: ['✅ Consenso libero e informato (bloccato)','✅ Revocabile durante la scena — safeword (bloccato)','✅ La safeword prevale su tutti gli accordi (bloccato)','Dominanza / Sottomissione (D/s)','Bondage leggero (foulard, manette morbide)','Bondage tecnico (corde, shibari)','Impact play leggero (sculacciate)','Impact play intenso (flogger, canna)','Sensation play (cera, ghiaccio, vibrazioni)','Giochi di ruolo / scenari fittizi','Giocattoli e accessori','Voyeurismo / esibizionismo','Partecipazione a scena di gruppo','Foto intime — solo uso privato','Video intimi — solo uso privato','Aftercare definito','Hard limits — pratiche rifiutate'],
+      zh: ['✅ 自由知情同意（已锁定）','✅ 场景中可撤销 — 安全词（已锁定）','✅ 安全词凌驾于所有协议之上（已锁定）','支配/服从 (D/s)','轻度束缚（丝巾、软手铐）','技术束缚（绳子、绳艺）','轻度体感游戏（打屁股）','强度体感游戏（鞭子、手杖）','感觉游戏（蜡、冰块、振动）','角色扮演/虚构场景','玩具和配件','偷窥/暴露癖','参与群体场景','私密照片 — 仅供私人使用','私密视频 — 仅供私人使用','事后照顾已定义','硬限制 — 拒绝的行为'],
+      ru: ['✅ Свободное и осознанное согласие (заблокировано)','✅ Отзываемо во время сцены — сейфворд (заблокировано)','✅ Сейфворд отменяет все договорённости (заблокировано)','Доминирование / Подчинение (D/s)','Лёгкий бондаж (платки, мягкие наручники)','Технический бондаж (верёвки, шибари)','Лёгкий импакт-плей (шлепки)','Интенсивный импакт-плей (флоггер, трость)','Сенсорный плей (воск, лёд, вибрация)','Ролевые игры / вымышленные сценарии','Игрушки и аксессуары','Вуайеризм / эксгибиционизм','Участие в групповой сцене','Интимные фото — только личное использование','Интимные видео — только личное использование','Эфтеркэр определён','Жёсткие ограничения — отказные практики'],
+      uk: ['✅ Вільна та усвідомлена згода (заблоковано)','✅ Відклична під час сцени — сейфворд (заблоковано)','✅ Сейфворд скасовує всі домовленості (заблоковано)','Домінування / Підкорення (D/s)','Легкий бондаж (хустки, м\'які наручники)','Технічний бондаж (мотузки, шібарі)','Легкий імпакт-плей (шльопанці)','Інтенсивний імпакт-плей (флогер, тростина)','Сенсорний плей (віск, лід, вібрація)','Рольові ігри / вигадані сценарії','Іграшки та аксесуари','Вуайеризм / ексгібіціонізм','Участь у груповій сцені','Інтимні фото — лише особисте використання','Інтимні відео — лише особисте використання','Ефтеркер визначено','Жорсткі обмеження — відмовні практики'],
+      ar: ['✅ موافقة حرة ومستنيرة (مقفلة)','✅ قابلة للإلغاء أثناء المشهد — كلمة الأمان (مقفلة)','✅ كلمة الأمان تلغي جميع الاتفاقيات (مقفلة)','هيمنة / خضوع (D/s)','ربط خفيف (أوشحة، أصفاد ناعمة)','ربط تقني (حبال، شيباري)','لعبة الإيقاع الخفيف (الضرب الخفيف)','لعبة الإيقاع الشديد (سوط، عصا)','لعبة الإحساس (شمع، ثلج، اهتزاز)','ألعاب الأدوار / سيناريوهات خيالية','ألعاب وإكسسوارات','استعراض / إباحية','المشاركة في مشهد جماعي','صور حميمة — للاستخدام الخاص فقط','مقاطع فيديو حميمة — للاستخدام الخاص فقط','الرعاية اللاحقة محددة','حدود صارمة — ممارسات مرفوضة']
     }
   };
-  
-  const effectiveLang = clausesData[category][lang] ? lang : 'en';
-  const clauses = clausesData[category][effectiveLang];
+  const effectiveLang = clausesData[category] && clausesData[category][lang] ? lang : 'en';
+  const clauses = clausesData[category] ? clausesData[category][effectiveLang] : clausesData.general[effectiveLang];
   session.form.clauses = clauses.map(label => ({ label, state: false }));
-  
   const clauseList = clauses.map((c, i) => `${i + 1}. ${c}`).join('\n');
+  const nsfwNote = category === 'nsfw' ? '\n\n⚠️ 18+ — safeword obligatoire à l\'étape suivante' : '';
   const messages = {
-    fr: `Sélectionnez les clauses acceptées :\n\n${clauseList}\n\nRépondez avec les numéros séparés par des espaces (ex: 1 3 5)`,
-    en: `Select accepted clauses:\n\n${clauseList}\n\nReply with numbers separated by spaces (e.g., 1 3 5)`,
-    es: `Seleccione las cláusulas aceptadas:\n\n${clauseList}\n\nResponda con números separados por espacios (ej: 1 3 5)`,
-    it: `Seleziona le clausole accettate:\n\n${clauseList}\n\nRispondi con numeri separati da spazi (es: 1 3 5)`,
-    zh: `选择已接受的条款：\n\n${clauseList}\n\n用空格分隔的数字回复（例如：1 3 5）`,
-    ru: `Выберите принятые пункты:\n\n${clauseList}\n\nОтветьте числами через пробел (например: 1 3 5)`,
-    uk: `Виберіть прийняті пункти:\n\n${clauseList}\n\nВідповідайте числами через пробіл (наприклад: 1 3 5)`,
-    ar: `اختر البنود المقبولة:\n\n${clauseList}\n\nأجب بأرقام مفصولة بمسافات (مثال: 1 3 5)`
+    fr: `📋 Sélectionnez les clauses acceptées :\n\n${clauseList}${nsfwNote}\n\nRépondez avec les numéros (ex: 1 3 5) ou "skip"`,
+    en: `📋 Select accepted clauses:\n\n${clauseList}${category === 'nsfw' ? '\n\n⚠️ 18+ — safeword required at next step' : ''}\n\nReply with numbers (e.g., 1 3 5) or "skip"`,
+    es: `📋 Seleccione las cláusulas aceptadas:\n\n${clauseList}${category === 'nsfw' ? '\n\n⚠️ 18+ — safeword obligatoria en el siguiente paso' : ''}\n\nNúmeros separados por espacios (ej: 1 3 5) o "skip"`,
+    it: `📋 Seleziona le clausole accettate:\n\n${clauseList}${category === 'nsfw' ? '\n\n⚠️ 18+ — safeword obbligatoria al passo successivo' : ''}\n\nNumeri separati da spazi (es: 1 3 5) o "skip"`,
+    zh: `📋 选择已接受的条款：\n\n${clauseList}${category === 'nsfw' ? '\n\n⚠️ 18+类别 — 下一步必须设置安全词' : ''}\n\n用空格分隔数字（例如：1 3 5）或 "skip"`,
+    ru: `📋 Выберите принятые пункты:\n\n${clauseList}${category === 'nsfw' ? '\n\n⚠️ Категория 18+ — сейфворд ОБЯЗАТЕЛЕН на следующем шаге' : ''}\n\nЧисла через пробел (напр. 1 3 5) или "skip"`,
+    uk: `📋 Виберіть прийняті пункти:\n\n${clauseList}${category === 'nsfw' ? '\n\n⚠️ Категорія 18+ — сейфворд ОБОВ\'ЯЗКОВИЙ на наступному кроці' : ''}\n\nЧисла через пробіл (напр. 1 3 5) або "skip"`,
+    ar: `📋 اختر البنود المقبولة:\n\n${clauseList}${category === 'nsfw' ? '\n\n⚠️ فئة +18 — كلمة الأمان إلزامية في الخطوة التالية' : ''}\n\nأرقام مفصولة بمسافات (مثال: 1 3 5) أو "skip"`
   };
-  
   session.step = 'clause_selection';
   ctx.reply(messages[lang] || messages.en);
 }
