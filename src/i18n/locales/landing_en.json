@@ -39,12 +39,12 @@
   },
   "legalRef": {
     "title": "⚖️ Legal Framework",
-    "text": "Consent references: Sexual Offences Act 2003 s.74 (UK) · Title IX & MeToo Accountability Act (USA) · Crimes Act 1958 s.36 (Australia) · Crimes Act 1961 s.128A (New Zealand)",
+    "text": "🇬🇧 UK — Sexual Offences Act 2003, s.74: consent defined as agreement by choice with freedom and capacity.\n🇺🇸 USA — Title IX (20 U.S.C. § 1681), Affirmative Consent laws (CA SB-967, NY Education Law §6441): yes means yes standard across states.\n🇦🇺 Australia — Crimes Act 1958 s.36 (VIC) · Criminal Code Act 1995 s.268.14 (Federal) · Crimes Act 1900 s.61HE (NSW): free & voluntary agreement required.\n🇳🇿 New Zealand — Crimes Act 1961 s.128A: consent must be free, voluntary and communicated.",
     "countries": ["🇬🇧 UK", "🇺🇸 USA", "🇦🇺 Australia", "🇳🇿 New Zealand"]
   },
   "disclaimer": {
     "title": "⚠️ Important",
-    "text": "YesBoth is a communication tool, not a legal contract. It does not replace verbal and physical consent which always prevails. Each party remains fully responsible for their actions. Strictly for adults only.\n\n⚖️ Legal references: Sexual Offences Act 2003 s.74 (UK) · Title IX (USA) · Crimes Act 1958 s.36 (Australia) · Crimes Act 1961 s.128A (New Zealand)."
+    "text": "YesBoth is a communication tool, not a legal contract. It does not replace verbal and physical consent which always prevails. Each party remains fully responsible for their actions. Strictly for adults only.\n\n⚖️ Legal references: Sexual Offences Act 2003 s.74 (UK) · Title IX / CA SB-967 (USA) · Crimes Act 1958 s.36 / Criminal Code Act 1995 s.268.14 (Australia) · Crimes Act 1961 s.128A (New Zealand)."
   },
   "footer": {
     "owner": " 2026 Herrichain — 1901 Association",

@@ -125,7 +125,7 @@ function LandingInner() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#F5A962]/20 to-[#5B9BD5]/20 rounded-full blur-2xl scale-110" />
                 <img
-                  src="/logo.png"
+                  src="/yesboth2.png"
                   alt="YesBoth — Both say yes"
                   className="relative h-72 w-auto drop-shadow-xl"
                 />
@@ -159,7 +159,7 @@ function LandingInner() {
                     </span>
                   ))}
                 </div>
-                <p className="text-[11px] text-[#5A6C7D] leading-relaxed">{t('legalRef.text')}</p>
+                <p className="text-[11px] text-[#5A6C7D] leading-relaxed whitespace-pre-line">{t('legalRef.text')}</p>
               </div>
             )}
           </div>
