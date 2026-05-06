@@ -122,14 +122,11 @@ function LandingInner() {
 
             {/* Logo principal */}
             <div className="flex justify-center mb-6">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#F5A962]/20 to-[#5B9BD5]/20 rounded-full blur-2xl scale-110" />
-                <img
-                  src="/yesboth2.png"
-                  alt="YesBoth — Both say yes"
-                  className="relative h-72 w-auto drop-shadow-xl"
-                />
-              </div>
+              <img
+                src="/yesboth2.png"
+                alt="YesBoth — Both say yes"
+                className="h-72 w-auto drop-shadow-xl"
+              />
             </div>
 
             {/* Headline */}
@@ -351,7 +348,7 @@ function LandingInner() {
         <section className="bg-gradient-to-r from-[#F5A962] via-[#8B7BA8] to-[#5B9BD5] py-12">
           <div className="max-w-[480px] mx-auto px-5 text-center">
             <div className="flex justify-center mb-6">
-              <img src="/logo.png" alt="YesBoth" className="h-16 brightness-0 invert" />
+              <img src="/yesboth2.png" alt="YesBoth" className="h-16 brightness-0 invert" />
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">Both say yes</h2>
             <p className="text-[#1A6B6B]/30 text-sm mb-6 text-white/70">YesBoth</p>
@@ -369,7 +366,7 @@ function LandingInner() {
       <footer className="bg-[#2C3E50] text-white py-8">
         <div className="max-w-[480px] mx-auto px-5 space-y-4">
           <div className="flex items-center justify-between">
-            <img src="/logo.png" alt="YesBoth" className="h-8 brightness-0 invert" />
+            <img src="/yesboth2.png" alt="YesBoth" className="h-8 brightness-0 invert" />
             <div className="flex gap-1">
               {LANGS.map(l => (
                 <button
